@@ -2,9 +2,22 @@
   <div>
     <router-link to="/">Products</router-link> |
     <router-link to="/checkout">Checkout</router-link>
+    <NavComp />
     <router-view/>
+    <FooterComp />
   </div>
 </template>
+
+<script>
+import FooterComp from './components/FooterComp.vue'
+import NavComp from './components/NavComp.vue'
+export default {
+  components: {
+    NavComp,
+    FooterComp
+  }
+}
+</script>
 
 <style lang="scss" scoped>
   @font-face {

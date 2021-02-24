@@ -1,6 +1,6 @@
 <template>
   <div>
-    CardComp
+    CartComp
   </div>
 </template>
 
