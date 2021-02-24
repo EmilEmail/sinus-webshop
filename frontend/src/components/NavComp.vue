@@ -50,6 +50,7 @@ export default {
     align-items: center;
     justify-content: space-between;
     width: 100%;
+    height: 160px;
     background-color: black;
     color: white;
     .nav {
@@ -58,7 +59,7 @@ export default {
     }
     .nav-logo {
       height: 120px;
-      padding: 16px 32px;
+      padding: 0 32px;
     }
     ul {
 
