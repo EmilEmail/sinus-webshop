@@ -1,4 +1,4 @@
-# frontend
+# sinus-webshop
 
 ## Project setup
 ```
