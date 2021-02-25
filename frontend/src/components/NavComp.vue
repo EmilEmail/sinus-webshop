@@ -45,14 +45,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  @import '../assets/css/colors.scss';
+
   .nav-comp-wrapper {
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 100%;
     height: 160px;
-    background-color: black;
-    color: white;
+    background-color: $color2;
+    color: $color1;
     .nav {
       display: flex;
       align-items: center;
