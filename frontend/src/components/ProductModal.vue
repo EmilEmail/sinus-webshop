@@ -40,6 +40,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../assets/css/colors.scss';
+
 .product-modal-grid-wrapper {
   display: grid;
   grid-template-columns: 465px 465px;
@@ -57,8 +59,8 @@ export default {
     }
   }
   .product-modal-info {
-    background-color: black;
-    color: white;
+    background-color: $color2;
+    color: $color1;
     grid-column: 2;
     display: grid;
     grid-template-rows: 64px 64px 64px 64px 64px;
@@ -85,9 +87,11 @@ export default {
   padding: 0 16px 0 16px;
   h3 {
     font-family: 'font1';
+    margin-bottom: 16px;
   }
   p {
     font-family: 'font2';
+    margin-bottom: 16px;
   }
 }
 .product-modal-info-row-3 {
