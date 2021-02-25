@@ -6,12 +6,17 @@
 
     <div class="cart-comp-modal" v-if="cartOn">
       <section class="cart">
+        <div class="cart-h2-and-btn">
           <h2>Kundvagn</h2>
+          <button>x</button>
+        </div>
+
         <div class="cart-headers">
-          <h4>Articel</h4>
+          <h4>Artikel</h4>
           <h4>Antal</h4>
           <h4 class="right-align">Pris</h4>
         </div>
+
         <ul>
           <li v-for="(item, index) in cart" :key="index" class="cart-items">
             <p class="item-name"> {{ item.name }}</p>
@@ -20,12 +25,16 @@
             <p> {{ item.price }}</p>
           </li>
         </ul>
-        <div class="cart-headers">
+
+        <div class="cart-bottom">
           <h4>Summa</h4>
           <h4 class="centered">{{ totalAmount }}</h4>
           <h4 class="right-align">{{ totalPrice }}</h4>
         </div>
 
+        <!-- Ta bort och gör till rätt komponent -->
+        <button style="width: 150px; margin: auto;">GÅ TILL KASSA</button>
+        <!-- Ta bort och gör till rätt komponent -->
 
       </section>
     </div>
@@ -83,7 +92,7 @@ export default {
 
 <style lang="scss" scoped>
 
-
+@import '../assets/css/colors.scss';
 
 .cart-comp-btn {
   display: flex;
@@ -94,12 +103,11 @@ export default {
   background: url('../assets/svg/cart.svg');
   background-size: cover;
   div {
-    align-self: flex-end;
-    background-color: white;
+    background-color: $color1;
     width: 16px;
     border-radius: 8px;
     text-align: center;
-    color: black;
+    color: $color2;
   }
 }
 .cart-comp-modal {
@@ -113,28 +121,50 @@ export default {
 
   width: 540px;
   height: 660px;
-  background-color: grey;
-  color: black;
+  background-color: $color1;
+  color: $color2;
 
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: font2;
 
   .cart {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
     width: 385px;
     height: 497px;
-    background: black;
-    color: white;
-    h2 {
-      text-align: left;
-      margin-left: 32px;
+    background: $color2;
+    color: $color1;
+    .cart-h2-and-btn {
+      display: flex;
+      justify-content: space-between;
+      h2 {
+        text-align: left;
+        margin: 32px 0 16px 32px;
+        font-family: font1;
+      }
     }
     .cart-headers {
       display: grid;
       grid-template-columns: 200px auto auto;
       margin: 0 32px;
       align-items: flex-end;
-      border-bottom: 3px solid white;
+      border-bottom: 3px solid $color1;
+      font-family: font1;
+      .right-align {
+        text-align: right;
+        margin-right: 8px;
+      }
+    }
+    .cart-bottom {
+      display: grid;
+      grid-template-columns: 200px auto auto;
+      margin: 0 32px;
+      padding: 8px 0;
+      align-items: flex-end;
+      border-top: 3px solid $color1;
       .right-align {
         text-align: right;
         margin-right: 8px;
@@ -143,9 +173,7 @@ export default {
 
     ul {
       list-style: none;
-      margin: 0 32px;
-      padding: 0;
-      border-bottom: 3px solid white;
+      margin: 0 32px 32px 32px;
       
       .cart-items {
         display: grid;
@@ -164,5 +192,4 @@ export default {
     };
   }
 }
-
 </style>
