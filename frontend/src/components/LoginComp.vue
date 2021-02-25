@@ -46,7 +46,7 @@ export default {
   width: 624px;
   height: 432px;
   padding: 32px;
-  margin: auto;
+  margin: 48px auto;
   font-family: font2;
   h2 {
     font-family: font1;
