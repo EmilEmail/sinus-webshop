@@ -1,15 +1,112 @@
 <template>
-  <div>
-    ProductList
+  <div class="product-list-grid-wrapper-top">
+    <div class="product-list-img">
+      <img src="../assets/images/hoodie-fire.png" alt="Product">
+    </div>
+    <div class="product-list-background">
+      <div class="product-list-text">
+        <h2>Product</h2>
+        <h3>Description Of Product</h3>
+      </div>
+      <div class="product-list-grid-wrapper-bottom">
+        <div class="product-list-stars">
+        <img src="../assets/images/big-stars.svg" alt="">
+        </div>
+        <div class="product-list-price">
+          <p>399:-</p>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-
+  data() {
+    return{
+      product: [ {
+        title: "Hoodie",
+        price: 699,
+        shortDesc: "Fire unisex",
+        imgFile: "hoodie-fire.png"
+        },
+        {
+        title: "Hoodie",
+        price: 699,
+        shortDesc: "Fire unisex",
+        imgFile: "hoodie-fire.png"
+        },
+        {
+        title: "Hoodie",
+        price: 699,
+        shortDesc: "Fire unisex",
+        imgFile: "hoodie-fire.png"
+        },
+        {
+        title: "Hoodie",
+        price: 699,
+        shortDesc: "Fire unisex",
+        imgFile: "hoodie-fire.png"
+        }
+      ] 
+    }
+  }
 }
 </script>
 
 <style lang="scss" scoped>
-
+.product-list-grid-wrapper-top {
+  margin: auto;
+  display: grid;
+  width: 225px;
+  height: 385;
+}
+.product-list-img {
+  background-color: rgb(140, 140, 140);
+  grid-row: 1;
+  width: 207px;
+  height: 224px;
+  img {
+    height: 224px;
+  }
+}
+.product-list-grid-wrapper-bottom {
+  margin-left: 8px;
+  margin-top: 32px;
+  display: flex;
+}
+.product-list-background {
+  background-color: black;
+  color: white;
+  grid-row: 2;
+  width: 207px;
+  margin-bottom: 16px;
+}
+.product-list-text {
+  grid-row: inherit;
+  margin-left: 8px;
+  
+  h3 {
+  font-family: 'font1';
+  font-size: x-small;
+  }
+  p {
+    font-family: 'font2';
+    font-size: x-small;
+    margin-bottom: 16px;
+  }
+}
+.product-list-stars {
+    img {
+    height: 16px;
+    width: 70px;
+    margin-top: 16px;
+  }
+}
+.product-list-price {
+  margin: 4px;
+  margin-left: auto;
+  width: 85px;
+  font-size: 36px;
+}
 </style>
