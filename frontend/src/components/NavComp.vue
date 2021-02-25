@@ -11,9 +11,8 @@
         <li v-on:click="showAccesories">TILLBEHÖR</li>
       </ul>
     </section>
-    <LoginComp v-show="showProfile" v-bind:profileData="profileData" @closeProfile="toggleShowProfile" />
     <section class="nav-buttons">
-      <button @click="toggleShowProfile">profile</button>
+      <LoginComp v-bind:profileData="profileData" />
       <CartComp />
       <button>contact</button>
     </section>
@@ -26,7 +25,6 @@ import LoginComp from '../components/LoginComp.vue'
 export default {
   data() {
     return {
-      showProfile: false,
       profileData: {
         name: 'Emil Edberg'
       }
@@ -52,9 +50,6 @@ export default {
     showAccesories() {
       alert("Tillbehör");
     },
-    toggleShowProfile() {
-      this.showProfile = !this.showProfile;
-    }
   }
 }
 </script>

@@ -1,7 +1,7 @@
 <template>
   <div>
     <section class="cart-comp-btn" v-on:click="cartToggle">
-        <div>{{ cartCounter }}</div>
+        <div>{{ totalAmount }}</div>
     </section>
 
     <div class="cart-comp-modal" v-if="cartOn">
@@ -46,7 +46,6 @@ export default {
   data() {
     return {
       cartOn: false,
-      cartCounter: 3,
 
 
       // Ta bort och lägg till rätt variablar
@@ -97,8 +96,8 @@ export default {
 .cart-comp-btn {
   display: flex;
   flex-direction: column;
-  width: 50px;
-  height: 50px;
+  width: 34px;
+  height: 30px;
   background: transparent;
   background: url('../assets/svg/cart.svg');
   background-size: cover;
@@ -108,6 +107,7 @@ export default {
     border-radius: 8px;
     text-align: center;
     color: $color2;
+    align-self: flex-end;
   }
 }
 .cart-comp-modal {

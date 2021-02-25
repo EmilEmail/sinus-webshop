@@ -1,20 +1,20 @@
 <template>
 <div>
+  <div class="profile-btn" @click="showProfile = !showProfile"></div>
 
-  <!-- ProfileComp? Ta bort?? smådata?? -->
-  <div class="login-comp middle-online" v-if="profileOnline">
+  <!-- ProfileMiniComp? Ta bort?? smådata?? -->
+  <div class="login-comp middle-online" v-if="profileOnline" v-show="showProfile">
     <div>
-      <button @click="$emit('closeProfile')">close</button>
+      <button @click="showProfile = !showProfile">close</button>
       <h2 style="background: black; color: white; width: 300px; height: 300px;">
-        {{ profileData.name }}
+        {{ profileData.name }} are <b>Online!</b><br>
         <button @click="profileOnline = false">log out</button>
       </h2>
-      
     </div>
   </div>
 
   <!-- login -->
-  <div class="login-comp middle-login" v-else>
+  <div class="login-comp middle-login" v-else v-show="showProfile">
     <div class="login-comp-wrapper" >
 
       <h2>Logga in</h2>
@@ -45,7 +45,8 @@ export default {
     return {
       email: '',
       password: '',
-      profileOnline: true
+      profileOnline: true,
+      showProfile: false
     }
   },
   props: {
@@ -62,6 +63,15 @@ export default {
 
 <style lang="scss" scoped>
 @import '../assets/css/colors.scss';
+
+.profile-btn {
+ width: 26px;
+ height: 30px;
+ background-color: transparent;
+ background: url(../assets/svg/profile.svg);
+ background-size: cover;
+}
+
 .login-comp {
   display: flex;
   justify-content: center;
