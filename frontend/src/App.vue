@@ -28,18 +28,10 @@ export default {
     font-family: 'font2';
     src: url('./assets/fonts/Open_Sans/OpenSans-Regular.ttf');
   }
-<<<<<<< Updated upstream
-  $color1: white;
-  $color2: black;
-  $accent-color: rgb(255, 152, 57);
-  $yes-green: rgb(12, 145, 0);
-  $no-red: red;
 
   * {
     margin: 0;
     padding: 0;
   }
 
-=======
->>>>>>> Stashed changes
 </style>
