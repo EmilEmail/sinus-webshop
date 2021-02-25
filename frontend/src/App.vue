@@ -19,7 +19,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
   @font-face {
     font-family: 'font1' ;
     src: url('./assets/fonts/Play/Play-Regular.ttf');
@@ -33,5 +33,10 @@ export default {
   $accent-color: rgb(255, 152, 57);
   $yes-green: rgb(12, 145, 0);
   $no-red: red;
+
+  * {
+    margin: 0;
+    padding: 0;
+  }
 
 </style>
