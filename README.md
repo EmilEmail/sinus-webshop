@@ -11,13 +11,15 @@ Viktigt är också att gitta ofta och med tydliga kommentarer/beskrivningar.
 
 Våran syntax:
 Views döps i ett ord. tex View.vue
-Components döps i två ord, huvudkomponenten ska alltid innehålla Comp. tex ProductComp
+Components döps i minst två ord, huvudkomponenten ska alltid innehålla Comp. tex ProductComp
 CSS Class döps med små bokstäver, bindesstreck mellan orden och gärna View/Comp namnet först. tex product-comp-wrapper.
 En sträng som är en äkta text skrivs med "", tex "Det här är text"
 Medans en sträng som är tex en sökväg, skrivs med ' ', tex '../assets/fonts'
 computed skrivs: computed: function() {...} för att tydligt visa att du kan använda den i html direkt.
 medans methoder, data osv skrivs: methods() {...} för att lätt skilja dom åt.
 CSS variabler bör i första hand döpas tex color1, font1 osv för att vara oberoende av innehållet.
+Vi har kommit överens om att ikoner ska vara 32*32px stora.
+Vi ska utgå från 8:ans tabell när vi använder oss av grid. 
 
 ## Arbetssätt
 Samla era erfarenheter från Kanban, Scrum och diskussionerna av Modern Agile och kom överens i 
