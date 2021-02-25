@@ -16,6 +16,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  @import '../assets/css/colors.scss';
+
   .footer-comp-wrapper {
     display: flex;
     flex-direction: column;
@@ -26,7 +28,7 @@ export default {
     background-color: black;
     color: white;
     a {
-      color: orange;
+      color: $accent-color;
       font-family: 'font2';
       font-size: 12px;
       text-decoration: none;
