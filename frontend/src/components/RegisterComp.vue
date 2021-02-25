@@ -109,6 +109,8 @@ export default {
       outline: none;
       border: none;
     }
+
+    /*Fixa detta med färre klasser*/
     .register-name {
       width: 100%;
       display: grid;

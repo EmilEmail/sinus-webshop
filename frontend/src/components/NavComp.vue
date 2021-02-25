@@ -1,5 +1,6 @@
 <template>
   <div class="nav-comp-wrapper">
+    
     <section class="nav">
       <img class="nav-logo" src="../assets/images/sinus-logo-orange.svg" alt="Sinus logotype">
       <ul>
@@ -10,8 +11,9 @@
         <li v-on:click="showAccesories">TILLBEHÖR</li>
       </ul>
     </section>
+    <LoginComp v-show="showProfile" v-bind:profileData="profileData" @closeProfile="toggleShowProfile" />
     <section class="nav-buttons">
-      <button>profile</button>
+      <button @click="toggleShowProfile">profile</button>
       <CartComp />
       <button>contact</button>
     </section>
@@ -20,9 +22,19 @@
 
 <script>
 import CartComp from './CartComp.vue'
+import LoginComp from '../components/LoginComp.vue'
 export default {
+  data() {
+    return {
+      showProfile: false,
+      profileData: {
+        name: 'Emil Edberg'
+      }
+    }
+  },
   components: {
-    CartComp
+    CartComp,
+    LoginComp
   },
   methods: {
     showSkateboards() {
@@ -40,6 +52,9 @@ export default {
     showAccesories() {
       alert("Tillbehör");
     },
+    toggleShowProfile() {
+      this.showProfile = !this.showProfile;
+    }
   }
 }
 </script>
