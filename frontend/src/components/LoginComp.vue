@@ -57,7 +57,6 @@ export default {
   p {
     margin: 16px 0 32px 0;
   }
-
 }
 
 .login-form {
@@ -71,13 +70,14 @@ export default {
     margin: 16px;
     align-items: center;
   }
-  input[type="email"], input[type="password"] {
+  input {
       width: 482px;
       padding: 8px;
       border: none;
       outline: none;
       border-radius: 5px;
   }
+  
   .login-btn {
     align-self: center;
     margin-top: 96px;

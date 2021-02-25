@@ -5,10 +5,10 @@
 
     <form @submit.prevent>
       <div class="register-name">
-        <label for="name">Name</label>
+        <label for="name">Namn</label>
         <input type="text" name="name" v-model="newUser.name">
         
-        <label for="lastname">Lastname</label>
+        <label for="lastname">Efternamn</label>
         <input type="text" name="lastname" v-model="newUser.lastname">
       </div>
 
@@ -26,12 +26,12 @@
       </div>
 
       <div class="register-email">
-        <label for="email">Email</label>
+        <label for="email">Epost</label>
         <input type="text" name="email" v-model="newUser.email">
       </div>
 
       <div class="register-password">
-        <label for="password">Password</label>
+        <label for="password">Lösenord</label>
         <input type="text" name="password" v-model="newUser.password">
       </div>
 
