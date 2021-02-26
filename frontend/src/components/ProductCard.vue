@@ -1,19 +1,19 @@
 <template>
   <div class="product-list-grid-wrapper-top">
     <div class="product-list-img">
-      <img src="../assets/images/hoodie-fire.png" alt="Product">
+      <img v-bind:src="require(`../assets/images/${product.imgFile}`)" alt="Produktbild" />
     </div>
     <div class="product-list-background">
       <div class="product-list-text">
-        <h2>{{ product.title }}</h2>
-        <h3>Description Of Product</h3>
+        <h3>{{ product.title }}</h3>
+        <p>{{ product.shortDesc }}</p>
       </div>
       <div class="product-list-grid-wrapper-bottom">
         <div class="product-list-stars">
         <img src="../assets/images/big-stars.svg" alt="">
         </div>
         <div class="product-list-price">
-          <p> {{ product.price }} </p>
+          <p> {{ product.price }}:- </p>
         </div>
       </div>
     </div>
@@ -63,11 +63,10 @@ export default {
   
   h3 {
   font-family: 'font1';
-  font-size: x-small;
   }
   p {
     font-family: 'font2';
-    font-size: x-small;
+    font-size: 16px;
     margin-bottom: 16px;
   }
 }
@@ -82,6 +81,7 @@ export default {
   margin: 4px;
   margin-left: auto;
   width: 85px;
+  font-family: 'font2';
   font-size: 36px;
 }
 </style>

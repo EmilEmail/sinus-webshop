@@ -1,12 +1,10 @@
 <template>
   <div class="product-list-grid-wrapper-top">
-
     <ul>
       <li v-for="(product, index) in products" :key="index">
         <ProductCard v-bind:product="product" /> 
       </li>
     </ul>
-
   </div>
 </template>
 
@@ -32,5 +30,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+ul {
+  display: flex;
+  list-style: none;
+}
 </style>
