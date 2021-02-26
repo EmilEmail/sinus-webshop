@@ -12,10 +12,13 @@
 import FooterComp from './components/FooterComp.vue'
 import NavComp from './components/NavComp.vue'
 export default {
+  beforeCreate() {
+    this.$store.dispatch('getProducts');
+  },
   components: {
     NavComp,
     FooterComp
-  }
+  },
 }
 </script>
 

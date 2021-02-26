@@ -22,7 +22,7 @@
 
       <form @submit.prevent class="login-form">
         <div class="login-form-input">
-          <label for="email">Emil</label>
+          <label for="email">Email</label>
           <input type="email" name="email" v-model="email">
         </div>
         <div class="login-form-input">
@@ -45,7 +45,7 @@ export default {
     return {
       email: '',
       password: '',
-      profileOnline: true,
+      profileOnline: false,
       showProfile: false
     }
   },
@@ -54,7 +54,11 @@ export default {
   },
   methods: {
     checkLogin() {
-      alert('Email: ' + this.email +' Lösenord: ' + this.password);
+      let user = {
+        email: this.email,
+        password: this.password
+      };
+      this.$store.dispatch('checkLogin', user);
     }
   },
 
