@@ -1,27 +1,23 @@
 <template>
   <div class="profile-comp-wrapper">
     <div class="profile-comp-profile profil-comp-grid">
-        <h2>Profil</h2>
-        <img src="../assets/images/Profilimg.png" alt="profil image" class="col-1">
-        <div class="col-profile profil-comp-grid">
+      <h2>Profil</h2>
+      <img src="../assets/images/Profilimg.png" alt="profil image" class="col-1">
+      <div class="col-profile profil-comp-grid">
         <div class="col-borders">
           <p>{{ user.name }}</p>
         </div>
-          <p class="col-1">KundNr:</p>  
-          <p class="col-5">123456778</p>
-          
-          <p class="col-1">Email:</p>   
-          <p class="col-5">{{ user.email }}</p>
-          
-          <p class="col-1">Address:</p>
-          <div class="col-5">
-            <p>{{ user.address.street }}</p>
-            <p>{{ user.address.zip + user.address.city}}</p>
-          </div>
+        <p class="col-1">KundNr:</p>  
+        <p class="col-5">123456778</p>
+        <p class="col-1">Email:</p>   
+        <p class="col-5">{{ user.email }}</p>
+        <p class="col-1">Address:</p>
+        <div class="col-5">
+          <p>{{ user.address.street }}</p>
+          <p>{{ user.address.zip + user.address.city}}</p>
         </div>
-
+      </div>
     </div>
-
     <div class="profil-comp-order-history">
       <h2>Orderhistorik</h2>
       <div class="profil-comp-grid">
@@ -114,6 +110,9 @@ export default {
   color: $color1;
   border: 16px solid $color2;
   margin-bottom: 16px; //Detta ska bort eller ändras
+  h2 {
+    margin-bottom: 16px;
+  }
 }
 h2 {
   grid-column: 1/9;
@@ -124,6 +123,12 @@ h2 {
 p {
   font-family: 'font2';
   font-size: 16px;
+}
+ul {
+  margin: 8px 0 8px 0;
+}
+li {
+  padding: 8px 0 8px 0;
 }
 .profil-comp-grid {
   display: grid;
@@ -155,6 +160,7 @@ p {
 .col-borders{
   grid-column: 1/7;
   border-bottom: white 2px solid;
+  padding-bottom: 8px;
 }
 .profil-comp-order-history-border{
   border-top: 2px solid $color1;
