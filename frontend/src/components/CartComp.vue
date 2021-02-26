@@ -8,7 +8,7 @@
       <section class="cart">
         <div class="cart-h2-and-btn">
           <h2>Kundvagn</h2>
-          <button>x</button>
+          <button class="close-btn" @click="cartOn = !cartOn">x</button>
         </div>
 
         <div class="cart-headers">
@@ -137,6 +137,9 @@ export default {
     height: 497px;
     background: $color2;
     color: $color1;
+    .close-btn {
+      height: 20px;
+    }
     .cart-h2-and-btn {
       display: flex;
       justify-content: space-between;
