@@ -3,17 +3,17 @@
     <div class="profile-comp-profile profil-comp-grid">
         <h2>Profil</h2>
         <img src="../assets/images/Profilimg.png" alt="profil image" class="col-1">
-        <div class="col-profile">
+        <div class="col-profile profil-comp-grid">
         <div class="col-borders">
           <p>{{ user.name }}</p>
         </div>
-          <p class="col-2">KundNr:</p>  
+          <p class="col-1">KundNr:</p>  
           <p class="col-5">123456778</p>
           
-          <p class="col-2">Email:</p>   
+          <p class="col-1">Email:</p>   
           <p class="col-5">{{ user.email }}</p>
           
-          <p class="col-2">Address:</p>
+          <p class="col-1">Address:</p>
           <div class="col-5">
             <p>{{ user.address.street }}</p>
             <p>{{ user.address.zip + user.address.city}}</p>
@@ -145,11 +145,12 @@ p {
   text-align: end;
 }
 .col-5 {
-  grid-column: 5/9;
+  grid-column: 4/7;
   text-align: end;
 }
 .col-profile{
   grid-column: 3/9;
+
 }
 .col-borders{
   grid-column: 1/7;
