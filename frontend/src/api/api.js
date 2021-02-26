@@ -3,7 +3,6 @@ import axios from 'axios';
 
 const BASE_URL = 'http://localhost:5000/api/';
 const PRODUCTS_URL = `${BASE_URL}products`;
-const LOGIN_URL = `${BASE_URL}auth`;
 
 
 const getData = async () => {
@@ -18,7 +17,7 @@ const getData = async () => {
   }
 }
 
-const checkLogin = async (user) => {
+const checkLogin = async (LOGIN_URL, user) => {
   try {
     const token = await axios.post(LOGIN_URL, user);
     return token;
@@ -27,6 +26,15 @@ const checkLogin = async (user) => {
     console.log(error)
   }
 }
+const registerUser = async (REGISTER_URL, newUser) => {
+  try {
+    const response = await axios.post(REGISTER_URL, newUser);
+    return response;
+
+  } catch (error) {
+    console.log(error)
+  }
+}
 
 export default getData;
-export {checkLogin};
+export { checkLogin, registerUser };

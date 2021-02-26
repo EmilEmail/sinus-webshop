@@ -6,23 +6,23 @@
     <form @submit.prevent>
       <div class="register-name">
         <label for="name">Namn</label>
-        <input type="text" name="name" v-model="newUser.name">
+        <input type="text" name="name" v-model="form.firstname">
         
         <label for="lastname">Efternamn</label>
-        <input type="text" name="lastname" v-model="newUser.lastname">
+        <input type="text" name="lastname" v-model="form.lastname">
       </div>
 
       <div class="register-adress">
         <label for="address">Address</label>
-        <input type="text" name="address" v-model="newUser.adress">
+        <input type="text" name="address" v-model="newUser.address.street">
       </div>
 
       <div class="register-postcode-and-city">
         <label for="postcode">Postkod</label>
-        <input type="text" name="postcode" v-model="newUser.postcode">
+        <input type="text" name="postcode" v-model="newUser.address.zip">
         
         <label for="city">Postort</label>
-        <input type="text" name="city" v-model="newUser.city">
+        <input type="text" name="city" v-model="newUser.address.city">
       </div>
 
       <div class="register-email">
@@ -47,23 +47,27 @@
 export default {
   data() {
     return {
-      newUser: {
-        name: '',
+      form: {
+        firstname: '',
         lastname: '',
-        adress: '',
-        city: '',
-        postcode: '',
+      },
+
+      newUser: {
         email: '',
-        password: ''
+        password: '',
+        name: '',
+        address: {
+          street: '',
+          zip: '',
+          city: '',
+        } 
       }
     }
   },
   methods: {
     createNewUser() {
-      alert(`My name is ${this.newUser.name} ${this.newUser.lastname} 
-      and I live in ${this.newUser.city}. My adress is ${this.newUser.adress} 
-      ${this.newUser.postcode} and here is my Email: "${this.newUser.email}" 
-      and Password: "${this.newUser.password}"`)
+      this.newUser.name = this.form.firstname + ' ' + this.form.lastname;
+      this.$store.dispatch('registerUser', this.newUser);
     }
   }
 
