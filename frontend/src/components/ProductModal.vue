@@ -71,14 +71,13 @@ export default {
   grid-row: 1;
   display: flex;
   flex-direction: row;
-
   padding: 16px 16px 0 16px;
   h2 {
     font-family: 'font1';
     font-size: 40px;
   }
   button {
-        align-self: start;
+    align-self: start;
     margin-left: auto;
   }
 }
