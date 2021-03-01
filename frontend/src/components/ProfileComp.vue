@@ -8,13 +8,13 @@
           <p>{{ user.name }}</p>
         </div>
         <p class="col-1">KundNr:</p>  
-        <p class="col-5">123456778</p>
+        <p class="col-5">{{ user._id }}</p>
         <p class="col-1">Email:</p>   
         <p class="col-5">{{ user.email }}</p>
-        <p class="col-1">Address:</p>
+        <p class="col-1">Adress:</p>
         <div class="col-5">
           <p>{{ user.address.street }}</p>
-          <p>{{ user.address.zip + user.address.city}}</p>
+          <p>{{ user.address.zip + " " + user.address.city }}</p>
         </div>
       </div>
     </div>
@@ -38,7 +38,6 @@
         <p class="col-4">{{ totalSum }}:-</p>
       </div>
     </div>
-
   </div>
 </template>
 
@@ -46,16 +45,6 @@
 export default {
   data() {
     return{
-      user:{
-        email: "customer@example.com",
-        name: "David Lundholm",
-        role: "customer",
-        address: {
-          street: "Tokitokvägen 4",
-          zip: "123 46",
-          city: "Tokbergaskogen"
-        }
-      },
       orderHistery: [{
         orderNr: 123456789081,
         date: "20-20",
@@ -74,6 +63,9 @@ export default {
     }
   },
   computed: {
+    user: function() {
+      return this.$store.state.user;
+    },
     totalSum: function() {
       let total = 0;
       this.orderHistery.forEach(item => {

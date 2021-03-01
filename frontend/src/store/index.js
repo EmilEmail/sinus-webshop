@@ -14,7 +14,16 @@ const USER_URL = `${BASE_URL}me/`;
 export default new Vuex.Store({
   state: {
     products: null,
-    user: null,
+    user: {
+      email: "example@example.com",
+      name: "Example Examplesson",
+      role: "customer",
+      address: {
+        street: "Exampleroad 4",
+        zip: "123 45",
+        city: "Exampletown"
+      }
+    },
     cart: [],
   },
   mutations: {

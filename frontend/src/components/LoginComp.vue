@@ -54,11 +54,11 @@ export default {
   },
   methods: {
     checkLogin() {
-      let user = {
+      let userLogin = {
         email: this.email,
         password: this.password
       };
-      this.$store.dispatch('checkLogin', user);
+      this.$store.dispatch('checkLogin', userLogin);
     }
   },
 
