@@ -16,6 +16,18 @@ const getData = async () => {
     console.log(error)
   }
 }
+const getUser = async (USER_URL) => {
+  try {
+    const response = await axios.get(USER_URL);
+    const data = response.data;
+    console.log(data);
+    console.log(response);
+    return data;
+
+  } catch (error) {
+    console.log(error)
+  }
+}
 
 const checkLogin = async (LOGIN_URL, user) => {
   try {
@@ -36,5 +48,9 @@ const registerUser = async (REGISTER_URL, newUser) => {
   }
 }
 
+const setToken = (token) => {
+  axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+}
+
 export default getData;
-export { checkLogin, registerUser };
+export { getUser, checkLogin, registerUser, setToken };
