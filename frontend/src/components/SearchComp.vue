@@ -1,12 +1,12 @@
 <template>
   <div class="search-comp-wrapper">
-    <form>
+    <form @click.prevent>
       <div class="search-comp-closed">
         <input type="search" name="search" class="search">
         <button @click="searchToggle = !searchToggle" class="filter-btn"> Filter&#9660;</button>
         <input type="button" value="" class="search-btn">
       </div>
-
+    </form>
       <div v-if="searchToggle" class="search-comp-open">
         <label class="filter-container">
           <input type="checkbox" >
@@ -24,7 +24,7 @@
           Tillbehör
         </label>
       </div>
-    </form>
+    
   </div>
 </template>
 
@@ -95,7 +95,6 @@ form {
 .filter-container {
   display: flex;
   flex-direction: row;
-  padding-left: 35px;
   margin: 12px 0;
   font-size: 18px;
   
