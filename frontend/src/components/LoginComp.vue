@@ -3,13 +3,13 @@
   <div class="profile-btn" @click="onProfileClick"></div>
 
   <!-- ProfileMiniComp? Ta bort?? smådata?? -->
-  <div class="login-comp middle-online" v-if="ifUser">
+  <div class="login-comp middle-online" v-if="userOnline">
     <div>
-      <button @click="showProfile = !showProfile">close</button>
-      <h2 style="background: black; color: white; width: 300px; height: 300px;">
-        {{ profileData.name }} are <b>Online!</b><br>
-        <button @click="profileOnline = false">log out</button>
-      </h2>
+      <button @click="onProfileClick">close</button>
+      <section class="online-user">
+        <h3>{{ username }}</h3> 
+      </section>
+        <button @click="logOut">logga ut</button>
     </div>
   </div>
 
@@ -45,23 +45,45 @@ export default {
     return {
       email: '',
       password: '',
-      profileOnline: false,
-      showProfile: false
+      userOnline: false,
+      noUser: false,
+      showProfile: false,
+      username: ''
     }
   },
+
   props: {
     profileData: Object
   },
   methods: {
     onProfileClick() {
+      let user = this.$store.state.user;
 
+      if (user.name == "Example Examplesson") {
+        this.noUser = !this.noUser;
+      }
+      else {
+        this.userOnline = !this.userOnline;
+        this.noUser = false;
+        this.username = user.name + ' är online!';
+      }
     },
+
     checkLogin() {
       let userLogin = {
         email: this.email,
         password: this.password
       };
       this.$store.dispatch('checkLogin', userLogin);
+      this.noUser = !this.noUser;
+      this.email = '';
+      this.password = '';
+    },
+
+    logOut() {
+      this.userOnline = false;
+      this.$store.commit('logOutUser');
+      this.noUser = true;
     }
   },
 
@@ -77,6 +99,11 @@ export default {
  background-color: transparent;
  background: url(../assets/svg/profile.svg);
  background-size: cover;
+}
+
+.online-user {
+  color: $color1;
+  background: $color2;
 }
 
 .login-comp {

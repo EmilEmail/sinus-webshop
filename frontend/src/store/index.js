@@ -11,19 +11,21 @@ const LOGIN_URL = `${BASE_URL}auth/`;
 const REGISTER_URL = `${BASE_URL}register/`;
 const USER_URL = `${BASE_URL}me/`;
 
+const defaultUser = {
+  email: "example@example.com",
+  name: "Example Examplesson",
+  role: "customer",
+  address: {
+    street: "Exampleroad 4",
+    zip: "123 45",
+    city: "Exampletown"
+  }
+}
+
 export default new Vuex.Store({
   state: {
     products: null,
-    user: {
-      email: "example@example.com",
-      name: "Example Examplesson",
-      role: "customer",
-      address: {
-        street: "Exampleroad 4",
-        zip: "123 45",
-        city: "Exampletown"
-      }
-    },
+    user: defaultUser,
     cart: [],
   },
   mutations: {
@@ -32,6 +34,9 @@ export default new Vuex.Store({
     },
     addToCart(state, product) {
       state.cart.push(product);
+    },
+    logOutUser(state) {
+      state.user = defaultUser;
     }
   },
   actions: {
