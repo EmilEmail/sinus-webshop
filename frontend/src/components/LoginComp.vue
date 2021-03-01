@@ -1,9 +1,9 @@
 <template>
 <div>
-  <div class="profile-btn" @click="showProfile = !showProfile"></div>
+  <div class="profile-btn" @click="onProfileClick"></div>
 
   <!-- ProfileMiniComp? Ta bort?? smådata?? -->
-  <div class="login-comp middle-online" v-if="profileOnline" v-show="showProfile">
+  <div class="login-comp middle-online" v-if="ifUser">
     <div>
       <button @click="showProfile = !showProfile">close</button>
       <h2 style="background: black; color: white; width: 300px; height: 300px;">
@@ -14,7 +14,7 @@
   </div>
 
   <!-- login -->
-  <div class="login-comp middle-login" v-else v-show="showProfile">
+  <div class="login-comp middle-login" v-if="noUser">
     <div class="login-comp-wrapper" >
 
       <h2>Logga in</h2>
@@ -53,6 +53,9 @@ export default {
     profileData: Object
   },
   methods: {
+    onProfileClick() {
+
+    },
     checkLogin() {
       let userLogin = {
         email: this.email,
