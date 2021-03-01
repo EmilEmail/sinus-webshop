@@ -13,12 +13,15 @@ const REGISTER_URL = `${BASE_URL}register/`;
 export default new Vuex.Store({
   state: {
     products: null,
+    cart: [],
   },
   mutations: {
     initProducts(state, data) {
       state.products = data;
+    },
+    addToCart(state, product) {
+      state.cart.push(product);
     }
-
   },
   actions: {
     async getProducts({ commit }) {

@@ -15,7 +15,7 @@
           <img src="../assets/images/big-stars.svg" alt="">
         </div>
         <div class="product-modal-info-row-3">
-          <button>LÄGG I KUNDVAGN</button>
+          <button @click="addToCart">LÄGG I KUNDVAGN</button>
           <p class="modal-price"> {{ product.price }}:- </p>
         </div>
       </div>
@@ -34,6 +34,11 @@ export default {
         longDesc: "Skate ipsum dolor sit amet, 50-50 Sidewalk Surfer nose bump kickflip bruised heel fakie berm soul skate. Bluntslide transition nollie hard flip bank pressure flip ho-ho. Steps rip grip nosepicker roll-in yeah 540 pump. ",
         imgFile: "hoodie-fire.png"
       }
+    }
+  },
+  methods: {
+    addToCart(product) {
+      this.$store.commit('addToCart', product);
     }
   }
 }
