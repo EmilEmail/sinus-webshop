@@ -1,8 +1,5 @@
 <template>
   <div>
-    <section class="cart-comp-btn" v-on:click="cartToggle">
-        <div>{{ totalAmount }}</div>
-    </section>
 
     <div class="cart-comp-modal" v-if="cartOn">
       <section class="cart">
@@ -28,12 +25,12 @@
 
         <div class="cart-bottom">
           <h4>Summa</h4>
-          <h4 class="centered">{{ totalAmount }}</h4>
+          <h4 class="centered">ANTALET</h4>
           <h4 class="right-align">{{ totalPrice }}</h4>
         </div>
 
         <!-- Ta bort och gör till rätt komponent -->
-        <button style="width: 150px; margin: auto;">GÅ TILL KASSA</button>
+        <button @click="checkout" style="width: 150px; margin: auto;">GÅ TILL KASSA</button>
         <!-- Ta bort och gör till rätt komponent -->
 
       </section>
@@ -45,11 +42,9 @@
 export default {
   data() {
     return {
-      cartOn: false,
-
-
+      cartOn: true,
       // Ta bort och lägg till rätt variablar
-      cart : [
+      cart: [
         {
           name: 'Item 1',
           price: 400,
@@ -64,13 +59,6 @@ export default {
     }
   },
   computed: {
-    totalAmount: function() {
-        let total = 0;
-        this.cart.forEach(item => {
-          total += item.amount;
-        });
-        return total;
-    },
     totalPrice: function() {
         let total = 0;
         this.cart.forEach(item => {
@@ -81,8 +69,9 @@ export default {
   },
 
   methods: {
-    cartToggle() {
-      this.cartOn = !this.cartOn
+    checkout() {
+      this.cartOn = false;
+      this.$router.push('/checkout');
     }
   }
 

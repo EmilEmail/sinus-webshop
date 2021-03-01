@@ -12,9 +12,17 @@
       </ul>
     </section>
     <section class="nav-buttons">
-      <LoginComp v-bind:profileData="profileData" />
-      <CartComp />
+      <button class="login-btn" @click="checkUser">PROFILE</button>
+      <button class="cart-btn" @click="cartToggle">CART</button>
       <button>contact</button>
+    </section>
+    <section class="modals">
+      <div v-if="cartOn">
+        <CartComp />
+      </div>
+      <div v-if="loginOn">
+        <LoginComp @closeLogin="checkUser" v-bind:profileData="profileData" />
+      </div>
     </section>
   </div>
 </template>
@@ -25,6 +33,8 @@ import LoginComp from '../components/LoginComp.vue'
 export default {
   data() {
     return {
+      cartOn: false,
+      loginOn: false,
       profileData: {
         name: 'Emil Edberg'
       }
@@ -50,6 +60,22 @@ export default {
     showAccesories() {
       alert("Tillbehör");
     },
+    cartToggle() {
+      this.cartOn = !this.cartOn;
+    },
+    loginToggle() {
+      this.loginOn = !this.loginOn;
+    },
+    checkUser() {
+      let user = this.$store.state.user;
+
+      if (user.name === "Example Examplesson") {
+        this.loginToggle();
+      }
+      else {
+        this.$router.push('/profile');
+      }
+    }
   }
 }
 </script>

@@ -1,20 +1,7 @@
 <template>
 <div>
-  <div class="profile-btn" @click="onProfileClick"></div>
-
-  <!-- ProfileMiniComp? Ta bort?? smådata?? -->
-  <div class="login-comp middle-online" v-if="userOnline">
-    <div>
-      <button @click="onProfileClick">close</button>
-      <section class="online-user">
-        <h3>{{ username }}</h3> 
-      </section>
-        <button @click="logOut">logga ut</button>
-    </div>
-  </div>
-
   <!-- login -->
-  <div class="login-comp middle-login" v-if="noUser">
+  <div class="login-comp middle-login">
     <div class="login-comp-wrapper" >
 
       <h2>Logga in</h2>
@@ -32,6 +19,9 @@
         <div class="login-btn">
           <input type="submit" value="Logga in" @click="checkLogin">  
         </div>
+        <div class="new-user-btn">
+          <input type="submit" value="Skapa konto" @click="toRegister">  
+        </div>
       </form>
 
     </div>
@@ -45,8 +35,7 @@ export default {
     return {
       email: '',
       password: '',
-      userOnline: false,
-      noUser: false,
+      userOnline: true,
       showProfile: false,
       username: ''
     }
@@ -56,18 +45,6 @@ export default {
     profileData: Object
   },
   methods: {
-    onProfileClick() {
-      let user = this.$store.state.user;
-
-      if (user.name == "Example Examplesson") {
-        this.noUser = !this.noUser;
-      }
-      else {
-        this.userOnline = !this.userOnline;
-        this.noUser = false;
-        this.username = user.name + ' är online!';
-      }
-    },
 
     checkLogin() {
       let userLogin = {
@@ -75,16 +52,26 @@ export default {
         password: this.password
       };
       this.$store.dispatch('checkLogin', userLogin);
-      this.noUser = !this.noUser;
       this.email = '';
       this.password = '';
+
+      this.$emit('closeLogin');
     },
 
     logOut() {
       this.userOnline = false;
       this.$store.commit('logOutUser');
       this.noUser = true;
-    }
+    },
+
+    toRegister() {
+      this.noUser = false;
+      this.userOnline = false;
+      if (this.$route.params !== '/register') {
+        this.$router.push('/register');
+        alert("hfjf")
+      }
+    }    
   },
 
 }
