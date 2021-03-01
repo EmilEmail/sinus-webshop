@@ -24,7 +24,7 @@ const defaultUser = {
 
 export default new Vuex.Store({
   state: {
-    products: null,
+    products: [],
     user: defaultUser,
     cart: [],
   },
@@ -76,6 +76,11 @@ export default new Vuex.Store({
       //tILLFÄLLIG
       console.log(context);
     }
+  },
+  getters: {
+    products: state => {
+      return state.products;
+    },
   },
   modules: {
   }

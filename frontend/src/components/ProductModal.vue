@@ -2,12 +2,12 @@
   <div>
     <div class="product-modal-grid-wrapper">
       <div class="product-modal-img">
-        <img v-bind:src="require(`../assets/images/${product.imgFile}`)" alt="Produktbild" />
+    <img v-bind:src="require(`../assets/images/${this.product.imgFile}`)" alt="Produktbild" />
       </div>
       <div class="product-modal-info">
         <div class="product-modal-info-row-1">
           <h2>{{ product.title }}</h2>
-          <button>X</button>
+          <button v-on:click="closeModal">X</button>
         </div>
         <div class="product-modal-info-row-2">
           <h3> {{ product.shortDesc }} </h3>
@@ -15,28 +15,25 @@
           <img src="../assets/images/big-stars.svg" alt="">
         </div>
         <div class="product-modal-info-row-3">
-          <button @click="addToCart">LÄGG I KUNDVAGN</button>
+          <button>LÄGG I KUNDVAGN</button>
           <p class="modal-price"> {{ product.price }}:- </p>
         </div>
       </div>
     </div>
   </div>
+
 </template>
 
 <script>
 export default {
-  data() {
-    return{
-      product: {
-        title: "Hoodie",
-        price: 699,
-        shortDesc: "Fire unisex",
-        longDesc: "Skate ipsum dolor sit amet, 50-50 Sidewalk Surfer nose bump kickflip bruised heel fakie berm soul skate. Bluntslide transition nollie hard flip bank pressure flip ho-ho. Steps rip grip nosepicker roll-in yeah 540 pump. ",
-        imgFile: "hoodie-fire.png"
-      }
-    }
+  props: {
+    product: {}
   },
   methods: {
+    closeModal() {
+      this.$emit("closeModal")
+    },
+
     addToCart(product) {
       this.$store.commit('addToCart', product);
     }
