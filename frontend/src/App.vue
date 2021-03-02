@@ -2,7 +2,8 @@
   <div>
     <router-link to="/">Products</router-link> |
     <router-link to="/checkout">Checkout</router-link> | 
-    <router-link to="/register">Register</router-link>
+    <router-link to="/register">Register</router-link> |
+    <router-link to="/admin">Admin</router-link> |
     <NavComp />
     <router-view/>
     <FooterComp />
