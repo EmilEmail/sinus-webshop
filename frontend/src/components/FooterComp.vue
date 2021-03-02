@@ -46,12 +46,12 @@ export default {
     }
   }
   .facebook {
-    background: url('../assets/images/facebook.svg') no-repeat;
+    background: url('../assets/svg/facebook.svg') no-repeat;
   }
   .instagram {
-    background: url('../assets/images/instagram.svg') no-repeat;
+    background: url('../assets/svg/instagram.svg') no-repeat;
   }
   .youtube {
-    background: url('../assets/images/youtube.svg') no-repeat;
+    background: url('../assets/svg/youtube.svg') no-repeat;
   }
 </style>

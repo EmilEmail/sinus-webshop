@@ -1,20 +1,17 @@
 <template>
-  <div class="nav-comp-wrapper">
-    
+  <div class="nav-comp-wrapper">  
     <section class="nav">
-      <img class="nav-logo" src="../assets/images/sinus-logo-orange.svg" alt="Sinus logotype">
+      <img class="nav-logo" src="../assets/svg/sinus-logo-orange.svg" alt="Sinus logotype">
       <ul>
         <li v-on:click="showSkateboards">SKATEBOARDS</li>
-        <li v-on:click="showHoodies">HOODIES</li>
-        <li v-on:click="showTshirts">T-SHIRTS</li>
-        <li v-on:click="showCaps">KEPSAR</li>
+        <li v-on:click="showClothes">KLÄDER</li>
         <li v-on:click="showAccesories">TILLBEHÖR</li>
       </ul>
     </section>
     <section class="nav-buttons">
-      <button class="login-btn" @click="checkUser">PROFILE</button>
-      <button class="cart-btn" @click="cartToggle">CART</button>
-      <button>contact</button>
+      <button class="default-nav-btn login-btn" @click="checkUser"></button>
+      <button class="default-nav-btn cart-btn" @click="cartToggle"></button>
+      <button class="default-nav-btn contact-btn"></button>
     </section>
     <section class="modals">
       <div v-if="cartOn">
@@ -48,14 +45,8 @@ export default {
     showSkateboards() {
       alert("Skateboards");
     },
-    showHoodies() {
-      alert("Hoodies");
-    },
-    showTshirts() {
-      alert("Tshirts");
-    },
-    showCaps() {
-      alert("Kepsar");
+    showClothes() {
+      alert("Kläder");
     },
     showAccesories() {
       alert("Tillbehör");
@@ -113,6 +104,24 @@ export default {
     .nav-buttons {
       display: flex;
       padding: 16px 32px;
+      .default-nav-btn {
+        background-size: cover;
+        height: 32px;
+        width: 32px;
+        border: none;
+        outline: none;
+      }
+      .login-btn {
+        background: url('../assets/svg/profile.svg') no-repeat; 
+      }
+      .cart-btn {
+        background: url('../assets/svg/cart.svg') no-repeat;
+        height: 36px;
+        width: 36px;
+      }
+      .contact-btn {
+        background: url('../assets/svg/profile.svg') no-repeat;
+      }
     }
   }
 </style>
