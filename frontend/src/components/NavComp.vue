@@ -64,7 +64,9 @@ export default {
         this.loginToggle();
       }
       else {
-        this.$router.push('/profile');
+        if (this.$route.path !== '/profile') {
+          this.$router.push('/profile');
+        }
       }
     }
   }

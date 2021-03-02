@@ -62,6 +62,15 @@ const addProductToDB = async (newProduct) => {
     console.log(error)
   }
 }
+const editProductInDB = async (EDIT_URL, newProduct) => {
+  try {
+    const response = await axios.patch(EDIT_URL, newProduct);
+    console.log(response)
+    return response;
+  } catch (error) {
+    console.log(error)
+  }
+}
 
 export default getData;
-export { getUser, checkLogin, registerUser, setToken, addProductToDB };
+export { getUser, checkLogin, registerUser, setToken, addProductToDB, editProductInDB };

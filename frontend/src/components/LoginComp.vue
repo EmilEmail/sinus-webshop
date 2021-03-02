@@ -59,7 +59,9 @@ export default {
 
       // Gör så att man kommer till första sidan när man loggat in 
       // pga ingen uppdatering i checkout när man loggat in från den viewen
-      this.$router.push('/');
+      // if (this.$route.path !== '/') {
+      //   this.$router.push('/');
+      // }
     },
 
     logOut() {
@@ -71,7 +73,7 @@ export default {
     toRegister() {
       this.noUser = false;
       this.userOnline = false;
-      if (this.$route.params !== '/register') {
+      if (this.$route.path !== '/register') {
         this.$router.push('/register');
       }
     }    

@@ -4,12 +4,13 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 
 import getData from '@/api/api.js';
-import { getUser, checkLogin, registerUser, setToken, addProductToDB } from '@/api/api.js';
+import { getUser, checkLogin, registerUser, setToken, addProductToDB, editProductInDB } from '@/api/api.js';
 
 const BASE_URL = 'http://localhost:5000/api/';
 const LOGIN_URL = `${BASE_URL}auth/`;
 const REGISTER_URL = `${BASE_URL}register/`;
 const USER_URL = `${BASE_URL}me/`;
+const EDIT_URL = `${BASE_URL}products/`;
 
 const defaultUser = {
   email: "",
@@ -93,10 +94,15 @@ export default new Vuex.Store({
     async addProductToDB(context,newProduct) {
       const response = await addProductToDB(newProduct);
       console.log(response);
-      //tILLFÄLLIG
-      console.log(context);
-      context.actions.getProducts();
-    }
+      context.dispatch('getProducts');
+    },
+    async editProductInDB(context,newProduct) {
+      let url = EDIT_URL + newProduct._id;
+      const response = await editProductInDB(url, newProduct);
+      console.log(response);
+      context.dispatch('getProducts');
+    },
+    
   },
   modules: {
   }
