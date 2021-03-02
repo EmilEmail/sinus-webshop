@@ -4,7 +4,6 @@ import axios from 'axios';
 const BASE_URL = 'http://localhost:5000/api/';
 const PRODUCTS_URL = `${BASE_URL}products`;
 
-
 const getData = async () => {
   try {
     const response = await axios.get(PRODUCTS_URL);
@@ -54,5 +53,15 @@ const setToken = (token) => {
   axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 }
 
+const addProductToDB = async (newProduct) => {
+  try {
+    const response = await axios.post(PRODUCTS_URL, newProduct);
+    console.log(response)
+    return response;
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 export default getData;
-export { getUser, checkLogin, registerUser, setToken };
+export { getUser, checkLogin, registerUser, setToken, addProductToDB };

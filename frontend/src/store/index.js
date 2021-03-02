@@ -4,7 +4,7 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 
 import getData from '@/api/api.js';
-import { getUser, checkLogin, registerUser, setToken } from '@/api/api.js';
+import { getUser, checkLogin, registerUser, setToken, addProductToDB } from '@/api/api.js';
 
 const BASE_URL = 'http://localhost:5000/api/';
 const LOGIN_URL = `${BASE_URL}auth/`;
@@ -89,6 +89,13 @@ export default new Vuex.Store({
 
       //tILLFÄLLIG
       console.log(context);
+    },
+    async addProductToDB(context,newProduct) {
+      const response = await addProductToDB(newProduct);
+      console.log(response);
+      //tILLFÄLLIG
+      console.log(context);
+      context.actions.getProducts();
     }
   },
   modules: {
