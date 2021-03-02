@@ -1,7 +1,7 @@
 <template>
   <div>
     <ProfileComp />
-    <RegisterComp />
+    <RegisterComp v-bind:registerHeader="'Dina uppgifter'" v-bind:ctaBtn="'Köp'" />
   </div>
 </template>
 

@@ -12,13 +12,13 @@ const REGISTER_URL = `${BASE_URL}register/`;
 const USER_URL = `${BASE_URL}me/`;
 
 const defaultUser = {
-  email: "example@example.com",
-  name: "Example Examplesson",
-  role: "customer",
+  email: "",
+  name: "",
+  role: "",
   address: {
-    street: "Exampleroad 4",
-    zip: "123 45",
-    city: "Exampletown"
+    street: "",
+    zip: "",
+    city: ""
   }
 }
 
@@ -27,6 +27,14 @@ export default new Vuex.Store({
     products: [],
     user: defaultUser,
     cart: [],
+  },
+  getters: {
+    products: state => {
+      return state.products;
+    },
+    skateboards: (state) => {
+      return state.products.filter(pro => pro.category == "board");
+    },
   },
   mutations: {
     initProducts(state, data) {
@@ -76,11 +84,6 @@ export default new Vuex.Store({
       //tILLFÄLLIG
       console.log(context);
     }
-  },
-  getters: {
-    products: state => {
-      return state.products;
-    },
   },
   modules: {
   }

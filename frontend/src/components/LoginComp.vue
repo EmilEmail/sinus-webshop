@@ -56,6 +56,10 @@ export default {
       this.password = '';
 
       this.$emit('closeLogin');
+
+      // Gör så att man kommer till första sidan när man loggat in 
+      // pga ingen uppdatering i checkout när man loggat in från den viewen
+      this.$router.push('/');
     },
 
     logOut() {
@@ -69,7 +73,6 @@ export default {
       this.userOnline = false;
       if (this.$route.params !== '/register') {
         this.$router.push('/register');
-        alert("hfjf")
       }
     }    
   },

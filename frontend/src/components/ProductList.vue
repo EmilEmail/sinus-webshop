@@ -4,7 +4,7 @@
       <h2>Brädor</h2>
         <ul>
           <li 
-            v-for="(product,index) in product.boards" 
+            v-for="(product,index) in productBoards" 
             :key="index"
             :product='product'
             @click="openModal(product)"
@@ -94,6 +94,9 @@ export default {
     this.product.wheels = this.$store.getters.products.filter(pro => pro.category == "wheels");
   },
   computed: {
+    productBoards: function() {
+      return this.$store.getters.skateboards;
+    }
     // productBoards: function() {
     //   return this.$store.getters.products.filter(pro => pro.category == "board");
     // },

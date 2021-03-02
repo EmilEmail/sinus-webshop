@@ -1,6 +1,6 @@
 <template>
   <div class="register-comp-wrapper">
-    <h2>Skapa konto</h2>
+    <h2>{{ registerHeader }}</h2>
     <p>Fyll i dina uppgifter:</p>
 
     <form @submit.prevent>
@@ -36,7 +36,7 @@
       </div>
 
       <div class="register-create-account-btn">
-        <input type="button" value="Skapa konto" @click="createNewUser">
+        <input type="button" v-bind:value="ctaBtn" @click="createNewUser">
       </div>
 
     </form>
@@ -63,6 +63,21 @@ export default {
         } 
       }
     }
+  },
+  created() {
+    let user = this.$store.state.user;
+    this.newUser = user;
+    let name = user.name.split(' ');
+    this.form.firstname = name[0];
+    let lastname = '';
+    for (let i = 1; i < name.length; i++) {
+      lastname += name[i] + " ";
+    }
+    this.form.lastname = lastname;
+  },
+  props: {
+    registerHeader: String,
+    ctaBtn: String
   },
   methods: {
     createNewUser() {

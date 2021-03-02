@@ -60,7 +60,7 @@ export default {
     checkUser() {
       let user = this.$store.state.user;
 
-      if (user.name === "Example Examplesson") {
+      if (user.name === "") {
         this.loginToggle();
       }
       else {
