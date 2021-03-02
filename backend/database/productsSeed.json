@@ -72,6 +72,30 @@
         "imgFile" : "hoodie-ocean.png"
     },
     {
+        "title" : "Hoodie",
+        "price" : 699,
+        "shortDesc" : "Navy unisex",
+        "category": "clothes",
+        "longDesc" : "Skate ipsum dolor sit amet, 50-50 Sidewalk Surfer nose bump kickflip bruised heel fakie berm soul skate. Bluntslide transition nollie hard flip bank pressure flip ho-ho. Steps rip grip nosepicker roll-in yeah 540 pump. ",
+        "imgFile" : "hoodie-ocean.png"
+    },
+    {
+        "title" : "Hoodie",
+        "price" : 699,
+        "shortDesc" : "Fox unisex",
+        "category": "clothes",
+        "longDesc" : "Skate ipsum dolor sit amet, 50-50 Sidewalk Surfer nose bump kickflip bruised heel fakie berm soul skate. Bluntslide transition nollie hard flip bank pressure flip ho-ho. Steps rip grip nosepicker roll-in yeah 540 pump. ",
+        "imgFile" : "hoodie-fire.png"
+    },
+    {
+        "title" : "Hoodie",
+        "price" : 699,
+        "shortDesc" : "Blacky unisex",
+        "category": "clothes",
+        "longDesc" : "Skate ipsum dolor sit amet, 50-50 Sidewalk Surfer nose bump kickflip bruised heel fakie berm soul skate. Bluntslide transition nollie hard flip bank pressure flip ho-ho. Steps rip grip nosepicker roll-in yeah 540 pump. ",
+        "imgFile" : "hoodie-ash.png"
+    },
+    {
         "title" : "Spinner",
         "price" : 249,
         "shortDesc" : "Soft",
@@ -94,6 +118,30 @@
         "shortDesc" : "Hard",
         "longDesc" : "Skate ipsum dolor sit amet, 50-50 Sidewalk Surfer nose bump kickflip bruised heel fakie berm soul skate. Bluntslide transition nollie hard flip bank pressure flip ho-ho. Steps rip grip nosepicker roll-in yeah 540 pump. ",
         "imgFile" : "wheel-rocket.png"
+    },
+    {
+        "title" : "Fire",
+        "price" : 199,
+        "category": "wheels",
+        "shortDesc" : "Hard",
+        "longDesc" : "Skate ipsum dolor sit amet, 50-50 Sidewalk Surfer nose bump kickflip bruised heel fakie berm soul skate. Bluntslide transition nollie hard flip bank pressure flip ho-ho. Steps rip grip nosepicker roll-in yeah 540 pump. ",
+        "imgFile" : "wheel-rocket.png"
+    },
+    {
+        "title" : "Rolling",
+        "price" : 249,
+        "shortDesc" : "Soft",
+        "category": "wheels",
+        "longDesc" : "Skate ipsum dolor sit amet, 50-50 Sidewalk Surfer nose bump kickflip bruised heel fakie berm soul skate. Bluntslide transition nollie hard flip bank pressure flip ho-ho. Steps rip grip nosepicker roll-in yeah 540 pump. ",
+        "imgFile" : "wheel-spinner.png"
+    },
+    {
+        "title" : "Original",
+        "price" : 249,
+        "shortDesc" : "Soft",
+        "category": "wheels",
+        "longDesc" : "Skate ipsum dolor sit amet, 50-50 Sidewalk Surfer nose bump kickflip bruised heel fakie berm soul skate. Bluntslide transition nollie hard flip bank pressure flip ho-ho. Steps rip grip nosepicker roll-in yeah 540 pump. ",
+        "imgFile" : "wheel-wave.png"
     }
     
 ]

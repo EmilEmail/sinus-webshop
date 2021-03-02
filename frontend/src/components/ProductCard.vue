@@ -33,6 +33,7 @@ export default {
 .product-list-grid-wrapper-top {
   margin: auto;
   display: grid;
+  justify-content: center;
   width: 225px;
   height: 385;
 }

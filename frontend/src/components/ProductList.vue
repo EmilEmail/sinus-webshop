@@ -133,5 +133,9 @@ export default {
 ul {
   display: flex;
   list-style: none;
+  justify-content: center;
+}
+h2 {
+  text-align: center;
 }
 </style>
