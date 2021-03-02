@@ -24,7 +24,7 @@
         <h2>Kläder</h2>
           <ul>
             <li 
-              v-for="(product,index) in product.clothes" 
+              v-for="(product,index) in productClothes" 
               :key="index"
               :product='product'
               @click="openModal(product)"
@@ -44,7 +44,7 @@
         <h2>Tillbehör</h2>
           <ul>
             <li 
-              v-for="(product,index) in product.wheels" 
+              v-for="(product,index) in productWheels" 
               :key="index"
               :product='product'
               @click="openModal(product)"
@@ -88,24 +88,16 @@ export default {
     ProductCard,
     ProductModal,
   },
-  created() {
-    this.product.boards = this.$store.getters.products.filter(pro => pro.category == "board");
-    this.product.clothes = this.$store.getters.products.filter(pro => pro.category == "clothes");
-    this.product.wheels = this.$store.getters.products.filter(pro => pro.category == "wheels");
-  },
   computed: {
     productBoards: function() {
       return this.$store.getters.skateboards;
+    },
+    productClothes: function() {
+      return this.$store.getters.clothes;
+    },
+    productWheels: function() {
+      return this.$store.getters.wheels;
     }
-    // productBoards: function() {
-    //   return this.$store.getters.products.filter(pro => pro.category == "board");
-    // },
-    // productClothes: function() {
-    //   return this.$store.getters.products.filter(pro => pro.category == "clothes");
-    // },
-    // productWheels: function() {
-    //   return this.$store.getters.products.filter(pro => pro.category == "wheels");
-    // },
   },
   methods: {
     openModal(item){

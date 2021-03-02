@@ -1,8 +1,9 @@
 <template>
   <div>
     Products
-    <ProductList />
     <SearchComp />
+    <ProductList />
+
   </div>
 </template>
 
@@ -11,8 +12,9 @@ import ProductList from '../components/ProductList'
 import SearchComp from '../components/SearchComp.vue'
 export default {
   components: {
-    ProductList,
-    SearchComp
+    SearchComp,
+    ProductList
+    
   }
 }
 </script>

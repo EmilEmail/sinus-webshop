@@ -35,6 +35,12 @@ export default new Vuex.Store({
     skateboards: (state) => {
       return state.products.filter(pro => pro.category == "board");
     },
+    clothes: (state) => {
+      return state.products.filter(pro => pro.category == "clothes");
+    },
+    wheels: (state) => {
+      return state.products.filter(pro => pro.category == "wheels");
+    },
   },
   mutations: {
     initProducts(state, data) {
