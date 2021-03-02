@@ -32,6 +32,7 @@ const getUser = async (USER_URL) => {
 const checkLogin = async (LOGIN_URL, user) => {
   try {
     const token = await axios.post(LOGIN_URL, user);
+    console.log(token.data.token)
     return token;
 
   } catch (error) {
@@ -41,6 +42,7 @@ const checkLogin = async (LOGIN_URL, user) => {
 const registerUser = async (REGISTER_URL, newUser) => {
   try {
     const response = await axios.post(REGISTER_URL, newUser);
+    console.log(response)
     return response;
 
   } catch (error) {

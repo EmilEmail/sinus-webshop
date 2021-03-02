@@ -2,8 +2,8 @@ const User = require('../models/User')
 
 module.exports = {
     me: async (req,res) => {
-        const {name,email,role,address} = req.user
-        res.json({name,email,role,address})
+        const {name,email,role,address,_id} = req.user
+        res.json({name,email,role,address,_id})
     },
 
     updateProfile: async (req,res) => {
