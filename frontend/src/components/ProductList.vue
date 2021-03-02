@@ -1,19 +1,9 @@
 <template>
    <div class="product-list-grid-wrapper-top">
-
-    <h2>Produkter</h2>
-      <ul>
-        <li 
-        v-for="(product, index) in products" 
-        :key="index">
-          <ProductCard v-bind:product="product" /> 
-        </li>
-      </ul>
-
     <h2>Brädor</h2>
       <ul>
         <li 
-          v-for="(product,index) in productBoards" 
+          v-for="(product,index) in product.boards" 
           :key="index"
           :product='product'
           @click="openModal(product)"
@@ -25,7 +15,7 @@
     <h2>Kläder</h2>
       <ul>
         <li 
-          v-for="(product,index) in productClothes" 
+          v-for="(product,index) in product.clothes" 
           :key="index"
           :product='product'
           @click="openModal(product)"
@@ -37,7 +27,7 @@
     <h2>Tillbehör</h2>
       <ul>
         <li 
-          v-for="(product,index) in productWheels" 
+          v-for="(product,index) in product.wheels" 
           :key="index"
           :product='product'
           @click="openModal(product)"
@@ -61,7 +51,7 @@ import ProductModal from './ProductModal.vue';
 export default {
   data() {
     return{
-      product: [],
+      product: {},
       showModal: false,
       closeModal: true,
       productItem: {},
@@ -72,19 +62,12 @@ export default {
     ProductCard,
     ProductModal,
   },
+  created() {
+    this.product.boards = this.$store.getters.products.filter(pro => pro.category == "board");
+    this.product.clothes = this.$store.getters.products.filter(pro => pro.category == "clothes");
+    this.product.wheels = this.$store.getters.products.filter(pro => pro.category == "wheels");
+  },
   computed: {
-    products: function() {
-      return this.$store.state.products;
-    },
-    productBoards: function() {
-      return this.$store.getters.products.filter(pro => pro.category == "board");
-    },
-    productClothes: function() {
-      return this.$store.getters.products.filter(pro => pro.category == "clothes");
-    },
-    productWheels: function() {
-      return this.$store.getters.products.filter(pro => pro.category == "wheels");
-    },
   },
   methods: {
     openModal(item){
