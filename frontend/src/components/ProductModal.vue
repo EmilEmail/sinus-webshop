@@ -15,7 +15,7 @@
           <img src="../assets/images/big-stars.svg" alt="">
         </div>
         <div class="product-modal-info-row-3">
-          <ButtonComp :buttonTitle="buttonTitle" @click="addToCart(product)" />
+          <ButtonComp :buttonTitle="buttonTitle" @buttonClick="addToCart(product)" />
           <p class="modal-price"> {{ product.price }}:- </p>
         </div>
       </div>

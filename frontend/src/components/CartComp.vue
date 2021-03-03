@@ -28,7 +28,7 @@
           <h4 class="centered">ANTALET</h4>
           <h4 class="right-align">{{ totalPrice }}</h4>
         </div>
-        <ButtonComp class="go-to-checkout" :buttonTitle="buttonTitle" :buttonClick="buttonClick" />
+        <ButtonComp class="go-to-checkout" :buttonTitle="buttonTitle" @buttonClick="checkout" />
       </section>
     </div>
   </div>
