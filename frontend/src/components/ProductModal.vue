@@ -15,7 +15,7 @@
           <img src="../assets/images/big-stars.svg" alt="">
         </div>
         <div class="product-modal-info-row-3">
-          <button>LÄGG I KUNDVAGN</button>
+          <button @click="addToCart(product)">LÄGG I KUNDVAGN</button>
           <p class="modal-price"> {{ product.price }}:- </p>
         </div>
       </div>
@@ -35,6 +35,7 @@ export default {
     },
 
     addToCart(product) {
+      product.amount = 1
       this.$store.commit('addToCart', product);
     }
   }

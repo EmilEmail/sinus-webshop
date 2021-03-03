@@ -48,11 +48,19 @@ export default new Vuex.Store({
     initProducts(state, data) {
       state.products = data;
     },
-    addToCart(state, product) {
-      state.cart.push(product);
-    },
+    // addToCart(state, product) {
+    //   state.cart.push(product);
+    // },
     logOutUser(state) {
       state.user = defaultUser;
+    },
+    addToCart(state, product) { 
+      let productObj = state.cart.find(prod => prod._id == product._id) 
+      if(productObj){
+        state.cart.find(prod => prod._id == product._id).amount += 1
+      }else{
+        state.cart.push(product) 
+      }
     }
   },
   actions: {
