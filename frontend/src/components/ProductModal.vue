@@ -35,6 +35,7 @@ export default {
     },
 
     addToCart(product) {
+      product.amount = 1
       this.$store.commit('addToCart', product);
     }
   }
