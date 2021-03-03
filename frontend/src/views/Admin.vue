@@ -1,6 +1,7 @@
 <template>
   <div>
     <div v-if="isAdmin" class="admin-wrapper">
+      <h1>Redigera webshop</h1>
       <form @submit.prevent>
       <h2>{{ formHeader }}</h2>
         <label for="title">Titel</label>
@@ -11,7 +12,7 @@
         <input type="text" name="shortDesc" v-model="newProduct.shortDesc">
         <div class="radio-btns">
           <p>Kategori:</p>
-          <input type="radio" id="skateboards" v-model="newProduct.category" name="category" value="skateboards">
+          <input type="radio" id="skateboards" v-model="newProduct.category" name="category" value="board">
           <label for="skateboards">Skateboards</label>
           <input type="radio" id="clothes" v-model="newProduct.category" name="category" value="clothes">
           <label for="clothes">Clothes</label>
@@ -24,26 +25,30 @@
         <label for="imgFile">Bildadress</label>
         <input type="text" name="imgFile" v-model="newProduct.imgFile">
         <input type="submit" :value="submitBtn" @click="addProductToDB">
+        <button class="show-add-text-btn" @click="toggleEdit" v-if="showAddTextBtn">Lägg till ny produkt</button>
       </form>
       <div>
         <h2>Redigera produkter</h2>
         <div class="admin-products">
           <ul>
             <h3>Skateboards</h3>
-            <li v-for="(item, index) in skateboards" :key="index" @click="editProduct(item)">
-              {{ item.title }}
+            <li v-for="(item, index) in skateboards" :key="index">
+              <button @click="editProduct(item)" class="edit-btn">{{ item.title }}</button>
+              <button @click="deleteProduct(item._id)" class="delete-btn">❌</button>
             </li>
           </ul>
           <ul>
             <h3>Kläder</h3>
-            <li v-for="(item, index) in clothes" :key="index" @click="editProduct(item)">
-              {{ item.title }}
+            <li v-for="(item, index) in clothes" :key="index">
+              <button @click="editProduct(item)" class="edit-btn">{{ item.title }}</button>
+              <button @click="deleteProduct(item._id)" class="delete-btn">❌</button>
             </li>
           </ul>
           <ul>
             <h3>Tillbehör</h3>
-            <li v-for="(item, index) in wheels" :key="index" @click="editProduct(item)">
-              {{ item.title }}
+            <li v-for="(item, index) in wheels" :key="index">
+              <button @click="editProduct(item)" class="edit-btn">{{ item.title }}</button>
+              <button @click="deleteProduct(item._id)" class="delete-btn">❌</button>
             </li>
           </ul>
         </div>
@@ -63,6 +68,7 @@ export default {
   data() {
     return {
       isAdmin: true,
+      showAddTextBtn: false,
       submitBtn: 'LÄGG TILL',
       formHeader: 'Lägg till produkter',
       newProduct: {
@@ -87,6 +93,18 @@ export default {
     },
   },
   methods: {
+    toggleEdit() {
+      this.showAddTextBtn = false;
+      this.formHeader = 'Lägg till produkter';
+      this.submitBtn = 'LÄGG TILL';
+      this.newProduct.title = '';
+      this.newProduct.price = '';
+      this.newProduct.shortDesc = '';
+      this.newProduct.category = '';
+      this.newProduct.longDesc = '';
+      this.newProduct.imgFile = '';
+      this.newProduct._id = undefined;
+    },
     addProductToDB() {
       if (this.newProduct._id === undefined) {
         this.formHeader = 'Lägg till produkter';
@@ -99,9 +117,15 @@ export default {
       }
     },
     editProduct(item) {
+      this.showAddTextBtn = true;
       this.formHeader = 'Redigera ' + item.title;
       this.submitBtn = 'ÄNDRA';
       this.newProduct = item;
+    },
+    deleteProduct(id) {
+      if (confirm('Vill du verkligen ta bort denna produkt?')) {
+      this.$store.dispatch('deleteProductInDB', id);
+      }
     }
   }
 }
@@ -115,6 +139,9 @@ export default {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    h1 {
+      margin-top: 16px;
+    }
     h2 {
       text-align: center;
       background-color: $accent-color;
@@ -123,7 +150,7 @@ export default {
       display: flex;
       flex-direction: column;
       width: 560px;
-      margin: 56px;
+      margin: 32px;
       input {
         margin-bottom: 12px;
       }
@@ -137,7 +164,7 @@ export default {
         color: $color1;
         padding: 16px;
         width: 240px;
-        margin: auto;
+        margin: 32px auto 16px auto;
         cursor: pointer;
       }
       .radio-btns {
@@ -147,6 +174,14 @@ export default {
         label {
           margin: 0 24px 0 4px;
         }
+      }
+      .show-add-text-btn {
+        border: 2px solid $color2;
+        background: $basic-gray;
+        outline: none;
+        padding: 8px;
+        margin: 16px auto;
+        cursor: pointer;
       }
     }
     .admin-products {
@@ -159,11 +194,20 @@ export default {
         margin: 16px 0;
         list-style: none;
         li {
-          padding: 8px;
-          border: 2px solid $color2;
-          background-color:gray;
-          cursor: pointer;
-          margin: 8px;
+          .edit-btn {
+            outline: none;
+            padding: 8px;
+            border: 2px solid $color2;
+            background-color: $basic-gray;
+            cursor: pointer;
+            margin: 8px;
+            width: 100px;
+          }
+          .delete-btn {
+            border: none;
+            outline: none;
+            cursor: pointer;
+          }
         }
       }
     }

@@ -4,7 +4,7 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 
 import getData from '@/api/api.js';
-import { getUser, checkLogin, registerUser, setToken, addProductToDB, editProductInDB } from '@/api/api.js';
+import { getUser, checkLogin, registerUser, setToken, addProductToDB, editProductInDB, deleteProductInDB } from '@/api/api.js';
 
 const BASE_URL = 'http://localhost:5000/api/';
 const LOGIN_URL = `${BASE_URL}auth/`;
@@ -98,10 +98,27 @@ export default new Vuex.Store({
     },
     async editProductInDB(context,newProduct) {
       let url = EDIT_URL + newProduct._id;
-      const response = await editProductInDB(url, newProduct);
+
+      //To make a product update without ID
+      let productPatch = {};
+      productPatch.title = newProduct.title;
+      productPatch.price = newProduct.price;
+      productPatch.shortDesc = newProduct.shortDesc;
+      productPatch.category = newProduct.category;
+      productPatch.longDesc = newProduct.longDesc;
+      productPatch.imgFile = newProduct.imgFile;
+
+      const response = await editProductInDB(url, productPatch);
       console.log(response);
       context.dispatch('getProducts');
     },
+    async deleteProductInDB(context, id) {
+        let url = EDIT_URL + id;
+        const response = await deleteProductInDB(url);
+        console.log(response);
+        //TILLFÄLLIG
+        context.dispatch('getProducts');
+    }
     
   },
   modules: {
