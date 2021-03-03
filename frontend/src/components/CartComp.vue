@@ -28,20 +28,22 @@
           <h4 class="centered">ANTALET</h4>
           <h4 class="right-align">{{ totalPrice }}</h4>
         </div>
-
-        <!-- Ta bort och gör till rätt komponent -->
-        <button @click="checkout" style="width: 150px; margin: auto;">GÅ TILL KASSA</button>
-        <!-- Ta bort och gör till rätt komponent -->
-
+        <ButtonComp class="go-to-checkout" :buttonTitle="buttonTitle" :buttonClick="buttonClick" />
       </section>
     </div>
   </div>
 </template>
 
 <script>
+import ButtonComp from './ButtonComp.vue';
 export default {
+  components: { 
+    ButtonComp 
+    },
   data() {
     return {
+      buttonTitle: "KÖP",
+      buttonClick: "checkout",
       cartOn: true,
       // Ta bort och lägg till rätt variablar
       cart: []
@@ -177,6 +179,9 @@ export default {
         justify-self: flex-start;
       }
     };
+  }
+  .go-to-checkout {
+    margin: auto;
   }
 }
 </style>

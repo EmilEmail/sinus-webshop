@@ -7,7 +7,7 @@
       <div class="product-modal-info">
         <div class="product-modal-info-row-1">
           <h2>{{ product.title }}</h2>
-          <button v-on:click="closeModal">X</button>
+          <button v-on:click="closeModal"></button>
         </div>
         <div class="product-modal-info-row-2">
           <h3> {{ product.shortDesc }} </h3>
@@ -15,7 +15,7 @@
           <img src="../assets/images/big-stars.svg" alt="">
         </div>
         <div class="product-modal-info-row-3">
-          <button @click="addToCart(product)">LÄGG I KUNDVAGN</button>
+          <ButtonComp :buttonTitle="buttonTitle" @click="addToCart(product)" />
           <p class="modal-price"> {{ product.price }}:- </p>
         </div>
       </div>
@@ -25,7 +25,16 @@
 </template>
 
 <script>
+import ButtonComp from './ButtonComp.vue';
 export default {
+  components: { 
+    ButtonComp 
+    },
+  data() {
+    return {
+      buttonTitle: "LÄGG TILL I KUNDVAGN",
+    }
+  },
   props: {
     product: {}
   },
@@ -35,7 +44,9 @@ export default {
     },
 
     addToCart(product) {
-      this.$store.commit('addToCart', {product, amount: 1});
+      this.product.amount = 1
+      this.$store.commit('addToCart', product);
+      console.log()
     }
   }
 }
@@ -85,6 +96,12 @@ export default {
   button {
     align-self: start;
     margin-left: auto;
+    width: 45px;
+    height: 45px;
+    background-image:  url('../assets/svg/close-btn.svg');
+    background-size: cover;
+    border: none;
+    background-color: black;
   }
 }
 .product-modal-info-row-2 {
@@ -107,9 +124,6 @@ export default {
   flex-direction: row;
   align-items: center;
   padding: 0 16px 16px 16px;
-  button {
-    align-self: flex-end;
-  }
   p {
     font-family: 'font1';
     margin-left: auto;
