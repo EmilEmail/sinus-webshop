@@ -71,6 +71,15 @@ const editProductInDB = async (EDIT_URL, newProduct) => {
     console.log(error)
   }
 }
+const deleteProductInDB = async (DELETE_URL) => {
+  try {
+    const response = await axios.delete(DELETE_URL);
+    console.log(response)
+    return response;
+  } catch (error) {
+    console.log(error)
+  }
+}
 
 export default getData;
-export { getUser, checkLogin, registerUser, setToken, addProductToDB, editProductInDB };
+export { getUser, checkLogin, registerUser, setToken, addProductToDB, editProductInDB, deleteProductInDB };
