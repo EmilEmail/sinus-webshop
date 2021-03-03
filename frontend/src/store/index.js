@@ -27,6 +27,11 @@ const defaultUser = {
 export default new Vuex.Store({
   state: {
     products: [],
+    categories: {
+      skateboards: [],
+      clothes: [],
+      wheels: []
+    },
     user: defaultUser,
     cart: [],
     isAdmin: false
@@ -48,10 +53,14 @@ export default new Vuex.Store({
   mutations: {
     initProducts(state, data) {
       state.products = data;
-    },
+
+      state.categories.clothes = data.filter(pro => pro.category === "clothes");
+      state.categories.wheels = data.filter(pro => pro.category === "wheels");
+      state.categories.skateboards = data.filter(pro => pro.category === "board");
     // addToCart(state, product) {
     //   state.cart.push(product);
     // },
+    },
     logOutUser(state) {
       state.user = defaultUser;
     },

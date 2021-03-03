@@ -1,7 +1,7 @@
 <template>
    <div class="product-list-grid-wrapper-top">
     <div>
-      <h2>Brädor</h2>
+      <h2>Skateboards</h2>
         <ul>
           <button class="previous-btn" :disabled="pageNumber === 1" @click="prevPage" ></button>
             <li 
@@ -50,7 +50,7 @@
     <ProductModal 
       v-if="showModal" 
       :product='productItem'
-      v-on:closeModal="toCloseModal()"
+      v-on:closeModal="ToCloseModal()"
     />
   </div>
 </template>
@@ -89,11 +89,11 @@ export default {
   },
   methods: {
     openModal(item){
-      this.showModal = true
-      this.productItem = item
+      this.showModal = true;
+      this.productItem = item;
     },
-    toCloseModal() {
-      this.showModal = false
+    ToCloseModal() {
+      this.showModal = false;
     },
     paginate (products) {     //k
 			let pageNumber = this.pageNumber;
