@@ -1,6 +1,5 @@
 <template>
   <div>
-    Products
     <SearchComp />
     <ProductList />
 

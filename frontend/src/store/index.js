@@ -56,7 +56,7 @@ export default new Vuex.Store({
     addToCart(state, product) { 
       let productObj = state.cart.find(prod => prod._id == product._id) 
       if(productObj){
-        state.cart.find(prod => prod._id == product._id).amount += 1
+        state.cart.find(prod => prod._id == product._id).amount ++
       }else{
         state.cart.push(product) 
       }

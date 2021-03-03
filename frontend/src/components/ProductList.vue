@@ -3,60 +3,48 @@
     <div>
       <h2>Brädor</h2>
         <ul>
-          <li 
-            v-for="(product,index) in productBoards" 
-            :key="index"
-            :product='product'
-            @click="openModal(product)"
-          >
-            <ProductCard v-bind:product="product" /> 
-          </li>
-          <button :disabled="pageNumber === 1" @click="prevPage" >
-            Previous
-          </button>
-          <button :disabled="pageNumber < pages.length" @click="nextPage">
-            Next
-          </button>
+          <button class="previous-btn" :disabled="pageNumber === 1" @click="prevPage" ></button>
+            <li 
+              v-for="(product,index) in productBoards" 
+              :key="index"
+              :product='product'
+              @click="openModal(product)"
+            >
+              <ProductCard v-bind:product="product" /> 
+            </li>
+          <button class="next-btn" :disabled="pageNumber < pages.length" @click="nextPage"></button>
         </ul>
       </div>
 
       <div>
         <h2>Kläder</h2>
           <ul>
-            <li 
-              v-for="(product,index) in productClothes" 
-              :key="index"
-              :product='product'
-              @click="openModal(product)"
-            >
-              <ProductCard v-bind:product="product" /> 
-            </li>
-            <button :disabled="pageNumber === 1" @click="prevPage" >
-              Previous
-            </button>
-            <button :disabled="pageNumber < pages.length" @click="nextPage">
-              Next
-            </button>
+            <button class="previous-btn" :disabled="pageNumber === 1" @click="prevPage" ></button>
+              <li 
+                v-for="(product,index) in productClothes" 
+                :key="index"
+                :product='product'
+                @click="openModal(product)"
+              >
+                <ProductCard v-bind:product="product" /> 
+              </li>
+            <button class="next-btn" :disabled="pageNumber < pages.length" @click="nextPage"></button>
           </ul>
         </div>
 
     
         <h2>Tillbehör</h2>
           <ul>
-            <li 
-              v-for="(product,index) in productWheels" 
-              :key="index"
-              :product='product'
-              @click="openModal(product)"
-            >
-              <ProductCard v-bind:product="product" /> 
-            </li>
-            <button :disabled="pageNumber === 1" @click="prevPage" >
-              Previous
-            </button>
-            <button :disabled="pageNumber < pages.length" @click="nextPage">
-              Next
-            </button>
+            <button class="previous-btn" :disabled="pageNumber === 1" @click="prevPage" ></button>
+              <li 
+                v-for="(product,index) in productWheels" 
+                :key="index"
+                :product='product'
+                @click="openModal(product)"
+              >
+                <ProductCard v-bind:product="product" /> 
+              </li>
+            <button class="next-btn" :disabled="pageNumber < pages.length" @click="nextPage"></button>
           </ul>
 
     <ProductModal 
@@ -137,5 +125,17 @@ ul {
 }
 h2 {
   text-align: center;
+}
+button {
+  border: none;
+  width: 45px;
+  height: 42px;
+  align-self: center;
+}
+.previous-btn {
+  background: url('../assets/svg/nav-L-btn.svg');
+}
+.next-btn {
+  background: url('../assets/svg/nav-R-btn.svg');
 }
 </style>

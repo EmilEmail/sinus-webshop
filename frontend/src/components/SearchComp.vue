@@ -1,30 +1,31 @@
 <template>
   <div class="search-comp-wrapper">
-    <form @click.prevent>
-      <div class="search-comp-closed">
-        <input type="search" name="search" class="search">
-        <button @click="searchToggle = !searchToggle" class="filter-btn"> Filter&#9660;</button>
-        <input type="button" value="" class="search-btn">
-      </div>
-    </form>
-      <div v-if="searchToggle" class="search-comp-open">
-        <label class="filter-container">
-          <input type="checkbox" >
-          <span class="check-container"></span>
-          Skatebord
-        </label>
-        <label class="filter-container">
-          <input type="checkbox">
-          <span class="check-container"></span>
-          Kläder
-        </label>
-        <label class="filter-container">
-          <input type="checkbox">
-          <span class="check-container"></span>
-          Tillbehör
-        </label>
-      </div>
-    
+    <div class="form-wrapper">
+      <form @click.prevent>
+        <div class="search-comp-closed">
+          <input type="search" name="search" class="search">
+          <button @click="searchToggle = !searchToggle" class="filter-btn"> Filter&#9660;</button>
+          <input type="button" value="" class="search-btn">
+        </div>
+      </form>
+        <div v-if="searchToggle" class="search-comp-open">
+          <label class="filter-container">
+            <input type="checkbox" >
+            <span class="check-container"></span>
+            Skatebord
+          </label>
+          <label class="filter-container">
+            <input type="checkbox">
+            <span class="check-container"></span>
+            Kläder
+          </label>
+          <label class="filter-container">
+            <input type="checkbox">
+            <span class="check-container"></span>
+            Tillbehör
+          </label>
+        </div>
+    </div>
   </div>
 </template>
 
@@ -44,7 +45,9 @@ export default {
 .search-comp-wrapper {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
+}
+.form-wrapper {
   background-color: $color2;
   color: $accent-color;
   width: 624px;

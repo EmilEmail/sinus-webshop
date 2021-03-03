@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <div class="product-modal-wrapper">
     <div class="product-modal-grid-wrapper">
       <div class="product-modal-img">
-    <img v-bind:src="require(`../assets/images/${this.product.imgFile}`)" alt="Produktbild" />
+        <img v-bind:src="require(`../assets/images/${this.product.imgFile}`)" alt="Produktbild" />
       </div>
       <div class="product-modal-info">
         <div class="product-modal-info-row-1">
@@ -45,6 +45,10 @@ export default {
 <style lang="scss" scoped>
 @import '../assets/css/colors.scss';
 
+.product-modal-wrapper {
+  background-color: white;
+  text-align: -webkit-center;
+}
 .product-modal-grid-wrapper {
   display: grid;
   grid-template-columns: 465px 465px;
@@ -87,6 +91,7 @@ export default {
 .product-modal-info-row-2 {
   grid-row: 2/5;
   padding: 0 16px 0 16px;
+  text-align: left;
   h3 {
     font-family: 'font1';
     margin-bottom: 16px;
@@ -94,6 +99,7 @@ export default {
   p {
     font-family: 'font2';
     margin-bottom: 16px;
+
   }
 }
 .product-modal-info-row-3 {
