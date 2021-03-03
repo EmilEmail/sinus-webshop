@@ -44,18 +44,7 @@ export default {
     return {
       cartOn: true,
       // Ta bort och lägg till rätt variablar
-      cart: [
-        {
-          name: 'Item 1',
-          price: 400,
-          amount: 1
-        },
-        {
-          name: 'Item 2',
-          price: 200,
-          amount: 1
-        }
-      ]
+      cart: []
     }
   },
   computed: {
@@ -68,7 +57,6 @@ export default {
     },
     products() {
       return this.$store.state.cart;
-      
     }
   },
     props: {
