@@ -28,6 +28,7 @@ export default new Vuex.Store({
     products: [],
     user: defaultUser,
     cart: [],
+    isAdmin: false
   },
   getters: {
     products: state => {
@@ -82,11 +83,20 @@ export default new Vuex.Store({
         const userDB = await getUser(USER_URL);
         console.log(userDB);
         context.state.user = userDB;
+        if (userDB.role === 'admin') {
+          context.state.isAdmin = true;
+        }
       }
     },
     async registerUser(context, newUser) {
       const response = await registerUser(REGISTER_URL, newUser);
-      console.log('registred user response: ' + response);
+      if (response.status === 200) {
+        alert("Du är registrerad!");
+        this.$router.go();
+      }
+      else {
+        alert("Något gick fel... :(");
+      }
 
       //tILLFÄLLIG
       console.log(context);

@@ -33,21 +33,21 @@
           <ul>
             <h3>Skateboards</h3>
             <li v-for="(item, index) in skateboards" :key="index">
-              <button @click="editProduct(item)" class="edit-btn">{{ item.title }}</button>
+              <button @click="productToForm(item)" class="edit-btn">{{ item.title }}</button>
               <button @click="deleteProduct(item._id)" class="delete-btn">❌</button>
             </li>
           </ul>
           <ul>
             <h3>Kläder</h3>
             <li v-for="(item, index) in clothes" :key="index">
-              <button @click="editProduct(item)" class="edit-btn">{{ item.title }}</button>
+              <button @click="productToForm(item)" class="edit-btn">{{ item.title }}</button>
               <button @click="deleteProduct(item._id)" class="delete-btn">❌</button>
             </li>
           </ul>
           <ul>
             <h3>Tillbehör</h3>
             <li v-for="(item, index) in wheels" :key="index">
-              <button @click="editProduct(item)" class="edit-btn">{{ item.title }}</button>
+              <button @click="productToForm(item)" class="edit-btn">{{ item.title }}</button>
               <button @click="deleteProduct(item._id)" class="delete-btn">❌</button>
             </li>
           </ul>
@@ -55,10 +55,8 @@
       </div>
     </div>
 
-
-
-    <div v-else>
-      <p>Åtkomst nekad</p>
+    <div v-else class="denied-access-wrapper">
+      <p>Åtkomst nekad!</p>
     </div>
   </div>
 </template>
@@ -67,7 +65,6 @@
 export default {
   data() {
     return {
-      isAdmin: true,
       showAddTextBtn: false,
       submitBtn: 'LÄGG TILL',
       formHeader: 'Lägg till produkter',
@@ -91,19 +88,27 @@ export default {
     wheels: function() {
       return this.$store.getters.wheels;
     },
+    isAdmin: function() {
+      return this.$store.state.isAdmin;
+    }
   },
   methods: {
+    resetItem() {
+      let emptyItem = {
+        title: "",
+        price: 0,
+        shortDesc: "",
+        category: "",
+        longDesc: "",
+        imgFile: "" // Asset logic on clientside
+      }
+      this.newProduct = emptyItem;
+    },
     toggleEdit() {
       this.showAddTextBtn = false;
       this.formHeader = 'Lägg till produkter';
       this.submitBtn = 'LÄGG TILL';
-      this.newProduct.title = '';
-      this.newProduct.price = '';
-      this.newProduct.shortDesc = '';
-      this.newProduct.category = '';
-      this.newProduct.longDesc = '';
-      this.newProduct.imgFile = '';
-      this.newProduct._id = undefined;
+      this.resetItem();
     },
     addProductToDB() {
       if (this.newProduct._id === undefined) {
@@ -112,18 +117,22 @@ export default {
         this.$store.dispatch('addProductToDB', newProduct);
       }
       else {
+        if (confirm('Vill du ändra denna produkt?')) {
         let newProduct = this.newProduct;
         this.$store.dispatch('editProductInDB', newProduct);
+        }
       }
+      this.resetItem();
     },
-    editProduct(item) {
+    productToForm(item) {
+      let itemToEdit = item;
       this.showAddTextBtn = true;
-      this.formHeader = 'Redigera ' + item.title;
+      this.formHeader = 'Redigera ' + itemToEdit.title;
       this.submitBtn = 'ÄNDRA';
-      this.newProduct = item;
+      this.newProduct = itemToEdit;
     },
     deleteProduct(id) {
-      if (confirm('Vill du verkligen ta bort denna produkt?')) {
+      if (confirm('Vill du ta bort denna produkt?')) {
       this.$store.dispatch('deleteProductInDB', id);
       }
     }
@@ -204,6 +213,7 @@ export default {
             width: 100px;
           }
           .delete-btn {
+            background: none;
             border: none;
             outline: none;
             cursor: pointer;
@@ -211,5 +221,12 @@ export default {
         }
       }
     }
+  }
+  .denied-access-wrapper {
+    background: $no-red;
+    color: $color1;
+    font-size: 56px;
+    padding: 56px 0;
+    text-align: center;
   }
 </style>

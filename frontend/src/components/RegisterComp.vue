@@ -3,42 +3,22 @@
     <h2>{{ registerHeader }}</h2>
     <p>Fyll i dina uppgifter:</p>
 
-    <form @submit.prevent>
-      <div class="register-name">
-        <label for="name">Namn</label>
-        <input type="text" name="name" v-model="form.firstname">
-        
-        <label for="lastname">Efternamn</label>
-        <input type="text" name="lastname" v-model="form.lastname">
-      </div>
-
-      <div class="register-adress">
-        <label for="address">Address</label>
-        <input type="text" name="address" v-model="newUser.address.street">
-      </div>
-
-      <div class="register-postcode-and-city">
-        <label for="postcode">Postkod</label>
-        <input type="text" name="postcode" v-model="newUser.address.zip">
-        
-        <label for="city">Postort</label>
-        <input type="text" name="city" v-model="newUser.address.city">
-      </div>
-
-      <div class="register-email">
-        <label for="email">Epost</label>
-        <input type="text" name="email" v-model="newUser.email">
-      </div>
-
-      <div class="register-password">
-        <label for="password">Lösenord</label>
-        <input type="text" name="password" v-model="newUser.password">
-      </div>
-
-      <div class="register-create-account-btn">
-        <input type="button" v-bind:value="ctaBtn" @click="createNewUser">
-      </div>
-
+    <form @submit.prevent class="register-form">
+      <label for="name">Namn</label>
+      <input type="text" name="name" v-model="form.firstname">
+      <label class="text-align" for="lastname">Efternamn</label>
+      <input type="text" name="lastname" v-model="form.lastname">
+      <label for="address">Address</label>
+      <input class="fullrow" type="text" name="address" v-model="newUser.address.street">
+      <label for="postcode">Postkod</label>
+      <input type="text" name="postcode" v-model="newUser.address.zip">
+      <label class="text-align" for="city">Postort</label>
+      <input type="text" name="city" v-model="newUser.address.city">
+      <label for="email">Epost</label>
+      <input class="fullrow" type="text" name="email" v-model="newUser.email">
+      <label for="password">Lösenord</label>
+      <input class="fullrow" type="text" name="password" v-model="newUser.password">
+      <input class="default-btn" type="button" v-bind:value="ctaBtn" @click="createNewUser">
     </form>
   </div>
 </template>
@@ -94,79 +74,45 @@ export default {
 .register-comp-wrapper {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   background-color: $color2;
   color: $color1;
   width: 624px;
   height: 656px;
   margin: 48px auto;
   padding: 32px;
-  font-family: font2;
+  font-family: 'font2';
   h2 {
-    font-family: font1;
+    font-family: 'font1';
     font-weight: 100;
     font-size: 48px;
   }
   p {
-    font-family: font1;
+    font-family: 'font1';
     margin: 16px 16px 16px 0;
   }
 
-  form {
+    .register-form {
     display: grid;
-    grid-template-rows: repeat(6, 88px);
+    grid-template-columns: 80px 1fr 80px 1fr;
+    gap: 24px;
     align-items: center;
-    width: 100%;
-    height: 100%;
-    label {
-      margin-right: 8px;
+    .fullrow {
+      grid-column: 2/5;
     }
     input {
-      margin-right: 8px;
-      padding: 12px 16px;
-      border-radius: 5px;
-      outline: none;
+      padding: 8px;
       border: none;
+      outline: none;
+      border-radius: 5px;
     }
-
-    /*Fixa detta med färre klasser*/
-    .register-name {
-      width: 100%;
-      display: grid;
-      grid-template-columns: 80px 1fr 80px 1fr;
-      grid-template-rows: 32px;
-      align-items: center;
-    }
-    .register-adress {
-      width: 100%;
-      display: grid;
-      grid-template-columns: 80px 1fr;
-      grid-template-rows: 32px;
-      align-items: center;
-    }
-    .register-postcode-and-city {
-      width: 100%;
-      display: grid;
-      grid-template-columns: 80px 1fr 60px 1fr;
-      grid-template-rows: 32px;
-      align-items: center;
-    }
-    .register-email {
-      width: 100%;
-      display: grid;
-      grid-template-columns: 80px 1fr;
-      grid-template-rows: 32px;
-      align-items: center;
-    }
-    .register-password {
-      width: 100%;
-      display: grid;
-      grid-template-columns: 80px 1fr;
-      grid-template-rows: 32px;
-      align-items: center;
-    }
-    .register-create-account-btn {
+    .default-btn {
       justify-self: center;
+      grid-column: 1/5;
+      align-self: center;
+      width: 160px;
+    }
+    .text-align {
+      text-align: center;
     }
   }
 }

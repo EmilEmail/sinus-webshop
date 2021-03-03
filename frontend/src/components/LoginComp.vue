@@ -8,22 +8,13 @@
       <p>Ange Email och lösenord:</p>
 
       <form @submit.prevent class="login-form">
-        <div class="login-form-input">
-          <label for="email">Email</label>
-          <input type="email" name="email" v-model="email">
-        </div>
-        <div class="login-form-input">
-          <label for="password">Password</label>
-          <input type="password" name="password" v-model="password">
-        </div>
-        <div class="login-btn">
-          <input type="submit" value="Logga in" @click="checkLogin">  
-        </div>
-        <div class="new-user-btn">
-          <input type="submit" value="Skapa konto" @click="toRegister">  
-        </div>
+        <label for="email">Email</label>
+        <input type="email" name="email" v-model="email">
+        <label for="password">Password</label>
+        <input type="password" name="password" v-model="password">
+        <input class="default-btn" type="submit" value="Logga in" @click="checkLogin">
+        <input class="default-btn" type="submit" value="Skapa konto" @click="toRegister">  
       </form>
-
     </div>
   </div>
 </div>
@@ -56,7 +47,7 @@ export default {
       this.password = '';
 
       this.$emit('closeLogin');
-
+      
       // Gör så att man kommer till första sidan när man loggat in 
       // pga ingen uppdatering i checkout när man loggat in från den viewen
       // if (this.$route.path !== '/') {
@@ -73,6 +64,7 @@ export default {
     toRegister() {
       this.noUser = false;
       this.userOnline = false;
+      this.$emit('closeLogin');
       if (this.$route.path !== '/register') {
         this.$router.push('/register');
       }
@@ -141,29 +133,22 @@ export default {
     margin: 16px 0 32px 0;
   }
 }
-
 .login-form {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-
-  .login-form-input {
-    display: grid;
-    grid-template-columns: auto 500px;
-    margin: 16px;
-    align-items: center;
-  }
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 24px;
+  align-items: center;
   input {
-      width: 482px;
-      padding: 8px;
-      border: none;
-      outline: none;
-      border-radius: 5px;
+    padding: 8px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
   }
-  
-  .login-btn {
+  .default-btn {
+    justify-self: center;
+    grid-column: 1/3;
     align-self: center;
-    margin-top: 96px;
+    width: 160px;
   }
 }
 </style>
