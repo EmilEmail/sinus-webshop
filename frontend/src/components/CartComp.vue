@@ -15,8 +15,8 @@
         </div>
 
         <ul>
-          <li v-for="(item, index) in cart" :key="index" class="cart-items">
-            <p class="item-name"> {{ item.name }}</p>
+          <li v-for="(item, index) in products" :key="index" class="cart-items">
+            <p class="item-name"> {{ item.title }}</p>
             <p> {{ item.amount }}</p>
             <button class="delete-btn">x</button>
             <p> {{ item.price }}</p>
@@ -65,10 +65,16 @@ export default {
           total += item.price;
         });
         return total;
+    },
+    products() {
+      return this.$store.state.cart;
+      
     }
   },
-
-  methods: {
+    props: {
+      product: {}
+  },
+    methods: {
     checkout() {
       this.cartOn = false;
       this.$router.push('/checkout');
@@ -172,6 +178,7 @@ export default {
         grid-template-columns: 200px 40px 40px auto;
         justify-items: center;
         align-items: center;
+        color: white;
         .item-name {
           justify-self: flex-start;
         }
