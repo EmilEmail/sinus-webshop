@@ -4,13 +4,14 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 
 import getData from '@/api/api.js';
-import { getUser, checkLogin, registerUser, setToken, addProductToDB, editProductInDB, deleteProductInDB } from '@/api/api.js';
+import { getUser, checkLogin, registerUser, setToken, addProductToDB, editProductInDB, deleteProductInDB, orderHistory } from '@/api/api.js';
 
 const BASE_URL = 'http://localhost:5000/api/';
 const LOGIN_URL = `${BASE_URL}auth/`;
 const REGISTER_URL = `${BASE_URL}register/`;
 const USER_URL = `${BASE_URL}me/`;
 const EDIT_URL = `${BASE_URL}products/`;
+const ORDER_URL = `${BASE_URL}orders/`;
 
 const defaultUser = {
   email: "",
@@ -26,6 +27,11 @@ const defaultUser = {
 export default new Vuex.Store({
   state: {
     products: [],
+    categories: {
+      skateboards: [],
+      clothes: [],
+      wheels: []
+    },
     user: defaultUser,
     cart: [],
     isAdmin: false
@@ -47,10 +53,14 @@ export default new Vuex.Store({
   mutations: {
     initProducts(state, data) {
       state.products = data;
-    },
+
+      state.categories.clothes = data.filter(pro => pro.category === "clothes");
+      state.categories.wheels = data.filter(pro => pro.category === "wheels");
+      state.categories.skateboards = data.filter(pro => pro.category === "board");
     // addToCart(state, product) {
     //   state.cart.push(product);
     // },
+    },
     logOutUser(state) {
       state.user = defaultUser;
     },
@@ -65,22 +75,12 @@ export default new Vuex.Store({
   },
   actions: {
     async getProducts({ commit }) {
-
-      // LÄGG TILL STATE SOM PARAMETER
-      // let products;
-      // if (localStorage.getItem('products') == null) {
-      //   products = await getData();
-      //   localStorage.setItem('products', JSON.stringify(state.products));
-      // }
-      // else {
-      //   products = localStorage.getItem('products');
-      // }
-      // commit('initProducts', products);    
-
       let products;  
       products = await getData();
       commit('initProducts', products);    
     },
+
+    //LOGIN
     async checkLogin(context, userLogin) {
       const userCheck = await checkLogin(LOGIN_URL, userLogin);
       const token = userCheck.data.token;
@@ -100,15 +100,19 @@ export default new Vuex.Store({
       const response = await registerUser(REGISTER_URL, newUser);
       if (response.status === 200) {
         alert("Du är registrerad!");
-        this.$router.go();
       }
       else {
         alert("Något gick fel... :(");
       }
-
       //tILLFÄLLIG
       console.log(context);
     },
+    async orderHistory() {
+      const response = await orderHistory(ORDER_URL);
+      console.log(response);
+    },
+
+    //PRODUCT
     async addProductToDB(context,newProduct) {
       const response = await addProductToDB(newProduct);
       console.log(response);

@@ -53,6 +53,15 @@ const setToken = (token) => {
   axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 }
 
+const orderHistory = async (ORDER_URL) => {
+  try {
+    const response = await axios.get(ORDER_URL);
+    return response;
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 const addProductToDB = async (newProduct) => {
   try {
     const response = await axios.post(PRODUCTS_URL, newProduct);
@@ -82,4 +91,4 @@ const deleteProductInDB = async (DELETE_URL) => {
 }
 
 export default getData;
-export { getUser, checkLogin, registerUser, setToken, addProductToDB, editProductInDB, deleteProductInDB };
+export { getUser, checkLogin, registerUser, setToken, addProductToDB, editProductInDB, deleteProductInDB, orderHistory };
