@@ -5,9 +5,9 @@
 
     <form @submit.prevent class="register-form">
       <label for="name">Namn</label>
-      <input type="text" name="name" v-model="form.firstname">
+      <input type="text" name="name" v-model="newUser.firstname">
       <label class="text-align" for="lastname">Efternamn</label>
-      <input type="text" name="lastname" v-model="form.lastname">
+      <input type="text" name="lastname" v-model="newUser.lastname">
       <label for="address">Address</label>
       <input class="fullrow" type="text" name="address" v-model="newUser.address.street">
       <label for="postcode">Postkod</label>
@@ -31,11 +31,11 @@ export default {
         firstname: '',
         lastname: '',
       },
-
       newUser: {
         email: '',
         password: '',
-        name: '',
+        firstname: '',
+        lastname: '',
         address: {
           street: '',
           zip: '',
@@ -46,14 +46,16 @@ export default {
   },
   created() {
     let user = this.$store.state.user;
-    this.newUser = user;
-    let name = user.name.split(' ');
-    this.form.firstname = name[0];
-    let lastname = '';
-    for (let i = 1; i < name.length; i++) {
-      lastname += name[i] + " ";
+    if (user._id !== undefined) {
+      this.newUser = user;
+      let name = user.name.split(' ');
+      this.form.firstname = name[0];
+      let lastname = '';
+      for (let i = 1; i < name.length; i++) {
+        lastname += name[i] + " ";
+      }
+      this.form.lastname = lastname;
     }
-    this.form.lastname = lastname;
   },
   props: {
     registerHeader: String,
@@ -61,11 +63,24 @@ export default {
   },
   methods: {
     createNewUser() {
-      this.newUser.name = this.form.firstname + ' ' + this.form.lastname;
-      this.$store.dispatch('registerUser', this.newUser);
+      if (this.userValidation(this.newUser)) {
+        this.newUser.name = this.newUser.firstname + ' ' + this.newUser.lastname;
+        this.$store.dispatch('registerUser', this.newUser);
+        this.$router.push('/');
+      }
+    },
+    userValidation(newUser) {
+      const userAsArray = Object.values(newUser);
+      console.log(userAsArray);
+      for (let i = 0; i < userAsArray.length; i++) {
+        if (userAsArray[i] === ''){
+          alert('Kontrollera uppgifterna');
+          return false;
+        }
+      }
+      return true;
     }
   }
-
 }
 </script>
 

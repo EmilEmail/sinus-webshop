@@ -42,17 +42,19 @@ export default {
         email: this.email,
         password: this.password
       };
-      this.$store.dispatch('checkLogin', userLogin);
-      this.email = '';
-      this.password = '';
-
-      this.$emit('closeLogin');
-      
-      // Gör så att man kommer till första sidan när man loggat in 
-      // pga ingen uppdatering i checkout när man loggat in från den viewen
-      // if (this.$route.path !== '/') {
-      //   this.$router.push('/');
-      // }
+      if (this.loginValidation(userLogin)) {
+        this.$store.dispatch('checkLogin', userLogin);
+        this.email = '';
+        this.password = '';
+        this.$emit('closeLogin');
+      }
+    },
+    loginValidation(userLogin) {
+      if (userLogin.email === '' || userLogin.password === '') {
+        alert('Kontrollera inloggningsuppgifterna');
+        return false;
+      }
+      return true;
     },
 
     logOut() {
