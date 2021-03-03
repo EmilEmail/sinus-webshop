@@ -19,13 +19,13 @@
             <p class="item-name"> {{ item.title }}</p>
             <p> {{ item.amount }}</p>
             <button class="delete-btn">x</button>
-            <p> {{ item.price }}</p>
+            <p> {{ item.totalPruductPrice }}</p>
           </li>
         </ul>
 
         <div class="cart-bottom">
           <h4>Summa</h4>
-          <h4 class="centered">ANTALET</h4>
+          <h4 class="centered">{{ totalProduct }}</h4>
           <h4 class="right-align">{{ totalPrice }}</h4>
         </div>
         <ButtonComp class="go-to-checkout" :buttonTitle="buttonTitle" @buttonClick="checkout" />
@@ -52,14 +52,21 @@ export default {
   computed: {
     totalPrice: function() {
         let total = 0;
-        this.cart.forEach(item => {
-          total += item.price;
-        });
+        for (let item of this.$store.state.cart) {
+          total += item.totalPruductPrice;
+        }
+        return total;
+    },
+    totalProduct: function() {
+        let total = 0;
+        for (let item of this.$store.state.cart) {
+          total += item.amount;
+        }
         return total;
     },
     products() {
       return this.$store.state.cart;
-    }
+    },
   },
     props: {
       product: {}

@@ -64,12 +64,15 @@ export default new Vuex.Store({
     logOutUser(state) {
       state.user = defaultUser;
     },
-    addToCart(state, product) { 
-      let productObj = state.cart.find(prod => prod._id == product._id) 
-      if(productObj){
-        state.cart.find(prod => prod._id == product._id).amount ++
-      }else{
-        state.cart.push(product) 
+    addToCart(state, product) {
+      let found = state.cart.find(prod => prod._id == product._id);
+      if (found) {
+        found.amount ++;
+        found.totalPruductPrice = found.amount * found.price
+      } else {
+        state.cart.push(product);
+        Vue.set(product, 'amount', 1);
+        Vue.set(product, 'totalPruductPrice', product.price);
       }
     }
   },

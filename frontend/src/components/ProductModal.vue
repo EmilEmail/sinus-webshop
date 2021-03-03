@@ -42,11 +42,8 @@ export default {
     closeModal() {
       this.$emit("closeModal")
     },
-
     addToCart(product) {
-      this.product.amount = 1
       this.$store.commit('addToCart', product);
-      console.log()
     }
   }
 }
