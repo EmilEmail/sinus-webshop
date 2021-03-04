@@ -1,7 +1,7 @@
 <template>
   <div class="nav-comp-wrapper">  
     <section class="nav">
-      <img class="nav-logo" src="../assets/svg/sinus-logo-orange.svg" alt="Sinus logotype">
+      <img class="nav-logo" src="../assets/svg/sinus-logo-orange.svg" alt="Sinus logotype" v-on:click="showStartpage">
       <ul>
         <li v-on:click="showSkateboards">SKATEBOARDS</li>
         <li v-on:click="showClothes">KLÄDER</li>
@@ -18,7 +18,7 @@
         <CartComp />
       </div>
       <div v-if="loginOn">
-        <LoginComp @closeLogin="checkUser" v-bind:profileData="profileData" />
+        <LoginComp @closeLogin="checkUser" />
       </div>
     </section>
   </div>
@@ -32,9 +32,6 @@ export default {
     return {
       cartOn: false,
       loginOn: false,
-      profileData: {
-        name: 'Emil Edberg'
-      }
     }
   },
   components: {
@@ -43,13 +40,19 @@ export default {
   },
   methods: {
     showSkateboards() {
-      alert("Skateboards");
+      this.$store.commit('showSkateboards');
     },
     showClothes() {
-      alert("Kläder");
+      this.$store.commit('showClothes');
     },
     showAccesories() {
-      alert("Tillbehör");
+      this.$store.commit('showWheels');
+    },
+    showStartpage() {
+      if (this.$route.path !== '/') {
+        this.$router.push('/');
+      }
+      this.$store.commit('showAll');
     },
     cartToggle() {
       this.cartOn = !this.cartOn;
@@ -91,9 +94,9 @@ export default {
     .nav-logo {
       height: 120px;
       padding: 0 32px;
+      cursor: pointer;
     }
     ul {
-
       display: flex;
       padding: 0;
       list-style: none;
@@ -105,24 +108,23 @@ export default {
     }
     .nav-buttons {
       display: flex;
-      padding: 16px 32px;
       .default-nav-btn {
         background-size: cover;
         height: 32px;
         width: 32px;
         border: none;
         outline: none;
+        margin: 8px;
+        cursor: pointer;
       }
       .login-btn {
         background: url('../assets/svg/profile.svg') no-repeat; 
       }
       .cart-btn {
         background: url('../assets/svg/cart.svg') no-repeat;
-        height: 36px;
-        width: 36px;
       }
       .contact-btn {
-        background: url('../assets/svg/profile.svg') no-repeat;
+        background: url('../assets/svg/contact.svg') no-repeat;
       }
     }
   }

@@ -7,7 +7,7 @@
 
       <div v-else>
 
-        <div class="product-list-grid">
+        <div class="product-list-grid" v-if="showProduct.skateboards">
           <h2>Skateboards</h2>
           <button class="previous-btn" @click="previousBoardPage"></button>
           <ul>
@@ -18,7 +18,7 @@
           <button class="next-btn" @click="nextBoardPage"></button>
         </div>
 
-        <div class="product-list-grid">
+        <div class="product-list-grid" v-if="showProduct.clothes">
           <h2>Kläder</h2>
           <button class="previous-btn" @click="previousClothesPage"></button>
           <ul>
@@ -29,7 +29,7 @@
           <button class="next-btn" @click="nextClothesPage"></button>
         </div>
 
-        <div class="product-list-grid">
+        <div class="product-list-grid" v-if="showProduct.wheels">
           <h2>Tillbehör</h2>
           <button class="previous-btn" @click="previousWheelsPage"></button>
           <ul>
@@ -76,6 +76,13 @@ export default {
   computed: {
     showModalUpdate: function() {
       return this.showModal;
+    },
+    showProduct: function() {
+      let showProduct = {}
+      showProduct.skateboards = this.$store.state.showSkateboards;
+      showProduct.clothes = this.$store.state.showClothes;
+      showProduct.wheels = this.$store.state.showWheels;
+      return showProduct;
     },
     boardPagination: function() {
       let allSkateboards = this.$store.state.categories.skateboards;

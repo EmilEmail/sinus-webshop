@@ -36,7 +36,11 @@ export default new Vuex.Store({
     user: defaultUser,
     cart: [],
     isAdmin: false,
-    cartAmount: 0
+    cartAmount: 0,
+    showSkateboards: true,
+    showClothes: true,
+    showWheels: true,
+
   },
   getters: {
     products: state => {
@@ -62,6 +66,26 @@ export default new Vuex.Store({
     // addToCart(state, product) {
     //   state.cart.push(product);
     // },
+    },
+    showSkateboards(state) {
+      state.showSkateboards = true;
+      state.showClothes = false;
+      state.showWheels = false;
+    },
+    showClothes(state) {
+      state.showSkateboards = false;
+      state.showClothes = true;
+      state.showWheels = false;
+    },
+    showWheels(state) {
+      state.showSkateboards = false;
+      state.showClothes = false;
+      state.showWheels = true;
+    },
+    showAll(state) {
+      state.showSkateboards = true;
+      state.showClothes = true;
+      state.showWheels = true;
     },
     logOutUser(state) {
       state.user = defaultUser;
