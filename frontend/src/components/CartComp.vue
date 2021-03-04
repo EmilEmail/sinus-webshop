@@ -17,9 +17,11 @@
         <ul>
           <li v-for="(item, index) in products" :key="index" class="cart-items">
             <p class="item-name"> {{ item.title }}</p>
+            <button class="delete-btn" @click="removeFromCart(item)">-</button>
             <p> {{ item.amount }}</p>
-            <button class="delete-btn">x</button>
+            <button class="delete-btn" @click="removeFromCart(item)">+</button>
             <p> {{ item.totalPruductPrice }}</p>
+            <button class="delete-btn" @click="removeFromCart(item)">X</button>
           </li>
         </ul>
 
@@ -75,7 +77,11 @@ export default {
     checkout() {
       this.cartOn = false;
       this.$router.push('/checkout');
-    }
+    },
+    removeFromCart(item) {
+    this.$store.commit('removeFromCart', item)
+    console.log(item)
+  }
   }
 
 }
@@ -172,7 +178,7 @@ export default {
       
       .cart-items {
         display: grid;
-        grid-template-columns: 200px 40px 40px auto;
+        grid-template-columns: 3fr 0.2fr 0.5fr 0.2fr 1fr 0.2fr;
         justify-items: center;
         align-items: center;
         color: white;

@@ -5,7 +5,7 @@
         <ul>
           <button class="previous-btn" :disabled="pageNumber === 1" @click="prevPage" ></button>
             <li 
-              v-for="(product,index) in productBoards" 
+              v-for="(product,index) in skateboards" 
               :key="index"
               :product='product'
               @click="openModal(product)"
@@ -21,7 +21,7 @@
           <ul>
             <button class="previous-btn" :disabled="pageNumber === 1" @click="prevPage" ></button>
               <li 
-                v-for="(product,index) in productClothes" 
+                v-for="(product,index) in clothes" 
                 :key="index"
                 :product='product'
                 @click="openModal(product)"
@@ -37,7 +37,7 @@
           <ul>
             <button class="previous-btn" :disabled="pageNumber === 1" @click="prevPage" ></button>
               <li 
-                v-for="(product,index) in productWheels" 
+                v-for="(product,index) in wheels" 
                 :key="index"
                 :product='product'
                 @click="openModal(product)"
@@ -59,6 +59,8 @@
 <script>
 import ProductCard from './ProductCard.vue'
 import ProductModal from './ProductModal.vue';
+import { mapGetters } from 'vuex'
+
 export default {
   data() {
     return{
@@ -77,15 +79,12 @@ export default {
     ProductModal,
   },
   computed: {
-    productBoards: function() {
-      return this.$store.getters.skateboards;
-    },
-    productClothes: function() {
-      return this.$store.getters.clothes;
-    },
-    productWheels: function() {
-      return this.$store.getters.wheels;
-    }
+    ...mapGetters([
+      'products', //för sök listan??
+      'skateboards',
+      'clothes',
+      'wheels'
+    ])
   },
   methods: {
     openModal(item){

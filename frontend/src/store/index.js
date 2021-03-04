@@ -35,7 +35,8 @@ export default new Vuex.Store({
     searchResults: [],
     user: defaultUser,
     cart: [],
-    isAdmin: false
+    isAdmin: false,
+    cartAmount: 0
   },
   getters: {
     products: state => {
@@ -75,7 +76,9 @@ export default new Vuex.Store({
         Vue.set(product, 'amount', 1);
         Vue.set(product, 'totalPruductPrice', product.price);
       }
+      state.cartAmount++;
     },
+    
     doSearch(state, searchText) {
       let allProducts = state.products;
       let searchResults = [];
@@ -87,7 +90,15 @@ export default new Vuex.Store({
       }
       state.searchResults = searchResults;
       console.log(state.searchResults);
-    }
+    },
+    removeFromCart(state, product) {
+      let index = state.cart.indexOf(product);
+      if(index > -1) {
+        let product = state.cart[index]
+        state.cartAmount -= product.amount
+        state.cart.splice(index, 1)
+      }
+    }, 
   },
   actions: {
     async getProducts({ commit }) {
