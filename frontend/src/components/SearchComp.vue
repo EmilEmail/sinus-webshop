@@ -3,39 +3,47 @@
     <div class="form-wrapper">
       <form @click.prevent>
         <div class="search-comp-closed">
-          <input type="search" name="search" class="search">
+          <input type="search" name="search" class="search" v-model="searchText">
           <button @click="searchToggle = !searchToggle" class="filter-btn"> Filter&#9660;</button>
-          <input type="button" value="" class="search-btn">
+          <input type="submit" value="" class="search-btn" @click="doSearch">
         </div>
       </form>
-        <div v-if="searchToggle" class="search-comp-open">
-          <label class="filter-container">
-            <input type="checkbox" >
-            <span class="check-container"></span>
-            Skatebord
-          </label>
-          <label class="filter-container">
-            <input type="checkbox">
-            <span class="check-container"></span>
-            Kläder
-          </label>
-          <label class="filter-container">
-            <input type="checkbox">
-            <span class="check-container"></span>
-            Tillbehör
-          </label>
-        </div>
+      <div v-if="searchToggle" class="search-comp-open">
+        <label class="filter-container">
+          <input type="checkbox" >
+          <span class="check-container"></span>
+          Skatebord
+        </label>
+        <label class="filter-container">
+          <input type="checkbox">
+          <span class="check-container"></span>
+          Kläder
+        </label>
+        <label class="filter-container">
+          <input type="checkbox">
+          <span class="check-container"></span>
+          Tillbehör
+        </label>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 export default {
+
   data() {
     return {
+      searchText: '',
       searchToggle: false,
     }
   },
+  methods: {
+    doSearch() {
+      const searchText = this.searchText;
+      this.$store.commit('doSearch', searchText);
+    },
+  }
 }
 </script>
 
