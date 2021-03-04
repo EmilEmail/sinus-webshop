@@ -1,14 +1,20 @@
 <template>
   <div>
+  <div class="checkout-wrapper">
     <ProfileComp />
     <RegisterComp registerHeader="Dina uppgifter" ctaBtn="KÖP" v-bind:isRegister="false" />
-    <div class="buy-btn" @click="commitToBuy">
-      <ButtonComp buttonTitle="KÖP" />
+    <div class="paymanet-alt">
+      <PaymantComp />
+      <div class="buy-btn" @click="commitToBuy">
+        <ButtonComp buttonTitle="KÖP" />
+      </div>
     </div>
+  </div>
   </div>
 </template>
 
 <script>
+import PaymantComp from '../components/PaymantComp.vue'
 import ButtonComp from '../components/ButtonComp.vue'
 import ProfileComp from '../components/ProfileComp.vue'
 import RegisterComp from '../components/RegisterComp.vue'
@@ -17,6 +23,7 @@ export default {
     RegisterComp,
     ProfileComp,
     ButtonComp,
+    PaymantComp,
   },
   methods: {
     commitToBuy() {
@@ -29,9 +36,22 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../assets/css/colors.scss';
+
+.checkout-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 32px;
+}
+.paymanet-alt {
+  background-color: $color2;
+  width: 600px;
+  padding: 32px;
+
   .buy-btn {
-    display: flex;
-    justify-content: center;
-    padding: 64px;
+  display: flex;
+  justify-content: center;
   }
+}
 </style> 
