@@ -85,23 +85,24 @@ export default {
   align-items: center;
 }
 .profile-comp-profile {
-  width: 592px;
+  width: 600px;
   height: 272px;
   background-color: $color2;
   color: $color1;
-  border: 16px solid $color2;
-  margin-bottom: 16px; //Detta ska bort eller ändras
+  padding: 32px;
+  margin-top: 32px;
+  margin-bottom: 32px; //Detta ska bort eller ändras
   img {
     grid-row: 2/5;
   }
 }
 .profil-comp-order-history {
-  width: 592px;
-  height: 272px;
+  width: 600px;
+  height: auto;
   background-color: $color2;
   color: $color1;
-  border: 16px solid $color2;
-  margin-bottom: 16px; //Detta ska bort eller ändras
+  padding: 32px;
+  margin-bottom: 32px; //Detta ska bort eller ändras
   h2 {
     margin-bottom: 16px;
   }

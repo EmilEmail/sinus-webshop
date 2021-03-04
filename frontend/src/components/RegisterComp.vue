@@ -91,9 +91,10 @@ export default {
   flex-direction: column;
   background-color: $color2;
   color: $color1;
-  width: 624px;
-  height: 656px;
-  margin: 48px auto;
+  width: 600px;
+  height: auto;
+  margin: auto;
+  margin-bottom: 32px;
   padding: 32px;
   font-family: 'font2';
   h2 {
