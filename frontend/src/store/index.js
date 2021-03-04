@@ -168,34 +168,35 @@ export default new Vuex.Store({
     },
 
     //LOGIN
-    async checkLogin(context, userLogin) {
+    checkLocalstorage(context) {
       if (localStorage.getItem('token') !== null) {
         setToken(localStorage.getItem('token'));
         let user = localStorage.getItem('user');
         context.state.user = JSON.parse(user);
-
-        console.log(localStorage.getItem('token'))
-      }
-      else {
-        
-        const userCheck = await checkLogin(LOGIN_URL, userLogin);
-        const token = userCheck.data.token;
-  
-        if (userCheck.status === 200) {
-          alert("LOGGAT IN");
-          setToken(token);
-          const userDB = await getUser(USER_URL);
-          console.log(userDB);
-          context.state.user = userDB;
-  
-          localStorage.setItem('token', token);
-          localStorage.setItem('user', JSON.stringify(userDB));
-  
-          if (userDB.role === 'admin') {
-            context.state.isAdmin = true;
-          }
+        if (user.role === 'admin') {
+          context.state.isAdmin = true;
         }
       }
+    },
+    async checkLogin(context, userLogin) {        
+      const userCheck = await checkLogin(LOGIN_URL, userLogin);
+      const token = userCheck.data.token;
+
+      if (userCheck.status === 200) {
+        alert("LOGGAT IN");
+        setToken(token);
+        const userDB = await getUser(USER_URL);
+        console.log(userDB);
+        context.state.user = userDB;
+
+        localStorage.setItem('token', token);
+        localStorage.setItem('user', JSON.stringify(userDB));
+
+        if (userDB.role === 'admin') {
+          context.state.isAdmin = true;
+        }
+      }
+      
     },
     async registerUser(context, newUser) {
       const response = await registerUser(REGISTER_URL, newUser);
