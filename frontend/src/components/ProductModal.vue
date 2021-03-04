@@ -52,7 +52,8 @@ export default {
 @import '../assets/css/colors.scss';
 
 .product-modal-wrapper {
-  background-color: white;
+  background: $color1;
+  padding: 64px;
   text-align: -webkit-center;
 }
 .product-modal-grid-wrapper {
@@ -60,7 +61,7 @@ export default {
   grid-template-columns: 465px 465px;
   grid-gap: 16px;
   width: 944px;
-  border-style: solid 16px white;
+  border-style: solid 16px $color1;
   .product-modal-img {
     background-color: rgb(140, 140, 140);
     grid-column: 1;

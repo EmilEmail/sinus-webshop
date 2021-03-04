@@ -97,7 +97,7 @@ export default {
   justify-content: center;
   align-items: center;
   background-color: $color1;
-  padding: 32px;
+  padding: 64px;
 }
 .middle-login {
   /* To put into middle */
