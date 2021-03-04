@@ -52,6 +52,7 @@ export default {
   .buy-btn {
   display: flex;
   justify-content: center;
+  padding: 56px 0 40px;
   }
 }
 </style> 

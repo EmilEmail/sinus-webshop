@@ -40,7 +40,7 @@ export default {
   height: 385;
 }
 .product-list-img {
-  background-color: rgb(140, 140, 140);
+  background-color: $basic-gray;
   grid-row: 1;
   width: 207px;
   height: 224px;

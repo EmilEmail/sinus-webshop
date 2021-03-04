@@ -69,7 +69,7 @@ export default {
   width: 944px;
   border-style: solid 16px $color1;
   .product-modal-img {
-    background-color: rgb(140, 140, 140);
+    background-color: $basic-gray;
     grid-column: 1;
     width: 100%;
     display: flex;
