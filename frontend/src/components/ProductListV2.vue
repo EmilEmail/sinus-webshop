@@ -1,48 +1,52 @@
 <template>
-   <div class="product-list-grid-wrapper-top">
+  <div>
+    <div class="product-list-wrapper">
+      <div v-if="showOnlySearchResults">
+        <SearchResults />
+      </div>
 
-    <div v-if="showOnlySearchResults">
-      <SearchResults />
-    </div>
+      <div v-else>
 
-    <div v-else>
-      <div>
-        <h2>Skateboards</h2>
-        <ul>
+        <div class="product-list-grid">
+          <h2>Skateboards</h2>
           <button class="previous-btn" @click="previousBoardPage"></button>
-            <li v-for="(product, index) in boardPagination" :key="index" @click="openModal(product)">
-              <ProductCard v-bind:product="product" /> 
-            </li>
+          <ul>
+              <li v-for="(product, index) in boardPagination" :key="index" @click="openModal(product)">
+                <ProductCard v-bind:product="product" /> 
+              </li>
+          </ul>
           <button class="next-btn" @click="nextBoardPage"></button>
-        </ul>
-      </div>
-      <div>
-        <h2>Kläder</h2>
-        <ul>
+        </div>
+
+        <div class="product-list-grid">
+          <h2>Kläder</h2>
           <button class="previous-btn" @click="previousClothesPage"></button>
-            <li v-for="(product, index) in clothesPagination" :key="index" @click="openModal(product)"> 
-              <ProductCard v-bind:product="product" /> 
-            </li>
+          <ul>
+              <li v-for="(product, index) in clothesPagination" :key="index" @click="openModal(product)"> 
+                <ProductCard v-bind:product="product" /> 
+              </li>
+          </ul>
           <button class="next-btn" @click="nextClothesPage"></button>
-        </ul>
-      </div>
-      <div>
-        <h2>Tillbehör</h2>
-        <ul>
+        </div>
+
+        <div class="product-list-grid">
+          <h2>Tillbehör</h2>
           <button class="previous-btn" @click="previousWheelsPage"></button>
-            <li v-for="(product, index) in wheelsPagination" :key="index" @click="openModal(product)">
-              <ProductCard v-bind:product="product" /> 
-            </li>
+          <ul>
+              <li v-for="(product, index) in wheelsPagination" :key="index" @click="openModal(product)">
+                <ProductCard v-bind:product="product" /> 
+              </li>
+          </ul>
           <button class="next-btn" @click="nextWheelsPage"></button>
-        </ul>
+        </div>
       </div>
-    </div>
-    <div class="modal-wrapper">
-      <ProductModal
-        v-if="showModalUpdate" 
-        :product='productItem'
-        v-on:closeModal="ToCloseModal()" 
-      />
+      <div class="modal-wrapper">
+        <ProductModal
+          v-if="showModalUpdate" 
+          :product='productItem'
+          v-on:closeModal="ToCloseModal()" 
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -165,13 +169,25 @@ export default {
 
 <style lang="scss" scoped>
 @import '../assets/css/colors.scss';
-ul {
+.product-list-wrapper {
   display: flex;
-  list-style: none;
   justify-content: center;
 }
+.product-list-grid {
+  display: grid;
+  grid-template-columns: 64px auto 64px;
+  width: 1104px;
+}
+ul {
+  grid-column: 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  list-style: none;
+  justify-content: left;
+}
 h2 {
-  text-align: center;
+  grid-column: 2;
+  margin-left: 16px;
 }
 button {
   border: none;
@@ -180,18 +196,18 @@ button {
   align-self: center;
 }
 .previous-btn {
+  grid-column: 1;
   background: url('../assets/svg/nav-L-btn.svg');
 }
 .next-btn {
+  grid-column: 3;
   background: url('../assets/svg/nav-R-btn.svg');
 }
 .modal-wrapper {
-   /* To put into middle */
   position: fixed;
   left: 50%;
   top: 50%;
-  margin-top: -256px; /* Negative half of height. */
-  margin-left: -536px; /* Negative half of width. */
-  /* To put into middle */
+  margin-top: -256px; 
+  margin-left: -536px;
 }
 </style>
