@@ -1,7 +1,7 @@
 <template> 
 <div>
   Register VIEW
-  <RegisterComp v-bind:registerHeader="'Skapa konto'" v-bind:ctaBtn="'Skapa konto'" />
+  <RegisterComp v-bind:registerHeader="'Skapa konto'" v-bind:ctaBtn="'Skapa konto'" v-bind:isRegister="true" />
 </div>
 </template>
 
