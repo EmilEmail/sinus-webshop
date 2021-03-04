@@ -40,12 +40,21 @@ export default {
   },
   methods: {
     showSkateboards() {
+      if (this.$route.path !== '/') {
+        this.$router.push('/');
+      }
       this.$store.commit('showSkateboards');
     },
     showClothes() {
+      if (this.$route.path !== '/') {
+        this.$router.push('/');
+      }
       this.$store.commit('showClothes');
     },
     showAccesories() {
+      if (this.$route.path !== '/') {
+        this.$router.push('/');
+      }
       this.$store.commit('showWheels');
     },
     showStartpage() {

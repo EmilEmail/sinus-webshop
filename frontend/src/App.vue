@@ -19,6 +19,7 @@ import NavComp from './components/NavComp.vue'
 export default {
   beforeCreate() {
     this.$store.dispatch('getProducts');
+    this.$store.dispatch('checkLocalstorage');
   },
   components: {
     NavComp,

@@ -41,6 +41,7 @@ export default new Vuex.Store({
     showClothes: true,
     showWheels: true,
 
+    
   },
   getters: {
     products: state => {
@@ -167,7 +168,17 @@ export default new Vuex.Store({
     },
 
     //LOGIN
-    async checkLogin(context, userLogin) {
+    checkLocalstorage(context) {
+      if (localStorage.getItem('token') !== null) {
+        setToken(localStorage.getItem('token'));
+        let user = localStorage.getItem('user');
+        context.state.user = JSON.parse(user);
+        if (user.role === 'admin') {
+          context.state.isAdmin = true;
+        }
+      }
+    },
+    async checkLogin(context, userLogin) {        
       const userCheck = await checkLogin(LOGIN_URL, userLogin);
       const token = userCheck.data.token;
 
@@ -177,10 +188,15 @@ export default new Vuex.Store({
         const userDB = await getUser(USER_URL);
         console.log(userDB);
         context.state.user = userDB;
+
+        localStorage.setItem('token', token);
+        localStorage.setItem('user', JSON.stringify(userDB));
+
         if (userDB.role === 'admin') {
           context.state.isAdmin = true;
         }
       }
+      
     },
     async registerUser(context, newUser) {
       const response = await registerUser(REGISTER_URL, newUser);
@@ -198,12 +214,7 @@ export default new Vuex.Store({
       console.log(response);
     },
     async commitToBuy(context) {
-      let items = [];
-          
-      context.state.cart.forEach(product => {
-        items.push(product._id);
-      });
-
+      let items = context.state.cart;
       const response = await placeNewOrder(ORDER_URL, items);
       console.log(response);
     },
