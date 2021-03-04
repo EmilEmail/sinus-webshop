@@ -16,9 +16,9 @@
       <input type="text" name="city" v-model="newUser.address.city">
       <label for="email">Epost</label>
       <input class="fullrow" type="text" name="email" v-model="newUser.email">
-      <label for="password">Lösenord</label>
-      <input class="fullrow" type="text" name="password" v-model="newUser.password">
-      <input class="default-btn" type="button" v-bind:value="ctaBtn" @click="createNewUser">
+      <label v-if="isRegister" for="password">Lösenord</label>
+      <input v-if="isRegister" class="fullrow" type="text" name="password" v-model="newUser.password">
+      <input v-if="isRegister" class="default-btn" type="button" v-bind:value="ctaBtn" @click="createNewUser">
     </form>
   </div>
 </template>
@@ -27,10 +27,6 @@
 export default {
   data() {
     return {
-      form: {
-        firstname: '',
-        lastname: '',
-      },
       newUser: {
         email: '',
         password: '',
@@ -49,17 +45,18 @@ export default {
     if (user._id !== undefined) {
       this.newUser = user;
       let name = user.name.split(' ');
-      this.form.firstname = name[0];
+      this.newUser.firstname = name[0];
       let lastname = '';
       for (let i = 1; i < name.length; i++) {
         lastname += name[i] + " ";
       }
-      this.form.lastname = lastname;
+      this.newUser.lastname = lastname;
     }
   },
   props: {
     registerHeader: String,
-    ctaBtn: String
+    ctaBtn: String,
+    isRegister: Boolean
   },
   methods: {
     createNewUser() {
