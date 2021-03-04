@@ -1,12 +1,12 @@
 <template>
-<div>
-  <!-- login -->
+<div class="modal-background">
   <div class="login-comp middle-login">
     <div class="login-comp-wrapper" >
-
-      <h2>Logga in</h2>
+      <div class="login-h2-and-btn">
+        <h2>Logga in</h2>
+        <button class="close-btn" @click="$emit('loginToggle')"></button>
+      </div>
       <p>Ange Email och lösenord:</p>
-
       <form @submit.prevent class="login-form">
         <label for="email">Email</label>
         <input type="email" name="email" v-model="email">
@@ -78,7 +78,17 @@ export default {
 
 <style lang="scss" scoped>
 @import '../assets/css/colors.scss';
-
+.modal-background {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, .5);
+  position: fixed;
+  left: 0%;
+  top: 0%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .profile-btn {
  width: 26px;
  height: 30px;
@@ -125,6 +135,20 @@ export default {
   padding: 32px;
   margin: auto;
   font-family: font2;
+  .close-btn {
+    align-self: start;
+    margin-left: auto;
+    width: 45px;
+    height: 45px;
+    background-image:  url('../assets/svg/close-btn.svg');
+    background-size: cover;
+    border: none;
+    background-color: black;
+  }
+  .login-h2-and-btn {
+    display: flex;
+    justify-content: space-between;
+  }
   h2 {
     font-family: font1;
     font-weight: 100;

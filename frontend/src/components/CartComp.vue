@@ -1,10 +1,10 @@
 <template>
-<div class="modal-background" v-if="cartOn">
+<div class="modal-background">
   <div class="cart-comp-modal">
     <section class="cart">
       <div class="cart-h2-and-btn">
         <h2>Kundvagn</h2>
-        <button class="close-btn" @click="cartOn = !cartOn"></button>
+        <button class="close-btn" @click="$emit('cartToggle')"></button>
       </div>
 
       <div class="cart-headers">
@@ -46,7 +46,6 @@ export default {
     return {
       buttonTitle: "KÖP",
       buttonClick: "checkout",
-      cartOn: true,
       // Ta bort och lägg till rätt variablar
       cart: []
     }

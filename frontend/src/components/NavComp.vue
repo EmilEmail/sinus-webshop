@@ -15,10 +15,10 @@
     </section>
     <section class="modals">
       <div v-if="cartOn">
-        <CartComp />
+        <CartComp @cartToggle="cartToggle" />
       </div>
       <div v-if="loginOn">
-        <LoginComp @closeLogin="checkUser" />
+        <LoginComp @closeLogin="checkUser" @loginToggle="loginToggle" />
       </div>
     </section>
   </div>
