@@ -32,6 +32,7 @@ export default new Vuex.Store({
       clothes: [],
       wheels: []
     },
+    searchResults: [],
     user: defaultUser,
     cart: [],
     isAdmin: false,
@@ -76,6 +77,19 @@ export default new Vuex.Store({
         Vue.set(product, 'totalPruductPrice', product.price);
       }
       state.cartAmount++;
+    },
+    
+    doSearch(state, searchText) {
+      let allProducts = state.products;
+      let searchResults = [];
+
+      for (let i = 0; i < allProducts.length; i++) {
+        if (allProducts[i].longDesc.includes(searchText)) {
+          searchResults.push(allProducts[i]);
+        }
+      }
+      state.searchResults = searchResults;
+      console.log(state.searchResults);
     },
     removeFromCart(state, product) {
       let index = state.cart.indexOf(product);
