@@ -9,12 +9,12 @@
         <p>{{ product.shortDesc }}</p>
       </div>
       <div class="product-list-grid-wrapper-bottom">
-        <div class="product-list-stars">
+        <!-- <div class="product-list-stars"> -->
         <img src="../assets/images/big-stars.svg" alt="">
-        </div>
-        <div class="product-list-price">
+        <!-- </div> -->
+        <!-- <div class="product-list-price"> -->
           <p> {{ product.price }}:- </p>
-        </div>
+        <!-- </div> -->
       </div>
     </div>
   </div>
@@ -47,42 +47,41 @@ export default {
   }
 }
 .product-list-grid-wrapper-bottom {
-  margin-left: 8px;
-  margin-top: 32px;
   display: flex;
+  padding: 8px;
+  align-items: baseline;
+  grid-row: 2;
+  p {
+    margin-left: auto;
+    font-family: 'font1';
+    font-size: 36px;
+  }
+  img {
+    width: 80px;
+  }
 }
 .product-list-background {
   background-color: black;
   color: white;
   grid-row: 2;
   width: 207px;
+  height: 120px;
   margin-bottom: 16px;
+  display: grid;
+  grid-template-rows: 0.7fr 0.7fr;
 }
 .product-list-text {
   grid-row: inherit;
+  margin-top: 4px;
   margin-left: 8px;
-  
+  grid-row: 1/2;
   h3 {
   font-family: 'font1';
   }
   p {
-    font-family: 'font2';
+    font-family: 'font1';
     font-size: 16px;
     margin-bottom: 16px;
   }
-}
-.product-list-stars {
-    img {
-    height: 16px;
-    width: 70px;
-    margin-top: 16px;
-  }
-}
-.product-list-price {
-  margin: 4px;
-  margin-left: auto;
-  width: 85px;
-  font-family: 'font1';
-  font-size: 36px;
 }
 </style>
