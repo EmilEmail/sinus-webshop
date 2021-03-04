@@ -17,6 +17,7 @@
           <p>{{ user.address.zip + " " + user.address.city }}</p>
         </div>
       </div>
+      <button class="logout-btn" @click="clearLocalstorage">LOGGA UT</button>
     </div>
     <div class="profil-comp-order-history">
       <h2>Orderhistorik</h2>
@@ -73,6 +74,13 @@ export default {
       return total;
     }
   },
+  methods: {
+    clearLocalstorage() {
+      this.$store.dispatch('clearLocalstorage');
+      this.$router.push('/');
+      this.$router.go();
+    }
+  }
 }
 </script>
 
@@ -157,5 +165,13 @@ li {
 .profil-comp-order-history-border{
   border-top: 2px solid $color1;
   border-bottom: 2px solid $color1;
+}
+.logout-btn {
+  grid-column: 4/6;
+  padding: 8px;
+  width: 160px;
+  border: none;
+  outline: none;
+  border-radius: 5px;
 }
 </style>

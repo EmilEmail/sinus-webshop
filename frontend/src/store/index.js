@@ -102,6 +102,7 @@ export default new Vuex.Store({
         Vue.set(product, 'totalPruductPrice', product.price);
       }
       state.cartAmount++;
+      localStorage.setItem('cart', JSON.stringify(state.cart));
     },
     
     doSearch(state, searchObj) {
@@ -172,11 +173,20 @@ export default new Vuex.Store({
       if (localStorage.getItem('token') !== null) {
         setToken(localStorage.getItem('token'));
         let user = localStorage.getItem('user');
+        let cart;
+        if (localStorage.getItem('cart') !== null) {
+          cart = localStorage.getItem('cart');
+        }
+        context.state.cart = JSON.parse(cart);
         context.state.user = JSON.parse(user);
         if (user.role === 'admin') {
           context.state.isAdmin = true;
         }
       }
+    },
+    clearLocalstorage() {
+      localStorage.removeItem('user');
+      localStorage.removeItem('token');
     },
     async checkLogin(context, userLogin) {        
       const userCheck = await checkLogin(LOGIN_URL, userLogin);
