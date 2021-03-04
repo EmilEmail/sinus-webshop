@@ -4,7 +4,7 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 
 import getData from '@/api/api.js';
-import { getUser, checkLogin, registerUser, setToken, addProductToDB, editProductInDB, deleteProductInDB, orderHistory } from '@/api/api.js';
+import { getUser, checkLogin, registerUser, setToken, addProductToDB, editProductInDB, deleteProductInDB, orderHistory, placeNewOrder } from '@/api/api.js';
 
 const BASE_URL = 'http://localhost:5000/api/';
 const LOGIN_URL = `${BASE_URL}auth/`;
@@ -165,6 +165,36 @@ export default new Vuex.Store({
       const response = await orderHistory(ORDER_URL);
       console.log(response);
     },
+    async commitToBuy(context) {
+      let items = [];
+          
+      context.state.cart.forEach(product => {
+        items.push(product._id);
+      });
+
+      const response = await placeNewOrder(ORDER_URL, items);
+      console.log(response);
+    },
+
+    // {
+    //   _id: 123,
+    //   timeStamp: Date.now(), 
+    //   status: 'inProcess',
+    //   items: [ 
+    //     {
+    //       title: "Tricky",
+    //       price: 799,
+    //       imgFile: "skateboard-generic.png",
+    //       _id: "9E6KXMIdRglW0wbL",
+    //       amount: 2
+    //     }, 
+    //     {
+    //       <etc>
+    //     }, 
+    //     ... 
+    //   ],
+    //   orderValue: 999
+    // } 
 
     //PRODUCT
     async addProductToDB(context,newProduct) {

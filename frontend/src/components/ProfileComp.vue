@@ -29,7 +29,6 @@
         <li v-for="(order, index) in orderHistery" :key="index" class="profil-comp-grid">
           <p class="col-1">{{ order.orderNr }}</p>
           <p class="col-2">{{ order.date }}</p>
-          <button class="col-3">X</button>
           <p class="col-4">{{ order.price }}:-</p>
         </li>
       </ul>

@@ -2,6 +2,7 @@
   <div>
     <ProfileComp />
     <RegisterComp v-bind:registerHeader="'Dina uppgifter'" v-bind:ctaBtn="'Köp'" />
+    <button @click="commitToBuy">KÖP</button>
   </div>
 </template>
 
@@ -14,6 +15,11 @@ export default {
     RegisterComp,
     ProfileComp,
   },
+  methods: {
+    commitToBuy() {
+      this.$store.dispatch('commitToBuy');
+    }
+  }
 
 }
 </script>

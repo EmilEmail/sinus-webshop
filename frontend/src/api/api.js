@@ -61,6 +61,14 @@ const orderHistory = async (ORDER_URL) => {
     console.log(error)
   }
 }
+const placeNewOrder = async (ORDER_URL, items) => {
+  try {
+    const response = await axios.post(ORDER_URL, items);
+    return response;
+  } catch (error) {
+    console.log(error)
+  }
+}
 
 const addProductToDB = async (newProduct) => {
   try {
@@ -91,4 +99,4 @@ const deleteProductInDB = async (DELETE_URL) => {
 }
 
 export default getData;
-export { getUser, checkLogin, registerUser, setToken, addProductToDB, editProductInDB, deleteProductInDB, orderHistory };
+export { getUser, checkLogin, registerUser, setToken, addProductToDB, editProductInDB, deleteProductInDB, orderHistory, placeNewOrder };
