@@ -10,25 +10,25 @@
 
         <div class="cart-headers">
           <h4>Artikel</h4>
-          <h4>Antal</h4>
-          <h4 class="right-align">Pris</h4>
+          <h4 class="center-align">Antal</h4>
+          <h4 class="center-align">Pris</h4>
         </div>
 
         <ul>
           <li v-for="(item, index) in products" :key="index" class="cart-items">
             <p class="item-name"> {{ item.title }}</p>
-            <button class="delete-btn" @click="removeFromCart(item)">-</button>
+            <button @click="removeFromCart(item)">-</button>
             <p> {{ item.amount }}</p>
-            <button class="delete-btn" @click="removeFromCart(item)">+</button>
+            <button @click="removeFromCart(item)">+</button>
             <p> {{ item.totalPruductPrice }}</p>
-            <button class="delete-btn" @click="removeFromCart(item)">X</button>
+            <button @click="removeFromCart(item)">X</button>
           </li>
         </ul>
 
         <div class="cart-bottom">
           <h4>Summa</h4>
-          <h4 class="centered">{{ totalProduct }}</h4>
-          <h4 class="right-align">{{ totalPrice }}</h4>
+          <h4 class="center-align">{{ totalProduct }} St</h4>
+          <h4 class="center-align">{{ totalPrice }} :-</h4>
         </div>
         <ButtonComp class="go-to-checkout" :buttonTitle="buttonTitle" @buttonClick="checkout" />
       </section>
@@ -149,19 +149,21 @@ export default {
     }
     .cart-headers {
       display: grid;
-      grid-template-columns: 200px auto auto;
+      grid-template-columns: 2.5fr 0.9fr 1fr 0.2fr;
       margin: 0 32px;
       align-items: flex-end;
       border-bottom: 3px solid $color1;
       font-family: font1;
-      .right-align {
-        text-align: right;
-        margin-right: 8px;
+      .center-align {
+        text-align: center;
+      }
+      h4 {
+        text-align: left;
       }
     }
     .cart-bottom {
       display: grid;
-      grid-template-columns: 200px auto auto;
+      grid-template-columns: 3fr 1fr 1.5fr;
       margin: 0 32px;
       padding: 8px 0;
       align-items: flex-end;
@@ -169,6 +171,9 @@ export default {
       .right-align {
         text-align: right;
         margin-right: 8px;
+      }
+      .center-align {
+        text-align: center;
       }
     }
 
@@ -178,7 +183,7 @@ export default {
       
       .cart-items {
         display: grid;
-        grid-template-columns: 3fr 0.2fr 0.5fr 0.2fr 1fr 0.2fr;
+        grid-template-columns: 2.5fr 0.2fr 0.5fr 0.2fr 1fr 0.2fr;
         justify-items: center;
         align-items: center;
         color: white;
@@ -188,7 +193,6 @@ export default {
       }
       button {
         width: 16px;
-        height: 16px;
         justify-self: flex-start;
       }
     };
