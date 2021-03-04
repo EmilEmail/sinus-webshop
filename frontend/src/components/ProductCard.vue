@@ -82,7 +82,7 @@ export default {
   margin: 4px;
   margin-left: auto;
   width: 85px;
-  font-family: 'font2';
+  font-family: 'font1';
   font-size: 36px;
 }
 </style>
