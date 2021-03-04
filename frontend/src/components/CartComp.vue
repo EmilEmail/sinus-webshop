@@ -17,9 +17,9 @@
         <ul>
           <li v-for="(item, index) in products" :key="index" class="cart-items">
             <p class="item-name"> {{ item.title }}</p>
-            <button @click="removeFromCart(item)">-</button>
+            <button @click="removeAmountCart(index)">-</button>
             <p> {{ item.amount }}</p>
-            <button @click="removeFromCart(item)">+</button>
+            <button @click="addAmountCart(item)">+</button>
             <p> {{ item.totalPruductPrice }}</p>
             <button @click="removeFromCart(item)">X</button>
           </li>
@@ -78,10 +78,15 @@ export default {
       this.cartOn = false;
       this.$router.push('/checkout');
     },
+    addAmountCart(item) {
+      this.$store.commit('addToCart', item)
+    },
+    removeAmountCart(index) {
+      this.$store.commit('removeAmountCart', index)
+    },
     removeFromCart(item) {
-    this.$store.commit('removeFromCart', item)
-    console.log(item)
-  }
+      this.$store.commit('removeFromCart', item)
+    }
   }
 
 }

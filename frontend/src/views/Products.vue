@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import ProductListV2 from '../components/ProductListV2.vue'
+import ProductListV2 from '../components/ProductList.vue'
 import SearchComp from '../components/SearchComp.vue'
 export default {
   data() {
