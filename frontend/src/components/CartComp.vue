@@ -5,7 +5,7 @@
       <section class="cart">
         <div class="cart-h2-and-btn">
           <h2>Kundvagn</h2>
-          <button class="close-btn" @click="cartOn = !cartOn">x</button>
+          <button class="close-btn" @click="cartOn = !cartOn"></button>
         </div>
 
         <div class="cart-headers">
@@ -118,7 +118,7 @@ export default {
   /* To put into middle */
 
   width: 540px;
-  height: 660px;
+  min-height: 660px;
   background-color: $color1;
   color: $color2;
 
@@ -132,11 +132,18 @@ export default {
     flex-direction: column;
     justify-content: flex-start;
     width: 385px;
-    height: 497px;
+    min-height: 497px;
     background: $color2;
     color: $color1;
     .close-btn {
-      height: 20px;
+      align-self: start;
+      margin-left: auto;
+      width: 45px;
+      height: 45px;
+      background-image:  url('../assets/svg/close-btn.svg');
+      background-size: cover;
+      border: none;
+      background-color: black;
     }
     .cart-h2-and-btn {
       display: flex;
@@ -198,7 +205,9 @@ export default {
     };
   }
   .go-to-checkout {
+    align-self: center;
     margin: auto;
+    margin-bottom: 16px;
   }
 }
 </style>

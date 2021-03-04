@@ -1,17 +1,17 @@
 <template>
   <div>
     <SearchComp />
-    <ProductListV2 />
+    <ProductList />
   </div>
 </template>
 
 <script>
-import ProductListV2 from '../components/ProductListV2.vue'
+import ProductList from '../components/ProductList.vue'
 import SearchComp from '../components/SearchComp.vue'
 export default {
   components: {
     SearchComp,
-    ProductListV2
+    ProductList
   }
 }
 </script>
