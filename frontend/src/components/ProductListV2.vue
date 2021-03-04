@@ -10,8 +10,8 @@
         <h2>Skateboards</h2>
         <ul>
           <button class="previous-btn" @click="previousBoardPage"></button>
-            <li v-for="(skateboard, index) in boardPagination" :key="index">
-              <ProductCard v-bind:product="skateboard" /> 
+            <li v-for="(product, index) in boardPagination" :key="index" @click="openModal(product)">
+              <ProductCard v-bind:product="product" /> 
             </li>
           <button class="next-btn" @click="nextBoardPage"></button>
         </ul>
@@ -20,8 +20,8 @@
         <h2>Kläder</h2>
         <ul>
           <button class="previous-btn" @click="previousClothesPage"></button>
-            <li v-for="(skateboard, index) in clothesPagination" :key="index">
-              <ProductCard v-bind:product="skateboard" /> 
+            <li v-for="(product, index) in clothesPagination" :key="index" @click="openModal(product)"> 
+              <ProductCard v-bind:product="product" /> 
             </li>
           <button class="next-btn" @click="nextClothesPage"></button>
         </ul>
@@ -30,14 +30,20 @@
         <h2>Tillbehör</h2>
         <ul>
           <button class="previous-btn" @click="previousWheelsPage"></button>
-            <li v-for="(skateboard, index) in wheelsPagination" :key="index">
-              <ProductCard v-bind:product="skateboard" /> 
+            <li v-for="(product, index) in wheelsPagination" :key="index" @click="openModal(product)">
+              <ProductCard v-bind:product="product" /> 
             </li>
           <button class="next-btn" @click="nextWheelsPage"></button>
         </ul>
       </div>
     </div>
-    <ProductModal />
+    <div class="modal-wrapper">
+      <ProductModal
+        v-if="showModalUpdate" 
+        :product='productItem'
+        v-on:closeModal="ToCloseModal()" 
+      />
+    </div>
   </div>
 </template>
 
@@ -51,6 +57,8 @@ export default {
       skateboardPage: 1,
       clothesPage: 1,
       wheelsPage: 1,
+
+      showModal: false,
     }
   },
   props: {
@@ -62,8 +70,8 @@ export default {
     SearchResults
   },
   computed: {
-    skateboards: function() {
-      return this.$store.state.categories.skateboards;
+    showModalUpdate: function() {
+      return this.showModal;
     },
     boardPagination: function() {
       let allSkateboards = this.$store.state.categories.skateboards;
@@ -101,6 +109,14 @@ export default {
 
   },
   methods: {
+    openModal(item){
+      this.showModal = false;
+      this.showModal = true;
+      this.productItem = item;
+    },
+    ToCloseModal() {
+      this.showModal = false;
+    },
     nextBoardPage() {
       let allInCategory = this.$store.state.categories.skateboards;
       let numOfPages = Math.ceil(allInCategory.length / 4);
@@ -148,6 +164,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../assets/css/colors.scss';
 ul {
   display: flex;
   list-style: none;
@@ -167,5 +184,14 @@ button {
 }
 .next-btn {
   background: url('../assets/svg/nav-R-btn.svg');
+}
+.modal-wrapper {
+   /* To put into middle */
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  margin-top: -256px; /* Negative half of height. */
+  margin-left: -536px; /* Negative half of width. */
+  /* To put into middle */
 }
 </style>

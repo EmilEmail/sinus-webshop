@@ -122,8 +122,7 @@ export default {
   margin-left: -270px; /* Negative half of width. */
   /* To put into middle */
 
-  width: 540px;
-  min-height: 660px;
+  padding: 64px;
   background-color: $color1;
   color: $color2;
 
