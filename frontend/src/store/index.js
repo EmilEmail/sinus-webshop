@@ -37,14 +37,11 @@ export default new Vuex.Store({
     cart: [],
     isAdmin: false,
     cartAmount: 0,
-<<<<<<< Updated upstream
     showSkateboards: true,
     showClothes: true,
     showWheels: true,
 
-=======
     
->>>>>>> Stashed changes
   },
   getters: {
     products: state => {
