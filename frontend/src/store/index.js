@@ -37,10 +37,14 @@ export default new Vuex.Store({
     cart: [],
     isAdmin: false,
     cartAmount: 0,
+<<<<<<< Updated upstream
     showSkateboards: true,
     showClothes: true,
     showWheels: true,
 
+=======
+    
+>>>>>>> Stashed changes
   },
   getters: {
     products: state => {
@@ -168,17 +172,31 @@ export default new Vuex.Store({
 
     //LOGIN
     async checkLogin(context, userLogin) {
-      const userCheck = await checkLogin(LOGIN_URL, userLogin);
-      const token = userCheck.data.token;
+      if (localStorage.getItem('token') !== null) {
+        setToken(localStorage.getItem('token'));
+        let user = localStorage.getItem('user');
+        context.state.user = JSON.parse(user);
 
-      if (userCheck.status === 200) {
-        alert("LOGGAT IN");
-        setToken(token);
-        const userDB = await getUser(USER_URL);
-        console.log(userDB);
-        context.state.user = userDB;
-        if (userDB.role === 'admin') {
-          context.state.isAdmin = true;
+        console.log(localStorage.getItem('token'))
+      }
+      else {
+        
+        const userCheck = await checkLogin(LOGIN_URL, userLogin);
+        const token = userCheck.data.token;
+  
+        if (userCheck.status === 200) {
+          alert("LOGGAT IN");
+          setToken(token);
+          const userDB = await getUser(USER_URL);
+          console.log(userDB);
+          context.state.user = userDB;
+  
+          localStorage.setItem('token', token);
+          localStorage.setItem('user', JSON.stringify(userDB));
+  
+          if (userDB.role === 'admin') {
+            context.state.isAdmin = true;
+          }
         }
       }
     },
@@ -198,12 +216,7 @@ export default new Vuex.Store({
       console.log(response);
     },
     async commitToBuy(context) {
-      let items = [];
-          
-      context.state.cart.forEach(product => {
-        items.push(product._id);
-      });
-
+      let items = context.state.cart;
       const response = await placeNewOrder(ORDER_URL, items);
       console.log(response);
     },
