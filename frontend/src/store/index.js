@@ -34,7 +34,8 @@ export default new Vuex.Store({
     },
     user: defaultUser,
     cart: [],
-    isAdmin: false
+    isAdmin: false,
+    cartAmount: 0
   },
   getters: {
     products: state => {
@@ -74,7 +75,16 @@ export default new Vuex.Store({
         Vue.set(product, 'amount', 1);
         Vue.set(product, 'totalPruductPrice', product.price);
       }
-    }
+      state.cartAmount++;
+    },
+    removeFromCart(state, product) {
+      let index = state.cart.indexOf(product);
+      if(index > -1) {
+        let product = state.cart[index]
+        state.cartAmount -= product.amount
+        state.cart.splice(index, 1)
+      }
+    }, 
   },
   actions: {
     async getProducts({ commit }) {
