@@ -1,40 +1,41 @@
 <template>
    <div class="product-list-grid-wrapper-top">
 
-    <div v-if="showSearchResults">
+    <div v-if="showOnlySearchResults">
       <SearchResults />
     </div>
 
-
-    <div>
-      <h2>Skateboards</h2>
-      <ul>
-        <button class="previous-btn" @click="previousBoardPage"></button>
-          <li v-for="(skateboard, index) in boardPagination" :key="index">
-            <ProductCard v-bind:product="skateboard" /> 
-          </li>
-        <button class="next-btn" @click="nextBoardPage"></button>
-      </ul>
-    </div>
-    <div>
-      <h2>Kläder</h2>
-      <ul>
-        <button class="previous-btn" @click="previousClothesPage"></button>
-          <li v-for="(skateboard, index) in clothesPagination" :key="index">
-            <ProductCard v-bind:product="skateboard" /> 
-          </li>
-        <button class="next-btn" @click="nextClothesPage"></button>
-      </ul>
-    </div>
-    <div>
-      <h2>Tillbehör</h2>
-      <ul>
-        <button class="previous-btn" @click="previousWheelsPage"></button>
-          <li v-for="(skateboard, index) in wheelsPagination" :key="index">
-            <ProductCard v-bind:product="skateboard" /> 
-          </li>
-        <button class="next-btn" @click="nextWheelsPage"></button>
-      </ul>
+    <div v-else>
+      <div>
+        <h2>Skateboards</h2>
+        <ul>
+          <button class="previous-btn" @click="previousBoardPage"></button>
+            <li v-for="(skateboard, index) in boardPagination" :key="index">
+              <ProductCard v-bind:product="skateboard" /> 
+            </li>
+          <button class="next-btn" @click="nextBoardPage"></button>
+        </ul>
+      </div>
+      <div>
+        <h2>Kläder</h2>
+        <ul>
+          <button class="previous-btn" @click="previousClothesPage"></button>
+            <li v-for="(skateboard, index) in clothesPagination" :key="index">
+              <ProductCard v-bind:product="skateboard" /> 
+            </li>
+          <button class="next-btn" @click="nextClothesPage"></button>
+        </ul>
+      </div>
+      <div>
+        <h2>Tillbehör</h2>
+        <ul>
+          <button class="previous-btn" @click="previousWheelsPage"></button>
+            <li v-for="(skateboard, index) in wheelsPagination" :key="index">
+              <ProductCard v-bind:product="skateboard" /> 
+            </li>
+          <button class="next-btn" @click="nextWheelsPage"></button>
+        </ul>
+      </div>
     </div>
     <ProductModal />
   </div>
@@ -50,9 +51,10 @@ export default {
       skateboardPage: 1,
       clothesPage: 1,
       wheelsPage: 1,
-
-      showSearchResults: true,
     }
+  },
+  props: {
+    showOnlySearchResults: Boolean
   },
   components: {
     ProductCard,
@@ -96,6 +98,7 @@ export default {
 
       return trimmedData;
     },
+
   },
   methods: {
     nextBoardPage() {

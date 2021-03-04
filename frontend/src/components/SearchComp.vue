@@ -3,24 +3,24 @@
     <div class="form-wrapper">
       <form @click.prevent>
         <div class="search-comp-closed">
-          <input type="search" name="search" class="search" v-model="searchText">
-          <button @click="searchToggle = !searchToggle" class="filter-btn"> Filter&#9660;</button>
+          <input type="search" name="search" class="search" v-model="searchObj.searchText">
+          <button @click="categoryToggle = !categoryToggle" class="filter-btn"> Filter&#9660;</button>
           <input type="submit" value="" class="search-btn" @click="doSearch">
         </div>
       </form>
-      <div v-if="searchToggle" class="search-comp-open">
+      <div v-if="categoryToggle" class="search-comp-open">
         <label class="filter-container">
-          <input type="checkbox" >
+          <input type="checkbox" v-model="searchObj.skateboards">
           <span class="check-container"></span>
-          Skatebord
+          Skateboards
         </label>
         <label class="filter-container">
-          <input type="checkbox">
+          <input type="checkbox" v-model="searchObj.clothes">
           <span class="check-container"></span>
           Kläder
         </label>
         <label class="filter-container">
-          <input type="checkbox">
+          <input type="checkbox" v-model="searchObj.wheels">
           <span class="check-container"></span>
           Tillbehör
         </label>
@@ -34,14 +34,20 @@ export default {
 
   data() {
     return {
-      searchText: '',
-      searchToggle: false,
+      searchObj: {
+        searchText: '',
+        skateboards: false,
+        clothes: false,
+        wheels: false
+      },
+      categoryToggle: false,
     }
   },
   methods: {
     doSearch() {
-      const searchText = this.searchText;
-      this.$store.commit('doSearch', searchText);
+      const searchObj = this.searchObj;
+      this.$store.commit('doSearch', searchObj);
+      this.$emit('searchClicked');
     },
   }
 }

@@ -79,13 +79,40 @@ export default new Vuex.Store({
       state.cartAmount++;
     },
     
-    doSearch(state, searchText) {
+    doSearch(state, searchObj) {
       let allProducts = state.products;
+      let skateboards = state.categories.skateboards;
+      let clothes = state.categories.clothes;
+      let wheels = state.categories.wheels;
+      let productsToSearch = [];
       let searchResults = [];
 
-      for (let i = 0; i < allProducts.length; i++) {
-        if (allProducts[i].longDesc.includes(searchText)) {
-          searchResults.push(allProducts[i]);
+      if (searchObj.skateboards === false &&
+      searchObj.clothes === false &&
+      searchObj.wheels === false) {
+        productsToSearch = allProducts;
+      }
+      else {
+        if (searchObj.skateboards === true) {
+          skateboards.forEach(product => {
+            productsToSearch.push(product);
+          });  
+        }
+        if (searchObj.clothes === true) {
+          clothes.forEach(product => {
+            productsToSearch.push(product);
+          });  
+        }
+        if (searchObj.wheels === true) {
+          wheels.forEach(product => {
+            productsToSearch.push(product);
+          });  
+        }
+      }
+
+      for (let i = 0; i < productsToSearch.length; i++) {
+        if (productsToSearch[i].longDesc.includes(searchObj.searchText)) {
+          searchResults.push(productsToSearch[i]);
         }
       }
       state.searchResults = searchResults;

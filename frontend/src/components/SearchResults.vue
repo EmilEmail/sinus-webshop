@@ -39,10 +39,18 @@ export default {
   },
   methods: {
     previousResultPage() {
-      alert('prev');
+      let currentPage = this.searchPage;
+      if (currentPage > 1) {
+        this.searchPage--;
+      }
     },
     nextResultPage() {
-      alert('next');
+      let allInSearch = this.searchResults;
+      let numOfPages = Math.ceil(allInSearch.length / 4);
+      let currentPage = this.searchPage;
+      if (currentPage < numOfPages) {
+        this.searchPage++;
+      }
     }
 
   }
@@ -51,5 +59,24 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+  ul {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+  }
+  h2 {
+    text-align: center;
+  }
+  button {
+    border: none;
+    width: 45px;
+    height: 42px;
+    align-self: center;
+  }
+  .previous-btn {
+    background: url('../assets/svg/nav-L-btn.svg');
+  }
+  .next-btn {
+    background: url('../assets/svg/nav-R-btn.svg');
+  }
 </style>
