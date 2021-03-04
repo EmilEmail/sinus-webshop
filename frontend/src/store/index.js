@@ -122,10 +122,10 @@ export default new Vuex.Store({
         console.log(state.cart)
       if(state.cart[index].amount > 1) {
         state.cart[index].amount--
+        state.cart[index].totalPruductPrice = state.cart[index].amount * state.cart[index].price
       } else {
         state.cart.splice(index, 1)
       }
-      state.cart[index].totalPruductPrice -= state.cart[index].price
     },
     removeFromCart(state, product) {
       let index = state.cart.indexOf(product);
