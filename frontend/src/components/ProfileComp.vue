@@ -34,8 +34,8 @@
         </li>
       </ul>
       <div class="profil-comp-grid">
-        <p class="col-1">Summa</p>
-        <p class="col-4">{{ totalSum }}:-</p>
+        <p class="col-1 bold-text">Summa</p>
+        <p class="col-4 bold-text">{{ totalSum }}:-</p>
       </div>
     </div>
   </div>
@@ -108,7 +108,7 @@ export default {
   height: auto;
   background-color: $color2;
   color: $color1;
-  padding: 32px;
+  padding: 32px 32px 64px 32px;
   margin-bottom: 32px; //Detta ska bort eller ändras
   h2 {
     margin-bottom: 16px;
@@ -118,11 +118,16 @@ h2 {
   grid-column: 1/9;
   grid-row: 1;
   font-family: 'font1';
-  font-size: 40px;
+  font-weight: 100;
+  font-size: 48px;
 }
 p {
   font-family: 'font2';
   font-size: 16px;
+}
+.bold-text {
+  font-weight: 700;
+  line-height: 20px;
 }
 ul {
   margin: 8px 0 8px 0;
@@ -140,7 +145,8 @@ li {
   grid-column: 1/3;
 }
 .col-2 {
-  grid-column: 3/5;
+  grid-column: 4/5;
+  text-align: center;
 }
 .col-3 {
   grid-column: 6;

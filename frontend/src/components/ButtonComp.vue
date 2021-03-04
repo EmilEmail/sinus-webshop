@@ -20,7 +20,7 @@ export default {
   height: 50px;
   border-radius: 10px;
   background-color: $yes-green;
-  border-color: white;
-  color: white;
+  border-color: $color1;
+  color: $color1;
 }
 </style>

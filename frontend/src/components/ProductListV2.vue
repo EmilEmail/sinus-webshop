@@ -184,6 +184,7 @@ export default {
   display: grid;
   grid-template-columns: 64px auto 64px;
   width: 1104px;
+  margin: 72px 0;
 }
 ul {
   grid-column: 2;
@@ -195,6 +196,9 @@ ul {
 h2 {
   grid-column: 2;
   margin-left: 16px;
+  font-family: 'font2';
+  font-weight: 400;
+  font-size: 40px;
 }
 button {
   border: none;

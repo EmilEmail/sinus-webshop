@@ -95,6 +95,7 @@ export default {
   h2 {
     font-family: 'font1';
     font-size: 40px;
+    font-weight: 400;
   }
   button {
     align-self: start;
@@ -104,7 +105,7 @@ export default {
     background-image:  url('../assets/svg/close-btn.svg');
     background-size: cover;
     border: none;
-    background-color: black;
+    background-color: $color2;
   }
 }
 .product-modal-info-row-2 {
@@ -113,12 +114,13 @@ export default {
   text-align: left;
   h3 {
     font-family: 'font1';
+    font-size: 24px;
     margin-bottom: 16px;
+    font-weight: 400;
   }
   p {
     font-family: 'font2';
     margin-bottom: 16px;
-
   }
 }
 .product-modal-info-row-3 {

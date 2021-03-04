@@ -30,6 +30,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../assets/css/colors.scss';
+
 .product-list-grid-wrapper-top {
   margin: auto;
   display: grid;
@@ -61,8 +63,8 @@ export default {
   }
 }
 .product-list-background {
-  background-color: black;
-  color: white;
+  background-color: $color2;
+  color: $color1;
   grid-row: 2;
   width: 207px;
   height: 120px;
@@ -77,6 +79,8 @@ export default {
   grid-row: 1/2;
   h3 {
   font-family: 'font1';
+  font-size: 27px;
+  font-weight: 400;
   }
   p {
     font-family: 'font1';

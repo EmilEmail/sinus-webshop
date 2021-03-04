@@ -8,9 +8,9 @@
       </div>
 
       <div class="cart-headers">
-        <h4>Artikel</h4>
-        <h4 class="center-align">Antal</h4>
-        <h4 class="center-align">Pris</h4>
+        <p>Artikel</p>
+        <p class="center-align">Antal</p>
+        <p class="center-align">Pris</p>
       </div>
 
       <ul>
@@ -20,14 +20,14 @@
           <p> {{ item.amount }}</p>
           <button @click="addAmountCart(item)">+</button>
           <p> {{ item.totalPruductPrice }}</p>
-          <button @click="removeFromCart(item)">X</button>
+          <button @click="removeFromCart(item)" class="trash-can"></button>
         </li>
       </ul>
 
       <div class="cart-bottom">
-        <h4>Summa</h4>
-        <h4 class="center-align">{{ totalProduct }} St</h4>
-        <h4 class="center-align">{{ totalPrice }} :-</h4>
+        <p>Summa</p>
+        <p class="center-align">{{ totalProduct }} St</p>
+        <p class="center-align">{{ totalPrice }} :-</p>
       </div>
       <ButtonComp class="go-to-checkout" :buttonTitle="buttonTitle" @buttonClick="checkout" />
     </section>
@@ -91,8 +91,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
 @import '../assets/css/colors.scss';
+
 .modal-background {
   width: 100vw;
   height: 100vh;
@@ -128,15 +128,17 @@ export default {
       background-image:  url('../assets/svg/close-btn.svg');
       background-size: cover;
       border: none;
-      background-color: black;
+      background-color: $color2;
     }
     .cart-h2-and-btn {
       display: flex;
       justify-content: space-between;
       h2 {
+        font-family: 'font1';
+        font-size: 40px;
+        font-weight: 400;
         text-align: left;
         margin: 32px 0 16px 32px;
-        font-family: font1;
       }
     }
     .cart-headers {
@@ -145,14 +147,16 @@ export default {
       margin: 0 32px;
       align-items: flex-end;
       border-bottom: 3px solid $color1;
-      font-family: font1;
       .center-align {
         text-align: center;
       }
-      h4 {
+    }
+    p {
+        font-family: 'font2';
+        font-size: 18px;
+        font-weight: 400;
         text-align: left;
       }
-    }
     .cart-bottom {
       display: grid;
       grid-template-columns: 3fr 1fr 1.5fr;
@@ -160,6 +164,9 @@ export default {
       padding: 8px 0;
       align-items: flex-end;
       border-top: 3px solid $color1;
+      p {
+        font-weight: 700;
+      }
       .right-align {
         text-align: right;
         margin-right: 8px;
@@ -170,27 +177,40 @@ export default {
     }
     ul {
       list-style: none;
-      margin: 0 32px 32px 32px;
+      min-height: 64px;
+      margin: 0 32px 0 32px;
+      li {
+        margin: 8px 0;
+      }
       .cart-items {
         display: grid;
         grid-template-columns: 2.5fr 0.2fr 0.5fr 0.2fr 1fr 0.2fr;
         justify-items: center;
         align-items: center;
-        color: white;
+        color: $color1;
         .item-name {
           justify-self: flex-start;
         }
       }
       button {
+        background: none;
+        color: $color1;
+        border: none;
+        font-size: 18px;
         width: 16px;
+        font-weight: 500;
         justify-self: flex-start;
+      }
+      .trash-can {
+        background: url('../assets/svg/trashcan.svg');
+        background-size: cover;
+        height: 20px;
       }
     }
   }
   .go-to-checkout {
     align-self: center;
-    margin: auto;
-    margin-bottom: 16px;
+    margin: 64px;
   }
 }
 </style>

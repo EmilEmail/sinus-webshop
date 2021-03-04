@@ -59,6 +59,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../assets/css/colors.scss';
   ul {
     display: flex;
     list-style: none;
@@ -66,6 +67,9 @@ export default {
   }
   h2 {
     text-align: center;
+    font-family: 'font1';
+    font-weight: 400;
+    font-size: 40px;
   }
   button {
     border: none;

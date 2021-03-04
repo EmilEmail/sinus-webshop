@@ -47,4 +47,12 @@ img {
   width: 116px;
   height: 116px;
 }
+h2 {
+  font-family: 'font1';
+    font-weight: 100;
+    font-size: 48px;
+}
+p {
+  font-family: 'font1';
+}
 </style>

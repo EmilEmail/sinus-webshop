@@ -3,7 +3,7 @@
     <div class="form-wrapper">
       <form @click.prevent>
         <div class="search-comp-closed">
-          <input type="search" name="search" class="search" v-model="searchObj.searchText">
+          <input type="search" name="search" class="search" v-model="searchObj.searchText" placeholder="Sök...">
           <button @click="categoryToggle = !categoryToggle" class="filter-btn"> Filter&#9660;</button>
           <input type="submit" value="" class="search-btn" @click="doSearch">
         </div>
@@ -67,7 +67,7 @@ export default {
   width: 624px;
   margin: 32px;
   padding: 8px 16px;
-  font-family: font1;
+  font-family: 'font2';
 }
 form {
   width: 100%;
@@ -112,8 +112,12 @@ form {
 .filter-container {
   display: flex;
   flex-direction: row;
-  margin: 12px 0;
+  align-items: center;
+  margin: 16px 16px 8px 8px;;
   font-size: 18px;
+  font-family: 'font1';
+  font-weight: 400;
+
   
   input {
     display: none;
@@ -126,7 +130,7 @@ form {
     width: 20px;
     margin-right: 8px;
     border-radius: 5px;
-    background-color: #eee;
+    background-color: $color1;
   }
   input:checked ~ .check-container {
   background-color: $accent-color;
