@@ -55,6 +55,12 @@ export default {
   background: $color1;
   padding: 64px;
   text-align: -webkit-center;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  margin-top: -130px; /* Negative half of height. */
+  margin-left: -540px; /* Negative half of width. */
+  /* To put into middle */
 }
 .product-modal-grid-wrapper {
   display: grid;
