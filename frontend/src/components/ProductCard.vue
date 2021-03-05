@@ -56,10 +56,10 @@ export default {
   p {
     margin-left: auto;
     font-family: 'font1';
-    font-size: 36px;
+    font-size: 32px;
   }
   img {
-    width: 80px;
+    width: 77px;
   }
 }
 .product-list-background {
