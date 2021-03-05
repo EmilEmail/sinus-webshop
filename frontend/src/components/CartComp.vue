@@ -4,7 +4,6 @@
     <section class="cart">
       <div class="cart-h2-and-btn">
         <h2>Kundvagn</h2>
-        <button class="close-btn" @click="$emit('cartToggle')"></button>
         <button class="close-btn" @click="cartToggle"></button>
       </div>
 
