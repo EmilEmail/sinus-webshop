@@ -109,24 +109,6 @@ export default {
   background-color: $color1;
   padding: 64px;
 }
-.middle-login {
-  /* To put into middle */
-  position: fixed;
-  left: 50%;
-  top: 50%;
-  margin-top: -280px; /* Negative half of height. */
-  margin-left: -376px; /* Negative half of width. */
-  /* To put into middle */
-}
-.middle-online {
-  /* To put into middle */
-  position: absolute;
-  right: 170px;
-  top: 250px;
-  margin-top: -150px; /* Negative half of height. */
-  margin-left: -150px; /* Negative half of width. */
-  /* To put into middle */
-}
 .login-comp-wrapper {
   background-color: $color2;
   color: $color1;

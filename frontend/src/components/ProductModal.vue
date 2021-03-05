@@ -1,4 +1,5 @@
 <template>
+<div class="modal-background">
   <div class="product-modal-wrapper">
     <div class="product-modal-grid-wrapper">
       <div class="product-modal-img">
@@ -21,6 +22,7 @@
       </div>
     </div>
   </div>
+</div>
 </template>
 
 <script>
@@ -50,17 +52,21 @@ export default {
 
 <style lang="scss" scoped>
 @import '../assets/css/colors.scss';
-
+.modal-background {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, .5);
+  position: fixed;
+  left: 0%;
+  top: 0%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .product-modal-wrapper {
   background: $color1;
   padding: 64px;
-  text-align: -webkit-center;
-  position: fixed;
-  left: 50%;
-  top: 50%;
-  margin-top: -130px; /* Negative half of height. */
-  margin-left: -540px; /* Negative half of width. */
-  /* To put into middle */
+  text-align: center;
 }
 .product-modal-grid-wrapper {
   display: grid;
