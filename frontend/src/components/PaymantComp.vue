@@ -6,7 +6,23 @@
       <p>Välj betalningsalternavtiv nedan:</p>
       <div>
         <div class="payment-comp-alternativ">
-          <label>
+          <label for="paypal">PayPal
+          <input type="radio" id="paypal" name="category" value="paypal">
+          <span class="check-container-paypal"></span>
+          </label>
+          
+          <label for="credit">Credit
+          <input type="radio" id="credit" name="category" value="credit">
+          <span class="check-container img-credit"></span>
+          </label>
+          
+          <label for="faktura" class="filter-container">Faktura
+          <input type="radio" id="faktura" name="category" value="faktura">
+          <span class="check-container img-fakrura"></span>
+          </label>
+
+
+          <!-- <label>
             <p>Kreditkort</p>
             <input type="radio" name="credit" id="credit">
             <img src="../assets/svg/card-btn.svg" alt="">
@@ -20,7 +36,9 @@
             <p>Faktura</p>
             <input type="radio" name="faktura" id="faktura">
             <img src="../assets/svg/invoice-btn.svg" alt="">
-          </label>
+          </label> -->
+
+
         </div>
       </div>
     </div>
@@ -57,10 +75,8 @@ export default {
   color: $color2;
   border-radius: 5px;
   margin-top: 32px;
-}
-img {
-  width: 116px;
-  height: 116px;
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
 }
 h2 {
   font-family: 'font1';
@@ -71,4 +87,88 @@ h2 {
 p {
   font-family: 'font1';
 }
+input {
+    display: none;
+  }
+  //PayPal
+  .check-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 116px;
+    height: 116px;
+    margin-right: 8px;
+    border-radius: 5px;
+    background: url("../assets/svg/paypal-btn.svg");
+    cursor: pointer;
+  }
+  input:checked ~ .check-container {
+  background-color: $color1;
+  
+  }
+  input:checked ~ .check-container:after {
+    display: block;
+  }
+  /*Själva check märket */
+  .check-container:after {
+    content: "";
+    display: none;
+    width: 116px;
+    height: 116px;
+    background: url("../assets/svg/paypal-marked-btn.svg");
+  }
+  //Credit
+  .check-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 116px;
+    height: 116px;
+    margin-right: 8px;
+    border-radius: 5px;
+    background: url("../assets/svg/paypal-btn.svg");
+    cursor: pointer;
+  }
+  input:checked ~ .check-container {
+  background-color: $color1;
+  
+  }
+  input:checked ~ .check-container:after {
+    display: block;
+  }
+  /*Själva check märket */
+  .check-container:after {
+    content: "";
+    display: none;
+    width: 116px;
+    height: 116px;
+    background: url("../assets/svg/paypal-marked-btn.svg");
+  }
+  //Faktura//PayPal
+  .check-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 116px;
+    height: 116px;
+    margin-right: 8px;
+    border-radius: 5px;
+    background: url("../assets/svg/paypal-btn.svg");
+    cursor: pointer;
+  }
+  input:checked ~ .check-container {
+  background-color: $color1;
+  
+  }
+  input:checked ~ .check-container:after {
+    display: block;
+  }
+  /*Själva check märket */
+  .check-container:after {
+    content: "";
+    display: none;
+    width: 116px;
+    height: 116px;
+    background: url("../assets/svg/paypal-marked-btn.svg");
+  }
 </style>
