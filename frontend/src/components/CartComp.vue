@@ -132,6 +132,7 @@ export default {
       background-size: cover;
       border: none;
       background-color: $color2;
+      cursor: pointer;
     }
     .cart-h2-and-btn {
       display: flex;

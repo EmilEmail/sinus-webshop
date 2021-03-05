@@ -22,5 +22,6 @@ export default {
   background-color: $yes-green;
   border-color: $color1;
   color: $color1;
+  cursor: pointer;
 }
 </style>

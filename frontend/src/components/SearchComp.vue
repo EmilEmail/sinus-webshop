@@ -95,6 +95,7 @@ form {
     background: none;
     outline: none;
     border: none;
+    cursor: pointer;
   }
   .search-btn{
     grid-column-end: 9;
@@ -102,6 +103,7 @@ form {
     height: 45px;
     background: url('../assets/svg/search-btn.svg');
     background-size: cover;
+    cursor: pointer;
   }
 }
 /* Det öppna filtret */
@@ -131,9 +133,11 @@ form {
     margin-right: 8px;
     border-radius: 5px;
     background-color: $color1;
+    cursor: pointer;
   }
   input:checked ~ .check-container {
   background-color: $accent-color;
+  
   }
   input:checked ~ .check-container:after {
     display: block;

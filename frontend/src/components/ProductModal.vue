@@ -113,6 +113,7 @@ export default {
     background-size: cover;
     border: none;
     background-color: $color2;
+    cursor: pointer;
   }
 }
 .product-modal-info-row-2 {

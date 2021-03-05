@@ -123,6 +123,7 @@ export default {
       grid-column: 1/5;
       align-self: center;
       width: 160px;
+      cursor: pointer;
     }
     .text-align {
       text-align: center;

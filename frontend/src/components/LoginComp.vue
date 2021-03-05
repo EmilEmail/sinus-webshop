@@ -126,6 +126,7 @@ export default {
     background-size: cover;
     border: none;
     background-color: black;
+    cursor: pointer;
   }
   .login-h2-and-btn {
     display: flex;
@@ -157,6 +158,7 @@ export default {
     grid-column: 1/3;
     align-self: center;
     width: 160px;
+    cursor: pointer;
   }
 }
 </style>

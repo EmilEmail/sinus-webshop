@@ -70,6 +70,9 @@ export default {
     display: flex;
     list-style: none;
     justify-content: center;
+    li {
+      cursor: pointer;
+    }
   }
   h2 {
     text-align: center;
@@ -82,6 +85,7 @@ export default {
     width: 45px;
     height: 42px;
     align-self: center;
+    cursor: pointer;
   }
   .previous-btn {
     background: url('../assets/svg/nav-L-btn.svg');

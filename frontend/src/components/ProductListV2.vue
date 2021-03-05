@@ -216,6 +216,9 @@ ul {
   grid-template-columns: 1fr 1fr 1fr 1fr;
   list-style: none;
   justify-content: left;
+  li {
+    cursor: pointer;
+  }
 }
 h2 {
   grid-column: 2;
@@ -229,6 +232,7 @@ button {
   width: 45px;
   height: 42px;
   align-self: center;
+  cursor: pointer;
 }
 .previous-btn {
   grid-column: 1;
