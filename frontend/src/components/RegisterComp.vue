@@ -5,17 +5,17 @@
 
     <form @submit.prevent class="register-form">
       <label for="name">Namn</label>
-      <input type="text" name="name" v-model="newUser.firstname">
+      <input type="text" name="name" v-model="newUser.firstname" v-on:change="$emit('validateFirstname', newUser.firstname)">
       <label class="text-align" for="lastname">Efternamn</label>
-      <input type="text" name="lastname" v-model="newUser.lastname">
+      <input type="text" name="lastname" v-model="newUser.lastname" v-on:change="$emit('validateLastname', newUser.lastname)">
       <label for="address">Address</label>
-      <input class="fullrow" type="text" name="address" v-model="newUser.address.street">
+      <input class="fullrow" type="text" name="address" v-model="newUser.address.street" v-on:change="$emit('validateAddress', newUser.address.street)">
       <label for="postcode">Postkod</label>
-      <input type="text" name="postcode" v-model="newUser.address.zip">
+      <input type="text" name="postcode" v-model="newUser.address.zip" v-on:change="$emit('validateZip', newUser.address.zip)">
       <label class="text-align" for="city">Postort</label>
-      <input type="text" name="city" v-model="newUser.address.city">
+      <input type="text" name="city" v-model="newUser.address.city" v-on:change="$emit('validateCity', newUser.address.city)">
       <label for="email">Epost</label>
-      <input class="fullrow" type="text" name="email" v-model="newUser.email">
+      <input class="fullrow" type="text" name="email" v-model="newUser.email" v-on:change="$emit('validateEmail', newUser.email)">
       <label v-if="isRegister" for="password">Lösenord</label>
       <input v-if="isRegister" class="fullrow" type="text" name="password" v-model="newUser.password">
       <input v-if="isRegister" class="default-btn" type="button" v-bind:value="ctaBtn" @click="createNewUser">
@@ -56,7 +56,7 @@ export default {
   props: {
     registerHeader: String,
     ctaBtn: String,
-    isRegister: Boolean
+    isRegister: Boolean,
   },
   methods: {
     createNewUser() {
