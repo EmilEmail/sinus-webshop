@@ -2,11 +2,11 @@
   <div class="search-results-wrapper">
       <h2>Sökresultat</h2>
       <ul>
-        <button class="previous-btn" @click="previousResultPage"></button>
+          <button v-if="showPreviousSearch()" class="previous-btn" @click="previousResultPage"></button>
           <li v-for="(product, index) in searchPagination" :key="index">
             <ProductCard v-bind:product="product" /> 
           </li>
-        <button class="next-btn" @click="nextResultPage"></button>
+        <button v-if="showNextSearch()" class="next-btn" @click="nextResultPage"></button>
       </ul>
     </div>
 </template>
@@ -51,10 +51,16 @@ export default {
       if (currentPage < numOfPages) {
         this.searchPage++;
       }
-    }
-
+    },
+    showPreviousSearch() {
+      return this.searchPage == 1 ? false : true;
+    },
+    showNextSearch() { 
+      let allInSearch = this.searchResults;
+      let numOfPages = Math.ceil(allInSearch.length / 4);
+      return this.searchPage == (numOfPages) ? false : true;
+    },
   }
-
 }
 </script>
 

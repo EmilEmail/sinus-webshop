@@ -3,7 +3,7 @@
     <div class="form-wrapper">
       <form @click.prevent>
         <div class="search-comp-closed">
-          <input type="search" name="search" class="search" v-model="searchObj.searchText" placeholder="Sök...">
+          <input type="text" name="search" class="search" v-model="searchObj.searchText" placeholder="Sök...">
           <button @click="categoryToggle = !categoryToggle" class="filter-btn"> Filter&#9660;</button>
           <input type="submit" value="" class="search-btn" @click="doSearch">
         </div>
@@ -82,7 +82,7 @@ form {
     outline: none;
     border: none;
   }
-  input[type=search] {
+  input[type=text] {
     margin-right: 8px;
     padding: 0 16px;
     border-radius: 5px;
