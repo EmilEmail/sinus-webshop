@@ -6,18 +6,21 @@
       <p>Välj betalningsalternavtiv nedan:</p>
       <div>
         <div class="payment-comp-alternativ">
-          <div>
+          <label>
             <p>Kreditkort</p>
+            <input type="radio" name="credit" id="credit">
             <img src="../assets/svg/card-btn.svg" alt="">
-          </div>
-          <div>
+          </label>
+          <label>
             <p>PayPal</p>
+            <input type="radio" name="paypal" id="paypal">
             <img src="../assets/svg/paypal-btn.svg" alt="">
-          </div>
-          <div>
+          </label>
+          <label>
             <p>Faktura</p>
+            <input type="radio" name="faktura" id="faktura">
             <img src="../assets/svg/invoice-btn.svg" alt="">
-          </div>
+          </label>
         </div>
       </div>
     </div>

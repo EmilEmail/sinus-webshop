@@ -9,35 +9,35 @@
 
         <div class="product-list-grid" v-if="showProduct.skateboards">
           <h2>Skateboards</h2>
-          <button class="previous-btn" @click="previousBoardPage"></button>
+          <button v-if="showPreviousBoards()" class="previous-btn" @click="previousBoardPage"></button>
           <ul>
               <li v-for="(product, index) in boardPagination" :key="index" @click="openModal(product)">
                 <ProductCard v-bind:product="product" /> 
               </li>
           </ul>
-          <button class="next-btn" @click="nextBoardPage"></button>
+          <button v-if="showNextBoards()" class="next-btn" @click="nextBoardPage"></button>
         </div>
 
         <div class="product-list-grid" v-if="showProduct.clothes">
           <h2>Kläder</h2>
-          <button class="previous-btn" @click="previousClothesPage"></button>
+          <button v-if="showPreviousClothes()" class="previous-btn" @click="previousClothesPage"></button>
           <ul>
               <li v-for="(product, index) in clothesPagination" :key="index" @click="openModal(product)"> 
                 <ProductCard v-bind:product="product" /> 
               </li>
           </ul>
-          <button class="next-btn" @click="nextClothesPage"></button>
+          <button v-if="showNextClothes()" class="next-btn" @click="nextClothesPage"></button>
         </div>
 
         <div class="product-list-grid" v-if="showProduct.wheels">
           <h2>Tillbehör</h2>
-          <button class="previous-btn" @click="previousWheelsPage"></button>
+          <button v-if="showPreviousWheels()" class="previous-btn" @click="previousWheelsPage"></button>
           <ul>
               <li v-for="(product, index) in wheelsPagination" :key="index" @click="openModal(product)">
                 <ProductCard v-bind:product="product" /> 
               </li>
           </ul>
-          <button class="next-btn" @click="nextWheelsPage"></button>
+          <button v-if="showNextWheels()" class="next-btn" @click="nextWheelsPage"></button>
         </div>
       </div>
       <div class="modal-wrapper">
@@ -169,7 +169,31 @@ export default {
       if (currentPage > 1) {
         this.wheelsPage--;
       }
-    }
+    },
+    showPreviousBoards() {
+      return this.skateboardPage == 1 ? false : true;
+    },
+    showPreviousClothes() {
+      return this.clothesPage == 1 ? false : true;
+    },
+    showPreviousWheels() {
+      return this.wheelsPage == 1 ? false : true;
+    },
+    showNextBoards() { 
+      let allInCategory = this.$store.state.categories.skateboards;
+      let numOfPages = Math.ceil(allInCategory.length / 4);
+      return this.skateboardPage == (numOfPages) ? false : true;
+    },
+    showNextClothes() { 
+      let allInCategory = this.$store.state.categories.clothes;
+      let numOfPages = Math.ceil(allInCategory.length / 4);
+      return this.clothesPage == (numOfPages) ? false : true;
+    },
+    showNextWheels() { 
+      let allInCategory = this.$store.state.categories.wheels;
+      let numOfPages = Math.ceil(allInCategory.length / 4);
+      return this.wheelsPage == (numOfPages) ? false : true;
+    },
   }
 }
 </script>
@@ -196,7 +220,7 @@ ul {
 h2 {
   grid-column: 2;
   margin-left: 16px;
-  font-family: 'font2';
+  font-family: 'font1';
   font-weight: 400;
   font-size: 40px;
 }
