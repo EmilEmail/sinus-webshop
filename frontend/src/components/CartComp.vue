@@ -54,7 +54,7 @@ export default {
     totalPrice: function() {
         let total = 0;
         for (let item of this.$store.state.cart) {
-          total += item.totalPruductPrice;
+          total += parseInt(item.totalPruductPrice);
         }
         return total;
     },
