@@ -27,7 +27,6 @@ export default {
   },
   methods: {
     commitToBuy() {
-      alert("jag funkar")
       this.$store.dispatch('commitToBuy');
     }
   }

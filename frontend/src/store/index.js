@@ -223,7 +223,12 @@ export default new Vuex.Store({
     async commitToBuy(context) {
       let items = context.state.cart;
       const response = await placeNewOrder(ORDER_URL, {items: items.map(item => item._id)});
-      console.log(response);
+      
+      if(response.status === 200) {
+        alert("Tack för ditt köp");
+      }else{
+        alert('Något gick fel...')
+      }
     },
 
     //PRODUCT
