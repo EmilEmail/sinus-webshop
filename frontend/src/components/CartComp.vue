@@ -75,7 +75,9 @@ export default {
     methods: {
     checkout() {
       this.cartToggle();
-      this.$router.push('/checkout');
+      if (this.$route.path !== '/checkout') {
+        this.$router.push('/checkout');
+      }
     },
     addAmountCart(item) {
       this.$store.commit('addToCart', item)
