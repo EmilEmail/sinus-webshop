@@ -2,14 +2,7 @@
   <div class="checkout-wrapper">
     <ProfileComp />
     <RegisterComp registerHeader="Dina uppgifter" ctaBtn="KÖP" 
-    v-bind:isRegister="false" 
-    @validateFirstname="validateFirstname(formInput)" 
-    @validateLastname="validateLastname(formInput)" 
-    @validateAddress="validateAddress(formInput)" 
-    @validateCity="validateCity(formInput)"
-    @validateZip="validateZip(formInput)"
-    @validateEmail="validateEmail(formInput)"
-    />
+    v-bind:isRegister="false" />
     <div class="paymanet-alt">
       <PaymantComp />
       <div class="buy-btn" @click="commitToBuy">
@@ -31,60 +24,12 @@ export default {
     ButtonComp,
     PaymantComp,
   },
-  data() {
-    return {
-      hasFirstname: false,
-      hasLastname: false,
-      hasAddress: false,
-      hasZip: false,
-      hasCity: false,
-      hasEmail: false
-    }
-  },
+
   methods: {
     commitToBuy() {
-      if (this.hasFirstname &&
-      this.hasLastname &&
-      this.hasAddress &&
-      this.hasZip &&
-      this.hasCity &&
-      this.hasEmail
-      ) {
-        this.$store.dispatch('commitToBuy');
-      }
-      else {
-        alert('Kontrollera uppgifterna')
-      }
-    },
-    validateFirstname(formInput) {
-      if (formInput !== '') {
-        this.hasFirstname = true;
-      }
-    },
-    validateLastname(formInput) {
-      if (formInput !== '') {
-        this.hasLastname = true;
-      }
-    },
-    validateAddress(formInput) {
-      if (formInput !== '') {
-        this.hasAddress = true;
-      }
-    },
-    validateZip(formInput) {
-      if (formInput !== '') {
-        this.hasZip = true;
-      }
-    },
-    validateCity(formInput) {
-      if (formInput !== '') {
-        this.hasCity = true;
-      }
-    },
-    validateEmail(formInput) {
-      if (formInput !== '') {
-        this.hasEmail = true;
-      }
+      this.$store.dispatch('commitToBuy');
+      this.$router.push('/profile');
+      this.$router.go();
     },
   }
 }
@@ -97,7 +42,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 64px 0;
+  margin: 0 0 64px 0;
 }
 .paymanet-alt {
   background-color: $color2;

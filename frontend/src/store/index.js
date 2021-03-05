@@ -3,7 +3,6 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
-// import getData from '@/api/api.js';
 import { setToken, placeNewOrder } from '@/api/api.js';
 
 import { PRODUCTS_URL, LOGIN_URL, REGISTER_URL, USER_URL, EDIT_URL, ORDER_URL } from '@/api/api.js'
@@ -39,8 +38,6 @@ export default new Vuex.Store({
     showWheels: true,
     showOnlySearchResults: false,
     searchPage: 1,
-
-    
   },
   getters: {
     products: state => {
@@ -55,17 +52,21 @@ export default new Vuex.Store({
     wheels: (state) => {
       return state.products.filter(pro => pro.category == "wheels");
     },
+    orderDate: (state) => {
+      let orders = state.orderHistory;
+      orders.forEach(order => {
+        let date = new Date(order.timeStamp);
+        order.timeStamp = date.getDate() + "/" + (1 + date.getMonth()) + "-" + date.getFullYear().toString().substring(2, 4); 
+      });
+      return orders;
+    }
   },
   mutations: {
     initProducts(state, data) {
       state.products = data;
-
       state.categories.clothes = data.filter(pro => pro.category === "clothes");
       state.categories.wheels = data.filter(pro => pro.category === "wheels");
       state.categories.skateboards = data.filter(pro => pro.category === "board");
-    // addToCart(state, product) {
-    //   state.cart.push(product);
-    // },
     },
     showSkateboards(state) {
       state.showSkateboards = true;
@@ -177,11 +178,6 @@ export default new Vuex.Store({
       if (localStorage.getItem('token') !== null) {
         setToken(localStorage.getItem('token'));
         let user = localStorage.getItem('user');
-        // let cart;
-        // if (localStorage.getItem('cart') !== null) {
-        //   cart = localStorage.getItem('cart');
-        // }
-        // context.state.cart = JSON.parse(cart);
         context.state.user = JSON.parse(user);
         if (user.role === 'admin') {
           context.state.isAdmin = true;
@@ -209,7 +205,6 @@ export default new Vuex.Store({
           context.state.isAdmin = true;
         }
       }
-      
     },
     async registerUser(context, newUser) {
       const response = await post(REGISTER_URL, newUser);
@@ -219,7 +214,7 @@ export default new Vuex.Store({
       else {
         alert("Något gick fel... :(");
       }
-      //tILLFÄLLIG
+      //A must...
       console.log(context);
     },
     async orderHistory(context) {
@@ -230,10 +225,8 @@ export default new Vuex.Store({
       let items = context.state.cart;
       const response = await placeNewOrder(ORDER_URL, {items: items.map(item => item._id)});
       
-      if(response.status === 200) {
-        alert("Tack för ditt köp");
-      }else{
-        alert('Något gick fel...')
+      if(response.status !== 200) {
+        alert('Något gick fel...');
       }
     },
 
@@ -263,10 +256,9 @@ export default new Vuex.Store({
         let url = EDIT_URL + id;
         const response = await remove(url);
         console.log(response);
-        //TILLFÄLLIG
+        //A must...
         context.dispatch('getProducts');
     }
-    
   },
   modules: {
   }

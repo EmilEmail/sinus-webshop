@@ -47,7 +47,6 @@ export default {
     doSearch() {
       const searchObj = this.searchObj;
       this.$store.commit('doSearch', searchObj);
-      // this.$emit('searchClicked');
       this.searchObj.searchText = '';
       this.$store.state.searchPage = 1;
     },
