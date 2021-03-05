@@ -44,7 +44,7 @@ export default {
     },
   data() {
     return {
-      buttonTitle: "KÖP",
+      buttonTitle: "GÅ TILL KASSA",
       buttonClick: "checkout",
       // Ta bort och lägg till rätt variablar
       cart: []
