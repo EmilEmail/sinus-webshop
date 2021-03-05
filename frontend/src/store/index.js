@@ -3,15 +3,11 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
-import getData from '@/api/api.js';
-import { getUser, checkLogin, registerUser, setToken, addProductToDB, editProductInDB, deleteProductInDB, orderHistory, placeNewOrder } from '@/api/api.js';
+// import getData from '@/api/api.js';
+import { setToken, placeNewOrder } from '@/api/api.js';
 
-const BASE_URL = 'http://localhost:5000/api/';
-const LOGIN_URL = `${BASE_URL}auth/`;
-const REGISTER_URL = `${BASE_URL}register/`;
-const USER_URL = `${BASE_URL}me/`;
-const EDIT_URL = `${BASE_URL}products/`;
-const ORDER_URL = `${BASE_URL}orders/`;
+import { PRODUCTS_URL, LOGIN_URL, REGISTER_URL, USER_URL, EDIT_URL, ORDER_URL } from '@/api/api.js'
+import { get, post, patch, remove } from '@/api/api.js'
 
 const defaultUser = {
   email: "",
@@ -164,7 +160,7 @@ export default new Vuex.Store({
   actions: {
     async getProducts({ commit }) {
       let products;  
-      products = await getData();
+      products = await get(PRODUCTS_URL);
       commit('initProducts', products);    
     },
 
@@ -189,13 +185,13 @@ export default new Vuex.Store({
       localStorage.removeItem('token');
     },
     async checkLogin(context, userLogin) {        
-      const userCheck = await checkLogin(LOGIN_URL, userLogin);
+      const userCheck = await post(LOGIN_URL, userLogin);
       const token = userCheck.data.token;
 
       if (userCheck.status === 200) {
         alert("LOGGAT IN");
         setToken(token);
-        const userDB = await getUser(USER_URL);
+        const userDB = await get(USER_URL);
         console.log(userDB);
         context.state.user = userDB;
 
@@ -209,7 +205,7 @@ export default new Vuex.Store({
       
     },
     async registerUser(context, newUser) {
-      const response = await registerUser(REGISTER_URL, newUser);
+      const response = await post(REGISTER_URL, newUser);
       if (response.status === 200) {
         alert("Du är registrerad!");
       }
@@ -220,7 +216,7 @@ export default new Vuex.Store({
       console.log(context);
     },
     async orderHistory() {
-      const response = await orderHistory(ORDER_URL);
+      const response = await get(ORDER_URL);
       console.log(response);
     },
     async commitToBuy(context) {
@@ -229,29 +225,9 @@ export default new Vuex.Store({
       console.log(response);
     },
 
-    // {
-    //   _id: 123,
-    //   timeStamp: Date.now(), 
-    //   status: 'inProcess',
-    //   items: [ 
-    //     {
-    //       title: "Tricky",
-    //       price: 799,
-    //       imgFile: "skateboard-generic.png",
-    //       _id: "9E6KXMIdRglW0wbL",
-    //       amount: 2
-    //     }, 
-    //     {
-    //       <etc>
-    //     }, 
-    //     ... 
-    //   ],
-    //   orderValue: 999
-    // } 
-
     //PRODUCT
     async addProductToDB(context,newProduct) {
-      const response = await addProductToDB(newProduct);
+      const response = await post(PRODUCTS_URL, newProduct);
       console.log(response);
       context.dispatch('getProducts');
     },
@@ -267,13 +243,13 @@ export default new Vuex.Store({
       productPatch.longDesc = newProduct.longDesc;
       productPatch.imgFile = newProduct.imgFile;
 
-      const response = await editProductInDB(url, productPatch);
+      const response = await patch(url, productPatch);
       console.log(response);
       context.dispatch('getProducts');
     },
     async deleteProductInDB(context, id) {
         let url = EDIT_URL + id;
-        const response = await deleteProductInDB(url);
+        const response = await remove(url);
         console.log(response);
         //TILLFÄLLIG
         context.dispatch('getProducts');
