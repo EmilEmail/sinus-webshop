@@ -92,7 +92,7 @@ export default {
   background-color: $color2;
   color: $color1;
   padding: 32px;
-  margin-top: 32px;
+  margin-top: 64px;
   margin-bottom: 32px; //Detta ska bort eller ändras
   img {
     grid-row: 2/5;
@@ -104,7 +104,7 @@ export default {
   background-color: $color2;
   color: $color1;
   padding: 32px 32px 64px 32px;
-  margin-bottom: 32px; //Detta ska bort eller ändras
+  margin-bottom: 64px; //Detta ska bort eller ändras
   h2 {
     margin-bottom: 16px;
   }

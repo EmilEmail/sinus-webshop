@@ -67,7 +67,7 @@ export default {
   background-color: $color2;
   color: $accent-color;
   width: 624px;
-  margin: 32px;
+  margin: 64px;
   padding: 8px 16px;
   font-family: 'font2';
 }

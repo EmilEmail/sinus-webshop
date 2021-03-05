@@ -1,5 +1,4 @@
 <template>
-  <div>
   <div class="checkout-wrapper">
     <ProfileComp />
     <RegisterComp registerHeader="Dina uppgifter" ctaBtn="KÖP" 
@@ -17,7 +16,6 @@
         <ButtonComp buttonTitle="KÖP" />
       </div>
     </div>
-  </div>
   </div>
 </template>
 
@@ -53,10 +51,9 @@ export default {
       this.hasEmail
       ) {
         this.$store.dispatch('commitToBuy');
-        alert("funka")
       }
       else {
-        alert('funka inte')
+        alert('Kontrollera uppgifterna')
       }
     },
     validateFirstname(formInput) {
@@ -100,7 +97,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 32px;
+  margin: 64px 0;
 }
 .paymanet-alt {
   background-color: $color2;
