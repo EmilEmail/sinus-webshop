@@ -1,14 +1,16 @@
 <template>
   <div class="search-results-wrapper">
+    <div class="search-list-grid">
       <h2>Sökresultat</h2>
+      <button v-if="showPreviousSearch()" class="previous-btn" @click="previousResultPage"></button>
       <ul>
-          <button v-if="showPreviousSearch()" class="previous-btn" @click="previousResultPage"></button>
-          <li v-for="(product, index) in searchPagination" :key="index">
-            <ProductCard v-bind:product="product" /> 
-          </li>
-        <button v-if="showNextSearch()" class="next-btn" @click="nextResultPage"></button>
+        <li v-for="(product, index) in searchPagination" :key="index">
+          <ProductCard v-bind:product="product" /> 
+        </li>
       </ul>
+      <button v-if="showNextSearch()" class="next-btn" @click="nextResultPage"></button>
     </div>
+  </div>
 </template>
 
 <script>
@@ -66,16 +68,25 @@ export default {
 
 <style lang="scss" scoped>
 @import '../assets/css/colors.scss';
+  .search-list-grid {
+  display: grid;
+  grid-template-columns: 64px auto 64px;
+  width: 1104px;
+  margin: 72px 0;
+  }
   ul {
-    display: flex;
-    list-style: none;
-    justify-content: center;
+  grid-column: 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  list-style: none;
+  justify-content: left;
   }
   h2 {
-    text-align: center;
-    font-family: 'font1';
-    font-weight: 400;
-    font-size: 40px;
+  grid-column: 2;
+  margin-left: 16px;
+  font-family: 'font1';
+  font-weight: 400;
+  font-size: 40px;
   }
   button {
     border: none;
@@ -84,9 +95,11 @@ export default {
     align-self: center;
   }
   .previous-btn {
+    grid-column: 1;
     background: url('../assets/svg/nav-L-btn.svg');
   }
   .next-btn {
+    grid-column: 3;
     background: url('../assets/svg/nav-R-btn.svg');
   }
 </style>
