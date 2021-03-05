@@ -27,14 +27,17 @@ gruppen om vilka delar och hur ni ska inkorporera detta i ert arbete.
 Dokumentera vad ni kommer överens om i README.md i ert repository.
 
 
-Vi har börjat dagen med ett Scrum möte kl 9 där vi gått igenom vad som står på Trello. Mycket trevliga möten där alla i gruppen deltar och samarbetar på ett bra och pedagogiskt sätt. På Scrum mötet utses en Trello-master som sköter Trello-sidan för dagen. På Trello dokumenteras allt. Både problem, funderingar, frågor till lärare, saker som ska göras och saker som är gjorda. Saker som ska göras är dessutom markerade i viktighetsordning så vi enkelt kan se vad som ska prioriteras. 
+Vi har börjat dagen med ett Scrum möte kl 9 där vi gått igenom vad som står på Trello. Mycket trevliga möten där alla i gruppen deltar och samarbetar på ett bra och pedagogiskt sätt. På Scrum mötet utses en Trello-master och Scrum-master som sköter Trello-sidan/Scrum-mötena för dagen. På Trello dokumenteras allt. Både problem, funderingar, frågor till lärare, saker som ska göras och saker som är gjorda. Saker som ska göras är dessutom markerade i viktighetsordning så vi enkelt kan se vad som ska prioriteras. 
 När vi tillsammans på Scrum mötet har gått igenom backloggen så sätter vi igång, man har då tagit ett kort från "att göra" högen till "gör". Oftast läggs ett namn till så övriga i gruppen kan se vem som jobbar med vad just då om man behöver kontakta personen i fråga.
 
 Vi har arbetat både enskillt, två och två men även hela gruppen tillsammans beroende på hur korten har varit utformade. För det mesta så har vi kodat två och två för att kunna hjälpa och stötta varandra. Så fort vi har stött på problem så har vi kontaktat varandra på Teams där vi har haft alla våra möten. 
 
 Eftersom vi ligger på lite olika nivå på kunskap i gruppen så har fördelningen av arbetsuppgifter kanske inte alltid varit jämt fördelat. Men vi har tillsammans gått igenom svårare koder så att alla i gruppen får en chans att förstå och hänga med, trots att man skriver från olika håll och med olika kunskap. Bra samarbete där! 
 
+## Utvärdering
+Trots av att vi gjorde ett DOM-träd skulle vi gärna kunna gjort det mer detaljerat. Bättre tidsplanering för det här specifika projektet, då vi kunnat undvika stress och onödiga funktioner.
 
+Alla har sett en stark fördel att använda trello, både enskilt och för gruppen. Det är tydlighet i vad man gör, vad andra gör och vad man sätter upp för syntaxregler och designregler. Bra uppföljning på Scrum-mötena.
 
 ## Instruktioner
 Ni ska bygga en FrontEnd till en färdig BackEnd. Se `SINUS Webshop - REST API` nedan för mer information.
