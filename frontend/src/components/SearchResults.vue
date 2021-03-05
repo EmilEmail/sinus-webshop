@@ -4,7 +4,7 @@
       <h2>Sökresultat</h2>
       <button v-if="showPreviousSearch()" class="previous-btn" @click="previousResultPage"></button>
       <ul>
-        <li v-for="(product, index) in searchPagination" :key="index">
+        <li v-for="(product, index) in searchPagination" :key="index" @click="$emit('openModal', product)">
           <ProductCard v-bind:product="product" /> 
         </li>
       </ul>
@@ -16,11 +16,6 @@
 <script>
 import ProductCard from './ProductCard.vue'
 export default {
-  data() {
-    return {
-      searchPage: 1,
-    }
-  },
   components: {
     ProductCard
   },
@@ -29,7 +24,7 @@ export default {
       return this.$store.state.searchResults;
     },
     searchPagination: function() {
-      let page = this.searchPage;
+      let page = this.$store.state.searchPage;
 
       let trimStart = (page - 1) * 4;
       let trimEnd = trimStart + 4;
@@ -41,26 +36,26 @@ export default {
   },
   methods: {
     previousResultPage() {
-      let currentPage = this.searchPage;
+      let currentPage = this.$store.state.searchPage;
       if (currentPage > 1) {
-        this.searchPage--;
+        this.$store.state.searchPage--;
       }
     },
     nextResultPage() {
       let allInSearch = this.searchResults;
       let numOfPages = Math.ceil(allInSearch.length / 4);
-      let currentPage = this.searchPage;
+      let currentPage = this.$store.state.searchPage;
       if (currentPage < numOfPages) {
-        this.searchPage++;
+        this.$store.state.searchPage++;
       }
     },
     showPreviousSearch() {
-      return this.searchPage == 1 ? false : true;
+      return this.$store.state.searchPage == 1 ? false : true;
     },
     showNextSearch() { 
       let allInSearch = this.searchResults;
       let numOfPages = Math.ceil(allInSearch.length / 4);
-      return this.searchPage == (numOfPages) ? false : true;
+      return this.$store.state.searchPage == (numOfPages) ? false : true;
     },
   }
 }

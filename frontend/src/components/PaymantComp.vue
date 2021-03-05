@@ -13,32 +13,13 @@
           
           <label for="credit">Credit
           <input type="radio" id="credit" name="category" value="credit">
-          <span class="check-container img-credit"></span>
+          <span class="check-container-credit"></span>
           </label>
           
           <label for="faktura" class="filter-container">Faktura
           <input type="radio" id="faktura" name="category" value="faktura">
-          <span class="check-container img-fakrura"></span>
+          <span class="check-container-faktura"></span>
           </label>
-
-
-          <!-- <label>
-            <p>Kreditkort</p>
-            <input type="radio" name="credit" id="credit">
-            <img src="../assets/svg/card-btn.svg" alt="">
-          </label>
-          <label>
-            <p>PayPal</p>
-            <input type="radio" name="paypal" id="paypal">
-            <img src="../assets/svg/paypal-btn.svg" alt="">
-          </label>
-          <label>
-            <p>Faktura</p>
-            <input type="radio" name="faktura" id="faktura">
-            <img src="../assets/svg/invoice-btn.svg" alt="">
-          </label> -->
-
-
         </div>
       </div>
     </div>
@@ -62,6 +43,7 @@ export default {
   height: 272px;
   margin-bottom: 32px; //Detta ska bort eller ändras
   color: $color1;
+  font-family: font1;
 }
 .payment-comp-alternativ {
   display: flex;
@@ -91,84 +73,87 @@ input {
     display: none;
   }
   //PayPal
-  .check-container {
+  .check-container-paypal {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 116px;
     height: 116px;
     margin-right: 8px;
-    border-radius: 5px;
+    border-radius: 20px;
     background: url("../assets/svg/paypal-btn.svg");
     cursor: pointer;
   }
-  input:checked ~ .check-container {
+  input:checked ~ .check-container-paypal {
   background-color: $color1;
   
   }
-  input:checked ~ .check-container:after {
+  input:checked ~ .check-container-paypal:after {
     display: block;
   }
   /*Själva check märket */
-  .check-container:after {
+  .check-container-paypal:after {
     content: "";
     display: none;
     width: 116px;
     height: 116px;
+    border-radius: 20px;
     background: url("../assets/svg/paypal-marked-btn.svg");
   }
   //Credit
-  .check-container {
+  .check-container-credit {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 116px;
     height: 116px;
     margin-right: 8px;
-    border-radius: 5px;
-    background: url("../assets/svg/paypal-btn.svg");
+    border-radius: 20px;
+    background: url("../assets/svg/card-btn.svg");
     cursor: pointer;
   }
-  input:checked ~ .check-container {
+  input:checked ~ .check-container-credit {
   background-color: $color1;
   
   }
-  input:checked ~ .check-container:after {
+  input:checked ~ .check-container-credit:after {
     display: block;
   }
   /*Själva check märket */
-  .check-container:after {
+  .check-container-credit:after {
     content: "";
     display: none;
     width: 116px;
     height: 116px;
-    background: url("../assets/svg/paypal-marked-btn.svg");
+    border-radius: 20px;
+    background: url("../assets/svg/card-marked-btn.svg");
   }
-  //Faktura//PayPal
-  .check-container {
+  //Faktura//
+  .check-container-faktura {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 116px;
     height: 116px;
     margin-right: 8px;
-    border-radius: 5px;
-    background: url("../assets/svg/paypal-btn.svg");
+    border-radius: 20px;
+    background: url("../assets/svg/invoice-btn.svg");
     cursor: pointer;
   }
-  input:checked ~ .check-container {
+  input:checked ~ .check-container-faktura {
   background-color: $color1;
   
   }
-  input:checked ~ .check-container:after {
+  input:checked ~ .check-container-faktura:after {
     display: block;
   }
   /*Själva check märket */
-  .check-container:after {
+  .check-container-faktura:after {
     content: "";
     display: none;
     width: 116px;
     height: 116px;
-    background: url("../assets/svg/paypal-marked-btn.svg");
+    border-radius: 20px;
+    background: url("../assets/svg/invoice-marked-btn.svg");
   }
 </style>

@@ -37,6 +37,8 @@ export default new Vuex.Store({
     showSkateboards: true,
     showClothes: true,
     showWheels: true,
+    showOnlySearchResults: false,
+    searchPage: 1,
 
     
   },
@@ -138,8 +140,13 @@ export default new Vuex.Store({
           searchResults.push(productsToSearch[i]);
         }
       }
-      state.searchResults = searchResults;
-      console.log(state.searchResults);
+      if (searchResults.length !== 0) {
+        state.searchResults = searchResults;
+        state.showOnlySearchResults = true;
+      } else {
+        state.showOnlySearchResults = false;
+        alert('Inga resultat.');
+      }
     },
     removeAmountCart(state, index) {
       if(state.cart[index].amount > 1) {
@@ -170,11 +177,11 @@ export default new Vuex.Store({
       if (localStorage.getItem('token') !== null) {
         setToken(localStorage.getItem('token'));
         let user = localStorage.getItem('user');
-        let cart;
-        if (localStorage.getItem('cart') !== null) {
-          cart = localStorage.getItem('cart');
-        }
-        context.state.cart = JSON.parse(cart);
+        // let cart;
+        // if (localStorage.getItem('cart') !== null) {
+        //   cart = localStorage.getItem('cart');
+        // }
+        // context.state.cart = JSON.parse(cart);
         context.state.user = JSON.parse(user);
         if (user.role === 'admin') {
           context.state.isAdmin = true;
@@ -193,7 +200,6 @@ export default new Vuex.Store({
         alert("LOGGAT IN");
         setToken(token);
         const userDB = await get(USER_URL);
-        console.log(userDB);
         context.state.user = userDB;
 
         localStorage.setItem('token', token);

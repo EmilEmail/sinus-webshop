@@ -1,11 +1,11 @@
 <template>
   <div class="nav-comp-wrapper">  
     <section class="nav">
-      <img class="nav-logo" src="../assets/svg/sinus-logo-orange.svg" alt="Sinus logotype" v-on:click="showStartpage">
+      <img class="nav-logo" src="../assets/svg/sinus-logo-orange.svg" alt="Sinus logotype" v-on:click="showStartpage" @click="showOnlySearchResults">
       <ul>
-        <li v-on:click="showSkateboards">SKATEBOARDS</li>
-        <li v-on:click="showClothes">KLÄDER</li>
-        <li v-on:click="showAccesories">TILLBEHÖR</li>
+        <li v-on:click="showSkateboards" @click="showOnlySearchResults">SKATEBOARDS</li>
+        <li v-on:click="showClothes" @click="showOnlySearchResults">KLÄDER</li>
+        <li v-on:click="showAccesories" @click="showOnlySearchResults">TILLBEHÖR</li>
       </ul>
     </section>
     <section class="nav-buttons">
@@ -39,6 +39,9 @@ export default {
     LoginComp
   },
   methods: {
+    showOnlySearchResults() {
+      this.$store.state.showOnlySearchResults = false;
+    },
     showSkateboards() {
       if (this.$route.path !== '/') {
         this.$router.push('/');

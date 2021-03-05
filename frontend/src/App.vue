@@ -1,9 +1,5 @@
 <template>
   <div>
-    <router-link to="/">Products</router-link> |
-    <router-link to="/checkout">Checkout</router-link> | 
-    <router-link to="/register">Register</router-link> |
-    <router-link to="/admin">Admin</router-link>
     <div class="for-admin" v-if="isAdmin">
       <router-link to="/admin">Edit</router-link>
     </div>

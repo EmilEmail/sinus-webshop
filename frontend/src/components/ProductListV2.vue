@@ -2,7 +2,7 @@
   <div>
     <div class="product-list-wrapper">
       <div v-if="showOnlySearchResults">
-        <SearchResults />
+        <SearchResults @openModal="openModal" />
       </div>
 
       <div v-else>
@@ -40,6 +40,7 @@
           <button v-if="showNextWheels()" class="next-btn" @click="nextWheelsPage"></button>
         </div>
       </div>
+    </div>
       <div class="modal-wrapper">
         <ProductModal
           v-if="showModalUpdate" 
@@ -47,7 +48,6 @@
           v-on:closeModal="ToCloseModal()" 
         />
       </div>
-    </div>
   </div>
 </template>
 
@@ -65,15 +65,18 @@ export default {
       showModal: false,
     }
   },
-  props: {
-    showOnlySearchResults: Boolean
-  },
+  // props: {
+  //   showOnlySearchResults: Boolean
+  // },
   components: {
     ProductCard,
     ProductModal,
     SearchResults
   },
   computed: {
+    showOnlySearchResults: function() {
+      return this.$store.state.showOnlySearchResults;
+    },
     showModalUpdate: function() {
       return this.showModal;
     },
