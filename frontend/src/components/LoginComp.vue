@@ -12,8 +12,8 @@
         <input type="email" name="email" v-model="email">
         <label for="password">Password</label>
         <input type="password" name="password" v-model="password">
-        <input class="default-btn" type="submit" value="Logga in" @click="checkLogin">
-        <input class="default-btn" type="submit" value="Skapa konto" @click="toRegister">  
+        <input class="default-btn" type="submit" value="LOGGA IN" @click="checkLogin">
+        <input class="default-btn" type="submit" value="SKAPA KONTO" @click="toRegister">  
       </form>
     </div>
   </div>
