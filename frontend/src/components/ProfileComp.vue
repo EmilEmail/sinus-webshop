@@ -59,11 +59,14 @@ export default {
       return this.$store.state.user;
     },
     totalSum: function() {
-      let total = 0;
-      this.orderHistory.forEach(item => {
-        total += item.orderValue;
-      });
-      return total;
+      if (this.orderHistory !== []) {
+        let total = 0;
+        this.orderHistory.forEach(item => {
+          total += item.orderValue;
+        });
+        return total;
+      }
+      return []
     }
   },
   methods: {
