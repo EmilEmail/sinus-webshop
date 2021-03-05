@@ -27,10 +27,10 @@
         <p class="col-4">Pris</p>
       </div>
       <ul class="profil-comp-order-history-border">
-        <li v-for="(order, index) in orderHistery" :key="index" class="profil-comp-grid">
-          <p class="col-1">{{ order.orderNr }}</p>
-          <p class="col-2">{{ order.date }}</p>
-          <p class="col-4">{{ order.price }}:-</p>
+        <li v-for="(order, index) in orderHistory" :key="index" class="profil-comp-grid">
+          <p class="col-1">{{ order._id }}</p>
+          <p class="col-2">{{ order.timeStamp }}</p>
+          <p class="col-4">{{ order.orderValue }}:-</p>
         </li>
       </ul>
       <div class="profil-comp-grid">
@@ -43,35 +43,30 @@
 
 <script>
 export default {
+  mounted() {
+    this.$store.dispatch('orderHistory');
+  },
   data() {
     return{
-      orderHistery: [{
-        orderNr: 123456789081,
-        date: "20-20",
-        price: 699
-      },
-      {
-        orderNr: 123456927408,
-        date: "21-20",
-        price: 889
-      },
-      {
-        orderNr: 12345694523,
-        date: "22-20",
-        price: 2599
-      }]
+      // orderHistory: this.$store.state.orderHistory,
     }
   },
   computed: {
+    orderHistory: function() {
+      return this.$store.state.orderHistory;
+    },
     user: function() {
       return this.$store.state.user;
     },
     totalSum: function() {
-      let total = 0;
-      this.orderHistery.forEach(item => {
-        total += item.price;
-      });
-      return total;
+      if (this.orderHistory !== []) {
+        let total = 0;
+        this.orderHistory.forEach(item => {
+          total += item.orderValue;
+        });
+        return total;
+      }
+      return []
     }
   },
   methods: {

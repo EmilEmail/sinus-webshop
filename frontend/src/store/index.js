@@ -30,6 +30,7 @@ export default new Vuex.Store({
     },
     searchResults: [],
     user: defaultUser,
+    orderHistory: [],
     cart: [],
     isAdmin: false,
     cartAmount: 0,
@@ -215,9 +216,9 @@ export default new Vuex.Store({
       //tILLFÄLLIG
       console.log(context);
     },
-    async orderHistory() {
+    async orderHistory(context) {
       const response = await get(ORDER_URL);
-      console.log(response);
+      context.state.orderHistory = response;
     },
     async commitToBuy(context) {
       let items = context.state.cart;
