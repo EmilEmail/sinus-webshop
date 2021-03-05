@@ -62,7 +62,7 @@ img {
 h2 {
   font-family: 'font1';
     font-weight: 100;
-    font-size: 48px;
+    font-size: 40px;
     margin-bottom: 16px;
 }
 p {
