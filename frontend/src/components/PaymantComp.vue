@@ -8,17 +8,17 @@
         <div class="payment-comp-alternativ">
           <label for="paypal">PayPal
           <input type="radio" id="paypal" name="category" value="paypal">
-          <span class="check-container-paypal"></span>
+          <span class="check-container check-container-paypal"></span>
           </label>
           
           <label for="credit">Credit
           <input type="radio" id="credit" name="category" value="credit">
-          <span class="check-container-credit"></span>
+          <span class="check-container check-container-credit"></span>
           </label>
           
           <label for="faktura" class="filter-container">Faktura
           <input type="radio" id="faktura" name="category" value="faktura">
-          <span class="check-container-faktura"></span>
+          <span class="check-container check-container-faktura"></span>
           </label>
         </div>
       </div>
@@ -72,8 +72,7 @@ p {
 input {
     display: none;
   }
-  //PayPal
-  .check-container-paypal {
+  .check-container {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -81,79 +80,35 @@ input {
     height: 116px;
     margin-right: 8px;
     border-radius: 20px;
-    background: url("../assets/svg/paypal-btn.svg");
     cursor: pointer;
   }
-  input:checked ~ .check-container-paypal {
-  background-color: $color1;
-  
+  .check-container:after {
+    content: "";
+    display: none;
+    width: 116px;
+    height: 116px;
+    border-radius: 20px;
   }
-  input:checked ~ .check-container-paypal:after {
+  input:checked ~ .check-container:after {
     display: block;
+  }
+  .check-container-paypal {
+    background: url("../assets/svg/paypal-btn.svg");
+  }
+  .check-container-credit {
+    background: url("../assets/svg/card-btn.svg");
+  }
+  .check-container-faktura {
+    background: url("../assets/svg/invoice-btn.svg");
   }
   /*Själva check märket */
   .check-container-paypal:after {
-    content: "";
-    display: none;
-    width: 116px;
-    height: 116px;
-    border-radius: 20px;
     background: url("../assets/svg/paypal-marked-btn.svg");
   }
-  //Credit
-  .check-container-credit {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 116px;
-    height: 116px;
-    margin-right: 8px;
-    border-radius: 20px;
-    background: url("../assets/svg/card-btn.svg");
-    cursor: pointer;
-  }
-  input:checked ~ .check-container-credit {
-  background-color: $color1;
-  
-  }
-  input:checked ~ .check-container-credit:after {
-    display: block;
-  }
-  /*Själva check märket */
   .check-container-credit:after {
-    content: "";
-    display: none;
-    width: 116px;
-    height: 116px;
-    border-radius: 20px;
     background: url("../assets/svg/card-marked-btn.svg");
   }
-  //Faktura//
-  .check-container-faktura {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 116px;
-    height: 116px;
-    margin-right: 8px;
-    border-radius: 20px;
-    background: url("../assets/svg/invoice-btn.svg");
-    cursor: pointer;
-  }
-  input:checked ~ .check-container-faktura {
-  background-color: $color1;
-  
-  }
-  input:checked ~ .check-container-faktura:after {
-    display: block;
-  }
-  /*Själva check märket */
   .check-container-faktura:after {
-    content: "";
-    display: none;
-    width: 116px;
-    height: 116px;
-    border-radius: 20px;
     background: url("../assets/svg/invoice-marked-btn.svg");
   }
 </style>
