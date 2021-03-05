@@ -221,7 +221,7 @@ export default new Vuex.Store({
     },
     async commitToBuy(context) {
       let items = context.state.cart;
-      const response = await placeNewOrder(ORDER_URL, items);
+      const response = await placeNewOrder(ORDER_URL, {items: items.map(item => item._id)});
       console.log(response);
     },
 
