@@ -16,6 +16,7 @@ module.exports = {
       }}
 
       const {items} = body
+      console.log(items)
       let products = await Product.find(items)
 
       try{

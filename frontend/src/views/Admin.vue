@@ -5,11 +5,11 @@
       <form @submit.prevent>
       <h2>{{ formHeader }}</h2>
         <label for="title">Titel</label>
-        <input type="text" name="title" v-model="newProduct.title">
+        <input type="text" name="title" v-model="newProduct.title" maxlength="12">
         <label for="price">Price</label>
         <input type="number" name="price" v-model="newProduct.price">
         <label for="shortDesc">Kort beskrivning</label>
-        <input type="text" name="shortDesc" v-model="newProduct.shortDesc">
+        <input type="text" name="shortDesc" v-model="newProduct.shortDesc" maxlength="22">
         <div class="radio-btns">
           <p>Kategori:</p>
           <input type="radio" id="skateboards" v-model="newProduct.category" name="category" value="board">
@@ -70,7 +70,7 @@ export default {
       formHeader: 'Lägg till produkter',
       newProduct: {
         title: "",
-        price: 0,
+        price: null,
         shortDesc: "",
         category: "",
         longDesc: "",
@@ -96,7 +96,7 @@ export default {
     resetItem() {
       let emptyItem = {
         title: "",
-        price: 0,
+        price: null,
         shortDesc: "",
         category: "",
         longDesc: "",
@@ -110,19 +110,35 @@ export default {
       this.submitBtn = 'LÄGG TILL';
       this.resetItem();
     },
+    formValidation() {
+      if (this.newProduct.title === "" ||
+      this.newProduct.price === null ||
+      this.newProduct.price > 99999 ||
+      this.newProduct.price < 0 ||
+      this.newProduct.shortDesc === "" ||
+      this.newProduct.category === "" ||
+      this.newProduct.longDesc === "" ||
+      this.newProduct.imgFile === "") {
+        alert('Kontrollera uppgifterna')
+        return false;
+      }
+      return true;
+    },
     addProductToDB() {
-      if (this.newProduct._id === undefined) {
-        this.formHeader = 'Lägg till produkter';
-        let newProduct = this.newProduct;
-        this.$store.dispatch('addProductToDB', newProduct);
-      }
-      else {
-        if (confirm('Vill du ändra denna produkt?')) {
-        let newProduct = this.newProduct;
-        this.$store.dispatch('editProductInDB', newProduct);
+      if (this.formValidation()) {
+        if (this.newProduct._id === undefined) {
+          this.formHeader = 'Lägg till produkter';
+          let newProduct = this.newProduct;
+          this.$store.dispatch('addProductToDB', newProduct);
         }
-      }
+        else {
+          if (confirm('Vill du ändra denna produkt?')) {
+          let newProduct = this.newProduct;
+          this.$store.dispatch('editProductInDB', newProduct);
+          }
+        }
       this.resetItem();
+      }
     },
     productToForm(item) {
       let itemToEdit = item;
@@ -134,6 +150,7 @@ export default {
     deleteProduct(id) {
       if (confirm('Vill du ta bort denna produkt?')) {
       this.$store.dispatch('deleteProductInDB', id);
+      this.resetItem();
       }
     }
   }

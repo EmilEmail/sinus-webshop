@@ -48,6 +48,7 @@ export default {
   * {
     margin: 0;
     padding: 0;
+    outline: none;
   }
   .for-admin {
     background: $color2;

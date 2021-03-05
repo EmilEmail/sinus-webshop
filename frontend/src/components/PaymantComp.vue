@@ -2,7 +2,7 @@
 <div>
   <div class="payment-comp-wrapper">
     <div>
-      <h2>Betalaltenativ</h2>
+      <h2>Betalalternativ</h2>
       <p>Välj betalningsalternavtiv nedan:</p>
       <div>
         <div class="payment-comp-alternativ">
