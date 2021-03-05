@@ -4,7 +4,7 @@
     <section class="cart">
       <div class="cart-h2-and-btn">
         <h2>Kundvagn</h2>
-        <button class="close-btn" @click="$emit('cartToggle')"></button>
+        <button class="close-btn" @click="cartToggle"></button>
       </div>
 
       <div class="cart-headers">
@@ -74,7 +74,7 @@ export default {
   },
     methods: {
     checkout() {
-      this.cartOn = false;
+      this.cartToggle();
       this.$router.push('/checkout');
     },
     addAmountCart(item) {
@@ -85,6 +85,9 @@ export default {
     },
     removeFromCart(item) {
       this.$store.commit('removeFromCart', item)
+    },
+    cartToggle() {
+      this.$emit('cartToggle');
     }
   }
 }

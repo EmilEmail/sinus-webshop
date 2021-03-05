@@ -44,6 +44,7 @@ export default {
       this.$emit("closeModal")
     },
     addToCart(product) {
+      this.closeModal();
       this.$store.commit('addToCart', product);
     }
   }
