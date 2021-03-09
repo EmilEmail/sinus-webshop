@@ -92,6 +92,7 @@ export default {
   height: auto;
   margin: auto;
   margin-bottom: 32px;
+  margin-top: 32px;
   padding: 32px;
   font-family: 'font2';
   h2 {

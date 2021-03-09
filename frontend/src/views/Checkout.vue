@@ -1,6 +1,6 @@
 <template>
   <div class="checkout-wrapper">
-    <ProfileComp />
+    <ProfileComp v-if="showProfile" />
     <RegisterComp registerHeader="Dina uppgifter" ctaBtn="KÖP" 
     v-bind:isRegister="false" />
     <div class="paymanet-alt">
@@ -24,12 +24,30 @@ export default {
     ButtonComp,
     PaymantComp,
   },
+  data() {
+    return {
+      showProfile: false
+    }
+  },
+  created() {
+    if (this.$store.state.user.name === "") {
+      this.showProfile = false;
+    }
+    else {
+      this.showProfile = true;
+    }
+  },
 
   methods: {
     commitToBuy() {
       this.$store.dispatch('commitToBuy');
-      this.$router.push('/profile');
-      this.$router.go();
+      if (this.$store.state.user.name === "") {
+        this.$router.push('/')
+      }
+      else {
+        this.$router.push('/profile');
+        this.$router.go();
+      }
     },
   }
 }
@@ -42,12 +60,12 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0 0 64px 0;
 }
 .paymanet-alt {
   background-color: $color2;
   width: 600px;
   padding: 32px;
+  margin-bottom: 32px;
 
   .buy-btn {
   display: flex;

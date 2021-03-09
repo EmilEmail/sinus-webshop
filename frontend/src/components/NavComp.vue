@@ -97,6 +97,7 @@ export default {
     justify-content: space-between;
     width: 100%;
     height: 160px;
+    margin-bottom: 32px;
     background-color: $color2;
     color: $color1;
     .nav {

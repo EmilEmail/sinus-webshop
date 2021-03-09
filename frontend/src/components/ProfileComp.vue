@@ -46,11 +46,6 @@ export default {
   mounted() {
     this.$store.dispatch('orderHistory');
   },
-  data() {
-    return{
-      // orderHistory: this.$store.state.orderHistory,
-    }
-  },
   computed: {
     orderHistory: function() {
       return this.$store.getters.orderDate;
@@ -92,7 +87,7 @@ export default {
   background-color: $color2;
   color: $color1;
   padding: 32px;
-  margin-top: 64px;
+  margin-top: 32px;
   margin-bottom: 32px;
   img {
     grid-row: 2/5;
@@ -104,7 +99,7 @@ export default {
   background-color: $color2;
   color: $color1;
   padding: 32px 32px 64px 32px;
-  margin-bottom: 64px;
+  margin-bottom: 32px;
   h2 {
     margin-bottom: 16px;
   }

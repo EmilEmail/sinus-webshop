@@ -8,6 +8,12 @@
 import ProfileComp from '../components/ProfileComp.vue'
 export default {
   components: { ProfileComp },
+  beforeCreate() {
+    let user = this.$store.state.user
+    if (user.name === "") {
+      this.$router.push('/')
+    }
+  }
 }
 </script>
 

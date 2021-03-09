@@ -1,5 +1,5 @@
 <template>
-<div>
+
   <div class="payment-comp-wrapper">
     <div>
       <h2>Betalalternativ</h2>
@@ -24,7 +24,7 @@
       </div>
     </div>
   </div>
-</div>
+
 </template>
 
 <script>
@@ -41,7 +41,7 @@ export default {
   justify-content: center;
   width: 600px;
   height: 272px;
-  margin-bottom: 32px; //Detta ska bort eller ändras
+  margin-bottom: 32px;
   color: $color1;
   font-family: font1;
 }

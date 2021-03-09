@@ -102,7 +102,6 @@ export default new Vuex.Store({
         Vue.set(product, 'totalPruductPrice', product.price);
       }
       state.cartAmount++;
-      localStorage.setItem('cart', JSON.stringify(state.cart));
     },
     
     doSearch(state, searchObj) {
@@ -176,13 +175,16 @@ export default new Vuex.Store({
     //LOGIN
     checkLocalstorage(context) {
       if (localStorage.getItem('token') !== null) {
-        setToken(localStorage.getItem('token'));
+        let token = localStorage.getItem('token');
+        setToken(token);
         let user = localStorage.getItem('user');
-        context.state.user = JSON.parse(user);
+        user = JSON.parse(user);
+        context.state.user = user;
         if (user.role === 'admin') {
           context.state.isAdmin = true;
         }
       }
+      console.log(context)
     },
     clearLocalstorage() {
       localStorage.removeItem('user');
@@ -224,6 +226,7 @@ export default new Vuex.Store({
     async commitToBuy(context) {
       let items = context.state.cart;
       const response = await placeNewOrder(ORDER_URL, {items: items.map(item => item._id)});
+      context.state.cart = [];
       
       if(response.status !== 200) {
         alert('Något gick fel...');

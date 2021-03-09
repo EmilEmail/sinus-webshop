@@ -25,6 +25,7 @@ export default {
     justify-content: center;
     width: 100%;
     height: 200px;
+    margin-top: 32px;
     background-color: $color2;
     a {
       color: $accent-color;
